@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://xvjacwyfgsyp"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_25r8w"]
+[ext_resource type="PackedScene" uid="uid://cjlt1jaav3kox" path="res://Scenes/test_corners.tscn" id="2_ohe75"]
+[ext_resource type="PackedScene" uid="uid://c1msyiewppjed" path="res://Scenes/counters.tscn" id="2_pugvt"]
+[ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="3_hjkes"]
+[ext_resource type="PackedScene" uid="uid://csppqky04k64o" path="res://Scenes/central_screen_text.tscn" id="5_tfyk2"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_25r8w")
+
+[node name="Test Corners" parent="." instance=ExtResource("2_ohe75")]
+visible = false
+
+[node name="Block Pile" parent="." instance=ExtResource("3_hjkes")]
+
+[node name="Counters" parent="." instance=ExtResource("2_pugvt")]
+
+[node name="Central Screen Text" parent="." instance=ExtResource("5_tfyk2")]

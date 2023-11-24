@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjlt1jaav3kox"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t17du"]
+font_size = 64
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lr24i"]
+font_size = 64
+font_color = Color(0, 0.545098, 0.545098, 1)
+
+[node name="Test Corners" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 720.0
+offset_bottom = 91.0
+theme_override_constants/separation = 462
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_t17du")
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_lr24i")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+offset_top = 1182.0
+offset_right = 720.0
+offset_bottom = 1273.0
+theme_override_constants/separation = 462
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_t17du")
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Test"
+label_settings = SubResource("LabelSettings_lr24i")

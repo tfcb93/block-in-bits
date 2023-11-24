@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuexpb3pghlwj"]
+
+[ext_resource type="Script" path="res://Scripts/block_pile.gd" id="1_1n87m"]
+
+[node name="Block Pile" type="Node2D"]
+script = ExtResource("1_1n87m")
+pile_total_blocks = 30
+
+[node name="Start Pile Position" type="Marker2D" parent="."]
+
+[node name="Pile" type="Node2D" parent="."]
