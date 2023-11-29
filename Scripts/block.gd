@@ -1,7 +1,7 @@
 extends Area2D;
 
-@export_enum("earth", "stone", "coal", "metal") var block_type: String = "earth";
-@export var life := 1;
+var block_type: String = "earth";
+var life := 1;
 
 @onready var block_sprite := $Sprite2D;
 

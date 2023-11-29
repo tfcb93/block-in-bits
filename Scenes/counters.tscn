@@ -11,9 +11,10 @@ script = ExtResource("1_jsouc")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -73.5
-offset_right = 73.5
-offset_bottom = 78.0
+offset_left = -91.5
+offset_top = 61.0
+offset_right = 91.5
+offset_bottom = 143.0
 grow_horizontal = 2
 
 [node name="Taps Container" type="CenterContainer" parent="VBoxContainer"]

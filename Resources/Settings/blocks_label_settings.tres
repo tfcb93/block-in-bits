@@ -1,4 +1,9 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://cintqeieolxjl"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cintqeieolxjl"]
+
+[ext_resource type="FontFile" uid="uid://cdvnwqtbidcdh" path="res://Resources/Fonts/SourceCodePro-Bold.ttf" id="1_fhllb"]
 
 [resource]
+font = ExtResource("1_fhllb")
 font_size = 32
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)

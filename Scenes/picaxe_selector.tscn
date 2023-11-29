@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx68lqtpduw7b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gnujf"]
+font_size = 64
+
+[node name="Selector" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Next" type="Button" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Next"
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "Picaxe"
+label_settings = SubResource("LabelSettings_gnujf")
+
+[node name="Previous" type="Button" parent="HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Prev"

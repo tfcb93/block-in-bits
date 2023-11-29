@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://psq6xmp7r6a1"]
+
+[ext_resource type="Shader" path="res://Resources/Shaders/background.gdshader" id="1_gexpy"]
+
+[resource]
+shader = ExtResource("1_gexpy")

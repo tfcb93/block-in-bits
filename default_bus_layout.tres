@@ -1,0 +1,21 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://duf364nebo6si"]
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_rnndf"]
+resource_name = "EQ"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_18rdq"]
+resource_name = "Reverb"
+room_size = 0.3
+damping = 0.3
+
+[resource]
+bus/1/name = &"Tap Sound"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectEQ_rnndf")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectReverb_18rdq")
+bus/1/effect/1/enabled = true
