@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://xvjacwyfgsyp"]
+[gd_scene load_steps=10 format=3 uid="uid://xvjacwyfgsyp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_25r8w"]
 [ext_resource type="PackedScene" uid="uid://cjlt1jaav3kox" path="res://Scenes/test_corners.tscn" id="2_ohe75"]
 [ext_resource type="PackedScene" uid="uid://c1msyiewppjed" path="res://Scenes/counters.tscn" id="2_pugvt"]
 [ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="3_hjkes"]
+[ext_resource type="PackedScene" uid="uid://dx68lqtpduw7b" path="res://Scenes/picaxe_selector.tscn" id="4_k0xen"]
 [ext_resource type="PackedScene" uid="uid://csppqky04k64o" path="res://Scenes/central_screen_text.tscn" id="5_tfyk2"]
 [ext_resource type="PackedScene" uid="uid://b3gvjwdsaaa65" path="res://Scenes/background.tscn" id="6_2hb4t"]
 [ext_resource type="PackedScene" uid="uid://bvdotdi1t80tg" path="res://Scenes/start_screen.tscn" id="7_lre40"]
@@ -17,6 +18,8 @@ scale = Vector2(1, 1.00868)
 
 [node name="Test Corners" parent="." instance=ExtResource("2_ohe75")]
 visible = false
+
+[node name="Selector" parent="." instance=ExtResource("4_k0xen")]
 
 [node name="Block Pile" parent="." instance=ExtResource("3_hjkes")]
 

@@ -7,11 +7,14 @@
 script = ExtResource("1_48180")
 
 [node name="Shovel" parent="." instance=ExtResource("2_qpvqv")]
+type_name = "shovel"
 
 [node name="Water Bucket" parent="." instance=ExtResource("2_qpvqv")]
 life = 1
+type_name = "water"
 
 [node name="Stone" parent="." instance=ExtResource("2_qpvqv")]
 
 [node name="Steel" parent="." instance=ExtResource("2_qpvqv")]
 life = 500
+type_name = "steel"

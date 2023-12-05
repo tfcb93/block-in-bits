@@ -17,6 +17,32 @@ offset_right = 91.5
 offset_bottom = 143.0
 grow_horizontal = 2
 
+[node name="Points Container" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HBoxContainer" parent="VBoxContainer/Points Container"]
+layout_mode = 2
+
+[node name="Points Label" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
+layout_mode = 2
+text = "Points: "
+label_settings = ExtResource("2_eh54w")
+
+[node name="Points" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_eh54w")
+
+[node name="Slash" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
+layout_mode = 2
+text = "/"
+label_settings = ExtResource("2_eh54w")
+
+[node name="Next Level Points" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_eh54w")
+
 [node name="Taps Container" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 

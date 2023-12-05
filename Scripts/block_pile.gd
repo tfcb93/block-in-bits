@@ -28,16 +28,26 @@ func _ready() -> void:
 		pile.move_child(newBlock, 0);
 		
 	load_block_sounds();
+	set_actual_block(pile.get_child(-1).block_type);
 
 
 func _on_screen_tap() -> void:
+	if not Globals.actual_pickaxe_available:
+		#play another sound;
+		return;
 	if not Globals.game_stop:
-		taps_since_new_block += 1;
-		if taps_since_new_block >= pile.get_child(-1).life:
+		#taps_since_new_block += 1;
+		#if taps_since_new_block >= pile.get_child(-1).life:
+		if pile.get_child(-1).life <= 0:
 			play_block_sound(pile.get_child(-1).block_type);
 			pile.get_child(-1).queue_free();
 			taps_since_new_block = 0;
 			Globals.total_blocks_destroyed += 1;
+			pile_types.pop_front();
+			set_actual_block(pile_types[0]);
+			
+			Globals.total_player_points += Globals.actual_block_points;
+			Globals.actual_block_points = 0;
 			
 			if pile.get_child_count() - 1 == 0:
 				Events.emit_signal("win");
@@ -82,3 +92,9 @@ func load_block_sounds() -> void:
 
 func play_block_sound(type: String) -> void:
 	get_node("Block Sounds/" + type).play();
+
+func set_actual_block(type: String) -> void:
+	Globals.actual_block_type = type;
+
+func set_actual_block_damage(value: int) -> void:
+	pile.get_child(-1).life -= value;

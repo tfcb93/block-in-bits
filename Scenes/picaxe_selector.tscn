@@ -1,23 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx68lqtpduw7b"]
+[gd_scene load_steps=3 format=3 uid="uid://dx68lqtpduw7b"]
+
+[ext_resource type="Script" path="res://Scripts/picaxe_selector.gd" id="1_dyclj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gnujf"]
 font_size = 64
 
-[node name="Selector" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="Selector" type="CanvasLayer"]
+script = ExtResource("1_dyclj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -147.0
+offset_top = 331.0
+offset_right = 147.0
+offset_bottom = 419.0
+grow_horizontal = 2
 
 [node name="Next" type="Button" parent="HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 text = "Next"
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Actual" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Picaxe"
 label_settings = SubResource("LabelSettings_gnujf")
@@ -26,3 +32,6 @@ label_settings = SubResource("LabelSettings_gnujf")
 texture_filter = 1
 layout_mode = 2
 text = "Prev"
+
+[connection signal="button_down" from="HBoxContainer/Next" to="." method="_on_next_button_down"]
+[connection signal="button_down" from="HBoxContainer/Previous" to="." method="_on_previous_button_down"]
