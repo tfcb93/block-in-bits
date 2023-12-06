@@ -12,7 +12,6 @@ const block_types := ["earth", "stone", "coal", "metal"];
 const block_life := {"earth" = 3, "stone" = 10, "coal" = 20, "metal" = 50};
 
 var actual_picaxe_type: String;
-var actual_pickaxe_available: bool = true;
 var actual_block_type: String;
 
 var block_type_pickaxe_damages = {

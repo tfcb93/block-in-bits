@@ -18,20 +18,20 @@ offset_right = 147.0
 offset_bottom = 419.0
 grow_horizontal = 2
 
-[node name="Next" type="Button" parent="HBoxContainer"]
+[node name="Previous" type="Button" parent="HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "Next"
+text = "Prev"
 
 [node name="Actual" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 text = "Picaxe"
 label_settings = SubResource("LabelSettings_gnujf")
 
-[node name="Previous" type="Button" parent="HBoxContainer"]
+[node name="Next" type="Button" parent="HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "Prev"
+text = "Next"
 
-[connection signal="button_down" from="HBoxContainer/Next" to="." method="_on_next_button_down"]
 [connection signal="button_down" from="HBoxContainer/Previous" to="." method="_on_previous_button_down"]
+[connection signal="button_down" from="HBoxContainer/Next" to="." method="_on_next_button_down"]

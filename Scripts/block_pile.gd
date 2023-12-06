@@ -32,9 +32,6 @@ func _ready() -> void:
 
 
 func _on_screen_tap() -> void:
-	if not Globals.actual_pickaxe_available:
-		#play another sound;
-		return;
 	if not Globals.game_stop:
 		#taps_since_new_block += 1;
 		#if taps_since_new_block >= pile.get_child(-1).life:
