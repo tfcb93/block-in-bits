@@ -28,6 +28,13 @@ var block_type_pickaxe_points = {
 	"metal" = {"shovel" = 0, "stone" = 3, "water" = 0, "steel" = 10},
 }
 
+var pickaxe_type_damages = {
+	"shovel" = {"earth" = 1, "stone" = 1, "coal" = 1, "metal" = 1, "ruby" = 1, "emerald" = 1, "lava" = 1, "dark_matter" = 1},
+	"water" = {"earth" = 1, "stone" = 1, "coal" = 1, "metal" = 1, "ruby" = 1, "emerald" = 1, "lava" = 1, "dark_matter" = 1},
+	"steel" = {"earth" = 1, "stone" = 1, "coal" = 1, "metal" = 1, "ruby" = 1, "emerald" = 1, "lava" = 1, "dark_matter" = 1},
+	"stone" = {"earth" = 1, "stone" = 1, "coal" = 1, "metal" = 1, "ruby" = 1, "emerald" = 1, "lava" = 1, "dark_matter" = 1},
+}
+
 var total_player_points:int = 0;
 var actual_block_points: int = 0;
 var next_checkpoint_points: int = 1000;

@@ -1,20 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3ri8srhpwkac"]
+[gd_scene load_steps=2 format=3 uid="uid://3ri8srhpwkac"]
 
 [ext_resource type="Script" path="res://Scripts/pickaxe_bag.gd" id="1_48180"]
-[ext_resource type="PackedScene" uid="uid://br7qpbdlvf1k0" path="res://Scenes/pickaxe.tscn" id="2_qpvqv"]
 
 [node name="Pickaxe Bag" type="Node"]
 script = ExtResource("1_48180")
-
-[node name="Shovel" parent="." instance=ExtResource("2_qpvqv")]
-type_name = "shovel"
-
-[node name="Water Bucket" parent="." instance=ExtResource("2_qpvqv")]
-life = 1
-type_name = "water"
-
-[node name="Stone" parent="." instance=ExtResource("2_qpvqv")]
-
-[node name="Steel" parent="." instance=ExtResource("2_qpvqv")]
-life = 500
-type_name = "steel"
