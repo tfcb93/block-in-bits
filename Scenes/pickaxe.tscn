@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://br7qpbdlvf1k0"]
-
-[ext_resource type="Script" path="res://Scripts/pickaxe.gd" id="1_vqolg"]
-
-[node name="Pickaxe" type="Node2D"]
-script = ExtResource("1_vqolg")
