@@ -2,9 +2,7 @@ extends Node;
 
 signal tap;
 
-signal win;
-
-signal lose;
+signal finish;
 
 signal next_level(value: int);
 

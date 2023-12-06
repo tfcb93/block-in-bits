@@ -3,11 +3,15 @@ extends Node2D
 @onready var counters_node := $Counters;
 @onready var pickaxe_bag := $"Pickaxe Bag";
 @onready var block_pile := $"Block Pile";
+@onready var selector := $Selector;
+@onready var game_over_screen := $"Game Over";
 
 var counter_value := 0;
 
 func _ready() -> void:
 	counters_node.visible = false;
+	game_over_screen.visible = false;
+	selector.visible = false;
 	var screensize := get_viewport_rect().size;
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -17,6 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				Globals.game_start = true;
 				$"Start Screen".visible = false;
 				counters_node.visible = true;
+				selector.visible = true;
 			else:
 				Globals.total_taps += 1;
 				block_tap_action();

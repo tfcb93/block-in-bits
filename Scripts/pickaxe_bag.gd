@@ -22,6 +22,7 @@ func _on_screen_tap() -> void:
 		remove_pickaxe_qtd(actual_pickaxe_name);
 		if pickaxe_quantities.is_empty():
 			Globals.game_stop = true;
+			Events.emit_signal("finish");
 			return;
 		_on_change_pickaxe_type("any");
 		

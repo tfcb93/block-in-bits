@@ -47,7 +47,6 @@ func _on_screen_tap() -> void:
 			Globals.actual_block_points = 0;
 			
 			if pile.get_child_count() - 1 == 0:
-				Events.emit_signal("win");
 				Globals.game_stop = true;
 			
 			lift_pile_up();

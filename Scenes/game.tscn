@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://xvjacwyfgsyp"]
+[gd_scene load_steps=11 format=3 uid="uid://xvjacwyfgsyp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_25r8w"]
 [ext_resource type="PackedScene" uid="uid://cjlt1jaav3kox" path="res://Scenes/test_corners.tscn" id="2_ohe75"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b3gvjwdsaaa65" path="res://Scenes/background.tscn" id="6_2hb4t"]
 [ext_resource type="PackedScene" uid="uid://bvdotdi1t80tg" path="res://Scenes/start_screen.tscn" id="7_lre40"]
 [ext_resource type="PackedScene" uid="uid://3ri8srhpwkac" path="res://Scenes/pickaxe_bag.tscn" id="8_upw6x"]
+[ext_resource type="PackedScene" uid="uid://csttkv7omrvrp" path="res://Scenes/game_over.tscn" id="10_2jao5"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_25r8w")
@@ -30,3 +31,5 @@ visible = false
 [node name="Start Screen" parent="." instance=ExtResource("7_lre40")]
 
 [node name="Pickaxe Bag" parent="." instance=ExtResource("8_upw6x")]
+
+[node name="Game Over" parent="." instance=ExtResource("10_2jao5")]
