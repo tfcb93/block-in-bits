@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xtnn4s20s3kc"
-path="res://.godot/imported/earth.png-b0acb894be5aa5b393b6979442b4077c.ctex"
+uid="uid://chn5s4r5iv6xw"
+path="res://.godot/imported/coal.png-02c4a34596b2367b2b4245c789375494.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/earth.png"
-dest_files=["res://.godot/imported/earth.png-b0acb894be5aa5b393b6979442b4077c.ctex"]
+source_file="res://Resources/Images/Blocks/coal.png"
+dest_files=["res://.godot/imported/coal.png-02c4a34596b2367b2b4245c789375494.ctex"]
 
 [params]
 

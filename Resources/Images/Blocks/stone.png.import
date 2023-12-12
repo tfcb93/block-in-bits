@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3odgnot8vl7p"
-path="res://.godot/imported/metal.png-677783396aa97c5ddb18bb227ac7066c.ctex"
+uid="uid://ba6nqkqo4c7iw"
+path="res://.godot/imported/stone.png-f7313f0436df36d8475537c04346ea56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/metal.png"
-dest_files=["res://.godot/imported/metal.png-677783396aa97c5ddb18bb227ac7066c.ctex"]
+source_file="res://Resources/Images/Blocks/stone.png"
+dest_files=["res://.godot/imported/stone.png-f7313f0436df36d8475537c04346ea56.ctex"]
 
 [params]
 

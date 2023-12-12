@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba6nqkqo4c7iw"
-path="res://.godot/imported/stone.png-ad4241074cefb4514a36a2d4936d4efe.ctex"
+uid="uid://hvve25gmi722"
+path="res://.godot/imported/dark_matter.png-09a742b12f6551034af7398ee8b435c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/stone.png"
-dest_files=["res://.godot/imported/stone.png-ad4241074cefb4514a36a2d4936d4efe.ctex"]
+source_file="res://Resources/Images/Blocks/dark_matter.png"
+dest_files=["res://.godot/imported/dark_matter.png-09a742b12f6551034af7398ee8b435c5.ctex"]
 
 [params]
 

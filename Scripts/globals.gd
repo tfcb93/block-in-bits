@@ -35,6 +35,13 @@ var pickaxe_type_damages = {
 	"stone" = {"earth" = 1, "stone" = 1, "coal" = 1, "metal" = 1, "ruby" = 1, "emerald" = 1, "lava" = 1, "dark_matter" = 1},
 }
 
+var pickaxe_information = {
+	"shovel" = {"name" = "shovel", "image_name" = "shovel", "price" = 100, "life_at_start" = 1}, 
+	"water" = {"name" = "water bucket", "image_name" = "water", "price" = 100, "life_at_start" = 1},
+	"steel" = {"name" = "steel pickaxe", "image_name" = "steel", "price" = 1000, "life_at_start" = 500},
+	"stone" = {"name" = "stone pickaxe", "image_name" = "stone", "price" = 300, "life_at_start" = 100}
+}
+
 var total_player_points:int = 0;
 var actual_block_points: int = 0;
 var next_checkpoint_points: int = 1000;

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfwrp2iyjrlp8"
-path="res://.godot/imported/emerald.png-bf36d35d09a6926d5cb9e522b59de231.ctex"
+uid="uid://cojbbogkcq5w0"
+path="res://.godot/imported/ruby.png-9d11b331b70bbe908fcaf3de555a1791.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/emerald.png"
-dest_files=["res://.godot/imported/emerald.png-bf36d35d09a6926d5cb9e522b59de231.ctex"]
+source_file="res://Resources/Images/Blocks/ruby.png"
+dest_files=["res://.godot/imported/ruby.png-9d11b331b70bbe908fcaf3de555a1791.ctex"]
 
 [params]
 

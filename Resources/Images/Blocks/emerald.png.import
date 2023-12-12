@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0lag2yhhkmva"
-path="res://.godot/imported/lava.png-0bcf112de1fab1875943ffb763f44670.ctex"
+uid="uid://cfwrp2iyjrlp8"
+path="res://.godot/imported/emerald.png-6f7368a5e157eb985ba73fda7bd33911.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Images/lava.png"
-dest_files=["res://.godot/imported/lava.png-0bcf112de1fab1875943ffb763f44670.ctex"]
+source_file="res://Resources/Images/Blocks/emerald.png"
+dest_files=["res://.godot/imported/emerald.png-6f7368a5e157eb985ba73fda7bd33911.ctex"]
 
 [params]
 

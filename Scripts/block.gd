@@ -7,7 +7,7 @@ var life := 1;
 
 func _ready() -> void:
 	block_sprite.texture = CompressedTexture2D.new();
-	block_sprite.texture = load("res://Resources/Images/" + block_type + ".png");
+	block_sprite.texture = load("res://Resources/Images/Blocks/" + block_type + ".png");
 	set_life();
 
 func set_life() -> void:
