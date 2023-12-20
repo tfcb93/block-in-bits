@@ -6,7 +6,6 @@ extends Node2D
 @onready var selector := $Selector;
 @onready var game_over_screen := $"Game Over";
 @onready var shop_button := $Button;
-@onready var shopping := $Shopping;
 
 var counter_value := 0;
 
@@ -15,8 +14,10 @@ func _ready() -> void:
 	game_over_screen.visible = false;
 	selector.visible = false;
 	shop_button.visible = false;
-	shopping.visible = false;
 	var screensize := get_viewport_rect().size;
+	
+	Events.connect("discount_bits", _on_bought_item);
+	Events.connect("add_bits", _on_add_bits);
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not Globals.game_stop:
@@ -43,6 +44,12 @@ func block_tap_action() -> void:
 
 
 func _on_button_button_down() -> void:
-	# I have to find a way to block the touch
-	# I have to find a wait to close it as well
-	shopping.visible = true;
+	Events.emit_signal("open_shopping");
+	
+func _on_bought_item(value: int) -> void:
+	Globals.total_player_points -= value;
+	Events.emit_signal("bits_discounted");
+	print(Globals.total_player_points);
+	
+func _on_add_bits() -> void:
+	Globals.total_player_points += Globals.actual_block_points;

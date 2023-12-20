@@ -2,22 +2,28 @@ extends Node;
 
 var actual_pickaxe_name: String;
 
-var pickaxe_quantities := {"water" = 0, "stone" = 0, "shovel" = 0};
-var pickaxe_actual_lives := {"water" = 1, "stone" = 100, "shovel" = 1};
+var pickaxe_quantities := {"water" = 0, "stone" = 0, "shovel" = 0, "steel" = 0};
+var pickaxe_actual_lives := {};
 
 func _ready() -> void:
 	Events.connect("tap",_on_screen_tap);
 	Events.connect("change_pickaxe_type",_on_change_pickaxe_type);
+	Events.connect("bought_pickaxe", _on_bought_pickaxe);
 	
 	var actual_pickaxes := pickaxe_quantities.keys();
 	for pickaxe in actual_pickaxes:
 		change_pickaxe_qtd(1, pickaxe)
-	set_actual_pickaxe("stone");
+		pickaxe_actual_lives[pickaxe] = Globals.pickaxe_information[pickaxe].life_at_start;
+	print(pickaxe_actual_lives);
+	set_actual_pickaxe("shovel");
 	
 	
 func _on_screen_tap() -> void:
+	print(pickaxe_actual_lives[actual_pickaxe_name]);
 	if pickaxe_actual_lives[actual_pickaxe_name] <= 0:
 		change_pickaxe_qtd(-1, actual_pickaxe_name);
+		if not pickaxe_quantities[actual_pickaxe_name] == 0:
+			pickaxe_actual_lives[actual_pickaxe_name] = Globals.pickaxe_information[actual_pickaxe_name].life_at_start;
 	if pickaxe_quantities[actual_pickaxe_name] == 0:
 		remove_pickaxe_qtd(actual_pickaxe_name);
 		if pickaxe_quantities.is_empty():
@@ -25,8 +31,6 @@ func _on_screen_tap() -> void:
 			Events.emit_signal("finish");
 			return;
 		_on_change_pickaxe_type("any");
-		
-			
 
 func set_actual_pickaxe(type: String) -> void:
 	actual_pickaxe_name = type;
@@ -49,7 +53,10 @@ func _on_change_pickaxe_type(dir: String) -> void:
 	else:
 		var new_type:String = actual_types[actual_index - 1];
 		set_actual_pickaxe(new_type);
-		
+
+func _on_bought_pickaxe(type: String) -> void:
+	change_pickaxe_qtd(1, type);
+
 func change_pickaxe_qtd(value: int, type: String) -> void:
 	
 	if pickaxe_quantities.get(type) != null:
@@ -57,6 +64,7 @@ func change_pickaxe_qtd(value: int, type: String) -> void:
 		print("this is the actual pickaxe %s value: %d" % [type, pickaxe_quantities[type]]);
 	else:
 		print("new pickaxe %s" % type);
+		pickaxe_actual_lives[type] = Globals.pickaxe_information[type].life_at_start;
 		pickaxe_quantities[type] = value;
 
 func remove_pickaxe_qtd(type: String) -> void:

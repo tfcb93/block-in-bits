@@ -25,7 +25,7 @@ layout_mode = 2
 
 [node name="Points Label" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
 layout_mode = 2
-text = "Points: "
+text = "Bits: "
 label_settings = ExtResource("2_eh54w")
 
 [node name="Points" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
@@ -34,11 +34,13 @@ text = "0"
 label_settings = ExtResource("2_eh54w")
 
 [node name="Slash" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
+visible = false
 layout_mode = 2
 text = "/"
 label_settings = ExtResource("2_eh54w")
 
 [node name="Next Level Points" type="Label" parent="VBoxContainer/Points Container/HSplitContainer"]
+visible = false
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_eh54w")

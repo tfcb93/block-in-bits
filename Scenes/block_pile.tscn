@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuexpb3pghlwj"]
+[gd_scene load_steps=4 format=3 uid="uid://cuexpb3pghlwj"]
 
 [ext_resource type="Script" path="res://Scripts/block_pile.gd" id="1_1n87m"]
 [ext_resource type="AudioStream" uid="uid://l3hcfomxa3fh" path="res://Resources/Sounds/hit1.wav" id="2_2xg3g"]
+[ext_resource type="AudioStream" uid="uid://bk18xdf1qtxy" path="res://Resources/Sounds/destroy.wav" id="3_ee1jf"]
 
 [node name="Block Pile" type="Node2D"]
 script = ExtResource("1_1n87m")
-pile_total_blocks = 30
 
 [node name="Start Pile Position" type="Marker2D" parent="."]
 
@@ -17,3 +17,6 @@ volume_db = -5.0
 bus = &"Tap Sound"
 
 [node name="Block Sounds" type="Node2D" parent="."]
+
+[node name="Destroy Block Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ee1jf")

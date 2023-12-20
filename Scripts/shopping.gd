@@ -6,9 +6,24 @@ var item := preload("res://Scenes/shopping_item.tscn");
 
 
 func _ready() -> void:
+	visible = false;
 	for pickaxe in Globals.pickaxe_information:
-		print(Globals.pickaxe_information[pickaxe].name);
+		var pickaxe_data = Globals.pickaxe_information[pickaxe];
 		var new_item := item.instantiate();
 		items.add_child(new_item);
-		new_item.change_product_name(Globals.pickaxe_information[pickaxe].name);
-		new_item.change_product_price(Globals.pickaxe_information[pickaxe].price);
+		new_item.item_id = pickaxe_data.id;
+		new_item.change_product_name(pickaxe_data.name);
+		new_item.change_product_price(pickaxe_data.price);
+		new_item.change_product_picture("res://Resources/Images/Pickaxes/%s.png" % pickaxe_data.image_name);
+		
+	Events.connect("open_shopping", _on_shopping_open);
+	
+func _on_shopping_open() -> void:
+	visible = true;
+	Globals.game_stop = true;
+
+
+func _on_close_button_down() -> void:
+	Globals.game_stop = false;
+	visible = false;
+	Events.emit_signal("close_shopping");
