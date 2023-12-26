@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Events="*res://Scripts/events.gd"
 Globals="*res://Scripts/globals.gd"
+BAP="*res://Scripts/blocks_and_pickaxes.gd"
 
 [display]
 

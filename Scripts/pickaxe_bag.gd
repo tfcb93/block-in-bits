@@ -13,7 +13,7 @@ func _ready() -> void:
 	var actual_pickaxes := pickaxe_quantities.keys();
 	for pickaxe in actual_pickaxes:
 		change_pickaxe_qtd(1, pickaxe)
-		pickaxe_actual_lives[pickaxe] = Globals.pickaxe_information[pickaxe].life_at_start;
+		pickaxe_actual_lives[pickaxe] = BAP.pickaxe_information[pickaxe].life_at_start;
 	print(pickaxe_actual_lives);
 	set_actual_pickaxe("shovel");
 	

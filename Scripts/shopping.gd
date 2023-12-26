@@ -7,8 +7,8 @@ var item := preload("res://Scenes/shopping_item.tscn");
 
 func _ready() -> void:
 	visible = false;
-	for pickaxe in Globals.pickaxe_information:
-		var pickaxe_data = Globals.pickaxe_information[pickaxe];
+	for pickaxe in BAP.pickaxe_information:
+		var pickaxe_data = BAP.pickaxe_information[pickaxe];
 		var new_item := item.instantiate();
 		items.add_child(new_item);
 		new_item.item_id = pickaxe_data.id;

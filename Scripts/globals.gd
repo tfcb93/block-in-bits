@@ -14,6 +14,8 @@ const block_life := {"earth" = 3, "stone" = 10, "coal" = 20, "metal" = 50};
 var actual_picaxe_type: String;
 var actual_block_type: String;
 
+
+
 # damage a block give to a pickaxe
 var block_type_pickaxe_damages = {
 	"earth" = {"shovel" = 5, "stone" = 2, "water" = 100, "steel" = 2, "blower" = 0, "drill" = 2, "hammer" = 2, "rubber" = 3, "scissors" = 1, "screw" = 1, "silk" = 20, "super" = 0},
@@ -72,21 +74,6 @@ var pickaxe_type_damages = {
 	"screw" = {"earth" = 30, "sand" = 25, "stone" = 30, "coal" = 40, "metal" = 20, "ruby" = 10, "emerald" = 10, "lava" = 0, "dark_matter" = 0, "concrete" = 0, "copper" = 0, "diamond" = 0, "dust" = 0, "electrical" = 0, "gold" = 0, "mechanical" = 0, "plastic" = 0, "quartz" = 0, "sapphire" = 0, "silver" = 0,},
 	"silk" = {"earth" = 30, "sand" = 25, "stone" = 30, "coal" = 40, "metal" = 20, "ruby" = 10, "emerald" = 10, "lava" = 0, "dark_matter" = 0, "concrete" = 0, "copper" = 0, "diamond" = 0, "dust" = 0, "electrical" = 0, "gold" = 0, "mechanical" = 0, "plastic" = 0, "quartz" = 0, "sapphire" = 0, "silver" = 0,},
 	"super" = {"earth" = 30, "sand" = 25, "stone" = 30, "coal" = 40, "metal" = 20, "ruby" = 10, "emerald" = 10, "lava" = 0, "dark_matter" = 0, "concrete" = 0, "copper" = 0, "diamond" = 0, "dust" = 0, "electrical" = 0, "gold" = 0, "mechanical" = 0, "plastic" = 0, "quartz" = 0, "sapphire" = 0, "silver" = 0,},
-}
-
-var pickaxe_information = {
-	"shovel" = {"id"= "shovel", "name" = "shovel", "image_name" = "shovel", "price" = 100, "life_at_start" = 100}, 
-	"water" = {"id"= "water", "name" = "water bucket", "image_name" = "water", "price" = 100, "life_at_start" = 1},
-	"steel" = {"id"= "steel", "name" = "steel pickaxe", "image_name" = "steel", "price" = 1000, "life_at_start" = 500},
-	"stone" = {"id"= "stone", "name" = "stone pickaxe", "image_name" = "stone", "price" = 300, "life_at_start" = 100},
-	"blower" = {"id"= "blower", "name" = "air blower", "image_name" = "air-blower", "price" = 150, "life_at_start" = 50},
-	"drill" = {"id"= "drill", "name" = "drill", "image_name" = "drill", "price" = 600, "life_at_start" = 300},
-	"hammer" = {"id"= "hammer", "name" = "hammer", "image_name" = "hammer", "price" = 200, "life_at_start" = 10},
-	"rubber" = {"id"= "rubber", "name" = "rubber", "image_name" = "rubber-pickaxe", "price" = 200, "life_at_start" = 60},
-	"scissors" = {"id"= "scissors", "name" = "scissors", "image_name" = "scissors", "price" = 100, "life_at_start" = 10},
-	"screw" = {"id"= "screw", "name" = "screw driver", "image_name" = "screw-driver", "price" = 100, "life_at_start" = 20},
-	"silk" = {"id"= "silk", "name" = "silk pickaxe", "image_name" = "silk-pickaxe", "price" = 500, "life_at_start" = 10},
-	"super" = {"id"= "super", "name" = "super pickaxe", "image_name" = "super-pickaxe", "price" = 10000, "life_at_start" = 1000},
 }
 
 var total_player_points:int = 0;

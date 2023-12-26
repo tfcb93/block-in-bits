@@ -90,7 +90,26 @@ func generate_starter_blocks() -> void:
 	total_blocks_generated = len(pile_types);
 
 func generate_new_block_level_1() -> void:
-	generate_random_starter_block();
+	var last_pile_block = pile_types[len(pile.get_children()) - 2];
+	
+	match last_pile_block:
+		"metal":
+			insert_new_block_in_pile_types(["stone", "metal", "silver", "gold", "copper"]);
+		"stone":
+			insert_new_block_in_pile_types(["stone", "metal", "coal"]);
+		"coal":
+			insert_new_block_in_pile_types(["stone", "coal"]);
+		"silver":
+			insert_new_block_in_pile_types(["metal", "silver", "gold", "copper"]);
+		"gold":
+			insert_new_block_in_pile_types(["silver", "gold", "quartz"]);
+		"copper":
+			insert_new_block_in_pile_types(["metal", "silver", "copper"]);
+		"quartz":
+			insert_new_block_in_pile_types(["quartz", "silver", "gold"]);
+		_:
+			generate_random_starter_block();
+	
 func generate_new_block_level_2() -> void:
 	pass
 func generate_new_block_random_1() -> void:
@@ -100,9 +119,11 @@ func generate_new_block_random_2() -> void:
 
 func generate_random_starter_block() -> void:
 	var all_blocks = Globals.block_type_pickaxe_damages.keys();
-	var type = randi() % len(all_blocks) - 1;
-	print(type);
-	pile_types.push_back(all_blocks[type]);
+	insert_new_block_in_pile_types(all_blocks);
+	
+func insert_new_block_in_pile_types(types:Array[String]) -> void:
+	var new_type = randi() % len(types) - 1;
+	pile_types.push_back(types[new_type]);
 	++total_blocks_generated;
 
 #func load_block_sounds() -> void:
