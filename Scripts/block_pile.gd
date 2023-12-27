@@ -77,13 +77,13 @@ func generate_block_pile() -> void:
 		generate_new_block_level_2();
 	# TODO: Delete this elif statement when building other levels
 	elif total_blocks_generated >= 100000:
-		generate_new_block_random_1();
+		generate_new_block_level_3();
 	#elif total_blocks_generated >= 10000 or total_blocks_generated < 100000:
 		#generate_new_block_random_1();
 	#elif total_blocks_generated >= 100000:
 		#generate_new_block_random_2();
 	else:
-		generate_random_starter_block();
+		generate_random_block();
 
 func generate_starter_blocks() -> void:
 	pile_types = ["earth", "earth", "earth", "earth", "earth", "stone", "stone", "stone", "sand", "sand", "stone", "stone", "stone", "coal", "stone", "coal", "stone", "stone", "stone", "metal"];
@@ -108,20 +108,46 @@ func generate_new_block_level_1() -> void:
 		"quartz":
 			insert_new_block_in_pile_types(["quartz", "silver", "gold"]);
 		_:
-			generate_random_starter_block();
+			generate_random_block();
 	
 func generate_new_block_level_2() -> void:
-	pass
-func generate_new_block_random_1() -> void:
-	pass
+	var last_pile_block = pile_types[len(pile.get_children()) - 2];
+	match last_pile_block:
+		"diamond":
+			insert_new_block_in_pile_types(["lava", "stone", "coal"]);
+		"emerald":
+			insert_new_block_in_pile_types(["stone", "coal", "emerald"]);
+		"ruby":
+			insert_new_block_in_pile_types(["stone", "coal", "ruby"]);
+		"sapphire":
+			insert_new_block_in_pile_types(["stone", "coal", "sapphire"]);
+		"lava":
+			insert_new_block_in_pile_types(["stone"]);
+		_:
+			generate_new_block_level_1();
+func generate_new_block_level_3() -> void:
+	var last_pile_block = pile_types[len(pile.get_children()) - 2];
+	match last_pile_block:
+		"plastic":
+			insert_new_block_in_pile_types(["coal, metal, electrical, concrete, mechanical"]);
+		"concrete":
+			insert_new_block_in_pile_types(["stone, coal, electrical, concrete, mechanical, dust"]);
+		"electrical":
+			insert_new_block_in_pile_types(["electrical, mechanical, concrete"]);
+		"mechanical":
+			insert_new_block_in_pile_types(["concrete, electrical, mechanical, dust, stone, metal"]);
+		"dust":
+			insert_new_block_in_pile_types(["stone, concrete, coal"]);
+		_:
+			generate_new_block_level_2();
 func generate_new_block_random_2() -> void:
 	pass
 
-func generate_random_starter_block() -> void:
-	var all_blocks = Globals.block_type_pickaxe_damages.keys();
+func generate_random_block() -> void:
+	var all_blocks := BAP.blocks_info.keys();
 	insert_new_block_in_pile_types(all_blocks);
 	
-func insert_new_block_in_pile_types(types:Array[String]) -> void:
+func insert_new_block_in_pile_types(types:Array) -> void:
 	var new_type = randi() % len(types) - 1;
 	pile_types.push_back(types[new_type]);
 	++total_blocks_generated;

@@ -14,16 +14,14 @@ func _ready() -> void:
 	for pickaxe in actual_pickaxes:
 		change_pickaxe_qtd(1, pickaxe)
 		pickaxe_actual_lives[pickaxe] = BAP.pickaxe_information[pickaxe].life_at_start;
-	print(pickaxe_actual_lives);
 	set_actual_pickaxe("shovel");
 	
 	
 func _on_screen_tap() -> void:
-	print(pickaxe_actual_lives[actual_pickaxe_name]);
 	if pickaxe_actual_lives[actual_pickaxe_name] <= 0:
 		change_pickaxe_qtd(-1, actual_pickaxe_name);
 		if not pickaxe_quantities[actual_pickaxe_name] == 0:
-			pickaxe_actual_lives[actual_pickaxe_name] = Globals.pickaxe_information[actual_pickaxe_name].life_at_start;
+			pickaxe_actual_lives[actual_pickaxe_name] = BAP.pickaxe_information[actual_pickaxe_name].life_at_start;
 	if pickaxe_quantities[actual_pickaxe_name] == 0:
 		remove_pickaxe_qtd(actual_pickaxe_name);
 		if pickaxe_quantities.is_empty():
@@ -61,12 +59,9 @@ func change_pickaxe_qtd(value: int, type: String) -> void:
 	
 	if pickaxe_quantities.get(type) != null:
 		pickaxe_quantities[type] += value;
-		print("this is the actual pickaxe %s value: %d" % [type, pickaxe_quantities[type]]);
 	else:
-		print("new pickaxe %s" % type);
-		pickaxe_actual_lives[type] = Globals.pickaxe_information[type].life_at_start;
+		pickaxe_actual_lives[type] = BAP.pickaxe_information[type].life_at_start;
 		pickaxe_quantities[type] = value;
 
 func remove_pickaxe_qtd(type: String) -> void:
-	print("pickaxe removed");
 	pickaxe_quantities.erase(type);
