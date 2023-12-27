@@ -12,8 +12,5 @@ func _on_game_finish() -> void:
 
 
 func _on_restart_button_down() -> void:
+	# I need to create a reset function I think
 	pass;
-
-
-func _on_quit_button_down() -> void:
-	get_tree().quit();

@@ -154,7 +154,7 @@ var blocks_info = {
 var pickaxe_information = {
 	"shovel" = {"id"= "shovel", "name" = "shovel", "image_name" = "shovel", "price" = 100, "life_at_start" = 100}, 
 	"water" = {"id"= "water", "name" = "water bucket", "image_name" = "water", "price" = 100, "life_at_start" = 1},
-	"steel" = {"id"= "steel", "name" = "steel pickaxe", "image_name" = "steel", "price" = 1000, "life_at_start" = 500},
+	"steel" = {"id"= "steel", "name" = "steel pickaxe", "image_name" = "steel", "price" = 500, "life_at_start" = 500},
 	"stone" = {"id"= "stone", "name" = "stone pickaxe", "image_name" = "stone", "price" = 300, "life_at_start" = 100},
 	"blower" = {"id"= "blower", "name" = "air blower", "image_name" = "air-blower", "price" = 150, "life_at_start" = 50},
 	"drill" = {"id"= "drill", "name" = "drill", "image_name" = "drill", "price" = 600, "life_at_start" = 300},

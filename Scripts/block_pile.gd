@@ -71,13 +71,14 @@ func insert_new_block() -> void:
 func generate_block_pile() -> void:
 	if total_blocks_generated == 0:
 		generate_starter_blocks();
-	elif total_blocks_generated >= 20 or total_blocks_generated < 1000:
+	elif total_blocks_generated >= 20 or total_blocks_generated < 500:
 		generate_new_block_level_1();
-	elif total_blocks_generated >= 1000 or total_blocks_generated < 10000:
+	elif total_blocks_generated >= 500 or total_blocks_generated < 1000:
 		generate_new_block_level_2();
-	# TODO: Delete this elif statement when building other levels
-	elif total_blocks_generated >= 100000:
+	elif total_blocks_generated >= 1000 or total_blocks_generated < 10000:
 		generate_new_block_level_3();
+	elif total_blocks_generated >= 100000:
+		generate_new_block_level_4();
 	#elif total_blocks_generated >= 10000 or total_blocks_generated < 100000:
 		#generate_new_block_random_1();
 	#elif total_blocks_generated >= 100000:
@@ -94,11 +95,20 @@ func generate_new_block_level_1() -> void:
 	
 	match last_pile_block:
 		"metal":
-			insert_new_block_in_pile_types(["stone", "metal", "silver", "gold", "copper"]);
+			insert_new_block_in_pile_types(["stone", "metal"]);
 		"stone":
 			insert_new_block_in_pile_types(["stone", "metal", "coal"]);
 		"coal":
 			insert_new_block_in_pile_types(["stone", "coal"]);
+		_:
+			generate_random_block();
+
+func generate_new_block_level_2() -> void:
+	var last_pile_block = pile_types[len(pile.get_children()) - 2];
+	
+	match last_pile_block:
+		"metal":
+			insert_new_block_in_pile_types(["stone", "metal", "silver", "gold", "copper"]);
 		"silver":
 			insert_new_block_in_pile_types(["metal", "silver", "gold", "copper"]);
 		"gold":
@@ -108,26 +118,30 @@ func generate_new_block_level_1() -> void:
 		"quartz":
 			insert_new_block_in_pile_types(["quartz", "silver", "gold"]);
 		_:
-			generate_random_block();
-	
-func generate_new_block_level_2() -> void:
-	var last_pile_block = pile_types[len(pile.get_children()) - 2];
-	match last_pile_block:
-		"diamond":
-			insert_new_block_in_pile_types(["lava", "stone", "coal"]);
-		"emerald":
-			insert_new_block_in_pile_types(["stone", "coal", "emerald"]);
-		"ruby":
-			insert_new_block_in_pile_types(["stone", "coal", "ruby"]);
-		"sapphire":
-			insert_new_block_in_pile_types(["stone", "coal", "sapphire"]);
-		"lava":
-			insert_new_block_in_pile_types(["stone"]);
-		_:
 			generate_new_block_level_1();
+	
 func generate_new_block_level_3() -> void:
 	var last_pile_block = pile_types[len(pile.get_children()) - 2];
 	match last_pile_block:
+		"quartz":
+			insert_new_block_in_pile_types(["quartz", "emerald", "ruby", "sapphire", "diamond"]);
+		"diamond":
+			insert_new_block_in_pile_types(["lava", "stone", "coal"]);
+		"emerald":
+			insert_new_block_in_pile_types(["stone", "coal", "emerald", "quartz"]);
+		"ruby":
+			insert_new_block_in_pile_types(["stone", "coal", "ruby", "quartz"]);
+		"sapphire":
+			insert_new_block_in_pile_types(["stone", "coal", "sapphire", "quartz"]);
+		"lava":
+			insert_new_block_in_pile_types(["stone"]);
+		_:
+			generate_new_block_level_2();
+func generate_new_block_level_4() -> void:
+	var last_pile_block = pile_types[len(pile.get_children()) - 2];
+	match last_pile_block:
+		"metal":
+			insert_new_block_in_pile_types(["stone", "metal", "silver", "gold", "copper", "plastic", "concrete", "electrical", "mechanical"]);
 		"plastic":
 			insert_new_block_in_pile_types(["coal, metal, electrical, concrete, mechanical"]);
 		"concrete":
@@ -139,7 +153,8 @@ func generate_new_block_level_3() -> void:
 		"dust":
 			insert_new_block_in_pile_types(["stone, concrete, coal"]);
 		_:
-			generate_new_block_level_2();
+			generate_new_block_level_3();
+
 func generate_new_block_random_2() -> void:
 	pass
 

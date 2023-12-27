@@ -46,12 +46,4 @@ theme_override_fonts/font = ExtResource("2_vhce6")
 theme_override_font_sizes/font_size = 64
 text = "Restart"
 
-[node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_vhce6")
-theme_override_font_sizes/font_size = 64
-text = "Quit
-"
-
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/Restart" to="." method="_on_restart_button_down"]
-[connection signal="button_down" from="CanvasLayer/VBoxContainer/Quit" to="." method="_on_quit_button_down"]
