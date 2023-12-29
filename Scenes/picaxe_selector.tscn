@@ -9,36 +9,35 @@ font_size = 64
 [node name="Selector" type="CanvasLayer"]
 script = ExtResource("1_dyclj")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -147.0
-offset_top = 331.0
-offset_right = 147.0
-offset_bottom = 419.0
-grow_horizontal = 2
-
-[node name="Previous" type="TextureButton" parent="HBoxContainer"]
+[node name="Previous" type="TextureButton" parent="."]
 texture_filter = 1
-layout_mode = 2
+offset_left = 10.0
+offset_top = 331.0
+offset_right = 74.0
+offset_bottom = 831.0
 texture_normal = ExtResource("2_5k6lc")
-stretch_mode = 3
+stretch_mode = 0
 flip_h = true
 
-[node name="Actual" type="Label" parent="HBoxContainer"]
-layout_mode = 2
+[node name="Actual" type="Label" parent="."]
+offset_left = 261.0
+offset_top = 331.0
+offset_right = 459.0
+offset_bottom = 419.0
 text = "Picaxe"
 label_settings = SubResource("LabelSettings_gnujf")
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 161
 
-[node name="Next" type="TextureButton" parent="HBoxContainer"]
+[node name="Next" type="TextureButton" parent="."]
 texture_filter = 1
-layout_mode = 2
+offset_left = 646.0
+offset_top = 331.0
+offset_right = 710.0
+offset_bottom = 831.0
 texture_normal = ExtResource("2_5k6lc")
-stretch_mode = 3
+stretch_mode = 0
 
-[connection signal="button_down" from="HBoxContainer/Previous" to="." method="_on_previous_button_down"]
-[connection signal="button_down" from="HBoxContainer/Next" to="." method="_on_next_button_down"]
+[connection signal="button_down" from="Previous" to="." method="_on_previous_button_down"]
+[connection signal="button_down" from="Next" to="." method="_on_next_button_down"]

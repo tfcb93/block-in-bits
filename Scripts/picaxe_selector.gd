@@ -1,6 +1,6 @@
 extends CanvasLayer;
 
-@onready var actual_label := $HBoxContainer/Actual;
+@onready var actual_label := $Actual;
 
 func _ready() -> void:
 	Events.connect("pickaxe_type_changed", _on_change_pickaxe_type);
