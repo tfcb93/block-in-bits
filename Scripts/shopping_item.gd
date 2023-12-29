@@ -10,7 +10,7 @@ var item_id := "";
 
 func _ready() -> void:
 	Events.connect("bits_discounted", _on_discounted_bits);
-	Events.connect("open_shopping", _on_shopping_open);
+	Events.connect("open_shop", _on_shopping_open);
 
 func change_product_name(new_name: String) -> void:
 	item_name.text = new_name;

@@ -1,9 +1,9 @@
-extends CanvasLayer;
+extends HBoxContainer;
 
-@onready var counter_taps := $"VBoxContainer/Taps Container/HSplitContainer/Taps";
-@onready var counter_blocks := $"VBoxContainer/Blocks Container/HSplitContainer2/Blocks";
-@onready var counter_points := $"VBoxContainer/Points Container/HSplitContainer/Points";
-@onready var next_level_points := $"VBoxContainer/Points Container/HSplitContainer/Next Level Points";
+@onready var counter_taps := $"Taps Container/HSplitContainer/Taps";
+@onready var counter_blocks := $"Blocks Container/HSplitContainer2/Blocks";
+@onready var counter_points := $"Points Container/HSplitContainer/Points";
+@onready var next_level_points := $"Points Container/HSplitContainer/Next Level Points";
 
 func _ready() -> void:        
 	next_level_points.text = str(Globals.next_checkpoint_points);

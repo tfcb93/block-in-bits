@@ -32,11 +32,14 @@ func _on_screen_tap() -> void:
 
 func set_actual_pickaxe(type: String) -> void:
 	actual_pickaxe_name = type;
-	Globals.actual_picaxe_type = actual_pickaxe_name
+	Globals.actual_picaxe_type = actual_pickaxe_name;
+	Globals.actual_picaxe_qtd = pickaxe_quantities[type];
+	Globals.actual_picaxe_life = pickaxe_actual_lives[type];
 	Events.emit_signal("pickaxe_type_changed", actual_pickaxe_name);
 
 func set_actual_pickaxe_damage(value: int) -> void:
 	pickaxe_actual_lives[actual_pickaxe_name] -= value;
+	Globals.actual_picaxe_life = pickaxe_actual_lives[actual_pickaxe_name];
 
 func _on_change_pickaxe_type(dir: String) -> void:
 	var actual_types:Array = pickaxe_quantities.keys();
@@ -62,6 +65,7 @@ func change_pickaxe_qtd(value: int, type: String) -> void:
 	else:
 		pickaxe_actual_lives[type] = BAP.pickaxe_information[type].life_at_start;
 		pickaxe_quantities[type] = value;
+	Globals.actual_picaxe_qtd = pickaxe_quantities[type];
 
 func remove_pickaxe_qtd(type: String) -> void:
 	pickaxe_quantities.erase(type);

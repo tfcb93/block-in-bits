@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx68lqtpduw7b"]
+
+[ext_resource type="Script" path="res://Scripts/picaxe_popup.gd" id="1_dyclj"]
+[ext_resource type="Texture2D" uid="uid://cpc3ojrt0sux4" path="res://icon.svg" id="3_0fis2"]
+[ext_resource type="Texture2D" uid="uid://tk4stja7wsmm" path="res://Resources/Images/shopping-icon.png" id="4_7r8gw"]
+
+[node name="Pickaxe Popup" type="VBoxContainer"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -155.5
+offset_right = -16.0
+offset_bottom = 155.5
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_dyclj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Total pickaxes" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Life" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="Actual Pickaxe Image" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("3_0fis2")
+expand_mode = 4
+
+[node name="Actual Pickaxe Label" type="Label" parent="."]
+layout_mode = 2
+text = "Pickaxe"
+horizontal_alignment = 1
+
+[node name="Change Pickaxe" type="Button" parent="."]
+layout_mode = 2
+text = "Change Pickaxe
+"
+
+[node name="Shop" type="Button" parent="."]
+layout_mode = 2
+text = "Shop"
+icon = ExtResource("4_7r8gw")
+
+[connection signal="button_down" from="Change Pickaxe" to="." method="_on_change_pickaxe_button_down"]
+[connection signal="button_down" from="Shop" to="." method="_on_shop_button_down"]

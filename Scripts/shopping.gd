@@ -16,7 +16,7 @@ func _ready() -> void:
 		new_item.change_product_price(pickaxe_data.price);
 		new_item.change_product_picture("res://Resources/Images/Pickaxes/%s.png" % pickaxe_data.image_name);
 		
-	Events.connect("open_shopping", _on_shopping_open);
+	Events.connect("open_shop", _on_shopping_open);
 	
 func _on_shopping_open() -> void:
 	visible = true;
@@ -26,4 +26,4 @@ func _on_shopping_open() -> void:
 func _on_close_button_down() -> void:
 	Globals.game_stop = false;
 	visible = false;
-	Events.emit_signal("close_shopping");
+	Events.emit_signal("close_shop");

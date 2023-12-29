@@ -1,21 +1,19 @@
 extends Node2D
 
-@onready var counters_node := $Counters;
+@onready var ui := $UI;
 @onready var pickaxe_bag := $"Pickaxe Bag";
 @onready var block_pile := $"Block Pile";
-@onready var selector := $Selector;
 @onready var game_over_screen := $"Game Over";
-@onready var shop_button := $Button;
 
 var counter_value := 0;
 
 func _ready() -> void:
-	counters_node.visible = false;
+	ui.visible = false;
 	game_over_screen.visible = false;
-	selector.visible = false;
-	shop_button.visible = false;
 	var screensize := get_viewport_rect().size;
 	
+	Events.connect("open_shop", _on_open_shop);
+	Events.connect("close_shop", _on_close_shop);
 	Events.connect("discount_bits", _on_bought_item);
 	Events.connect("add_bits", _on_add_bits);
 
@@ -25,9 +23,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if not Globals.game_start:
 				Globals.game_start = true;
 				$"Start Screen".visible = false;
-				counters_node.visible = true;
-				selector.visible = true;
-				shop_button.visible = true;
+				ui.visible = true;
 			else:
 				Globals.total_taps += 1;
 				block_tap_action();
@@ -43,9 +39,6 @@ func block_tap_action() -> void:
 	Globals.actual_block_points += data[2];
 
 
-func _on_button_button_down() -> void:
-	Events.emit_signal("open_shopping");
-	
 func _on_bought_item(value: int) -> void:
 	Globals.total_player_points -= value;
 	Events.emit_signal("bits_discounted");
@@ -53,3 +46,8 @@ func _on_bought_item(value: int) -> void:
 	
 func _on_add_bits() -> void:
 	Globals.total_player_points += Globals.actual_block_points;
+	
+func _on_open_shop() -> void:
+	ui.visible = false;
+func _on_close_shop() -> void:
+	ui.visible = true;

@@ -10,9 +10,9 @@ signal change_pickaxe_type(dir: String);
 
 signal pickaxe_type_changed(type: String);
 
-signal open_shopping;
+signal open_shop;
 
-signal close_shopping;
+signal close_shop;
 
 signal add_bits;
 
