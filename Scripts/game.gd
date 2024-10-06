@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var player := $Player;
 @onready var block_pile := $"Block Pile";
 
 var counter_value := 0;
@@ -19,7 +20,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("action")):
 		match Globals.game_state:
 			Globals.GAME_STATES.IN_GAME:
-				Events.emit_signal("hit_block");
+				Events.emit_signal("hit_block", player.player_tool.resistance);
 	# if not Globals.game_stop:
 	# 	if event is InputEventScreenTouch and event.is_pressed():
 	# 		if not Globals.game_start:

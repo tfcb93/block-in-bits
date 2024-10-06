@@ -27,4 +27,4 @@ signal bought_pickaxe(type_id: String);
 
 
 signal generate_pile();
-signal hit_block();
+signal hit_block(tool_resistance: int);

@@ -73,14 +73,14 @@ func _on_generate_pile() -> void:
 		for block in range(1, 3):
 			var rnd := randi_range(0, len(block_types) - 1);
 			var new_block_resource:Block = Globals.blocks[block_types[rnd]];
-			blocks.push_back([new_block_resource.life, new_block_resource.resistence, new_block_resource.color]); # Array<[life, resistence, color]>
+			blocks.push_back([new_block_resource.life, new_block_resource.resistance, new_block_resource.color]); # Array<[life, resistance, color]>
 	update_block_info();
 
 func _on_insert_element_on_pile() -> void:
 	var block_types:Array = Globals.blocks.keys();
 	var rnd := randi_range(0, len(block_types) - 1);
 	var new_block_resource:Block = Globals.blocks[block_types[rnd]];
-	blocks.push_back([new_block_resource.life, new_block_resource.resistence, new_block_resource.color]); # Array<[life, resistence, color]>
+	blocks.push_back([new_block_resource.life, new_block_resource.resistance, new_block_resource.color]); # Array<[life, resistance, color]>
 	update_block_info();
 
 
@@ -90,8 +90,8 @@ func update_block_info() -> void:
 	under_block.modulate = blocks[1][2];
 
 
-func _on_hit_block() -> void:
-	blocks[0][0] -= 1;
+func _on_hit_block(tool_resistance: int) -> void:
+	blocks[0][0] -= ceili(tool_resistance / float(blocks[0][1])); # I need to convert the divisor, otherwise or I change every block resistance to be float or I lost the float part and the ceil will lose it's value here
 	if (blocks[0][0] <= 0):
 		blocks.pop_front();
 	if (not sequence):

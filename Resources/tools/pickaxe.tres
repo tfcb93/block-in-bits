@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=2 format=3 uid="uid://dgrexfc2jkcf0"]
+
+[ext_resource type="Script" path="res://Scripts/tool.gd" id="1_46qu7"]
+
+[resource]
+script = ExtResource("1_46qu7")
+name = "Pickaxe"
+resistence = 20

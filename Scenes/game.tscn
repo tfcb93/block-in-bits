@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://xvjacwyfgsyp"]
+[gd_scene load_steps=6 format=3 uid="uid://xvjacwyfgsyp"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_25r8w"]
+[ext_resource type="PackedScene" uid="uid://e5naf2jx66xg" path="res://Scenes/player.tscn" id="2_xu5at"]
 [ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="3_hjkes"]
+[ext_resource type="Resource" uid="uid://dgrexfc2jkcf0" path="res://Resources/tools/pickaxe.tres" id="3_qw2a3"]
 [ext_resource type="PackedScene" uid="uid://b3gvjwdsaaa65" path="res://Scenes/background.tscn" id="6_2hb4t"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_25r8w")
+
+[node name="Player" parent="." instance=ExtResource("2_xu5at")]
+player_tool = ExtResource("3_qw2a3")
 
 [node name="ColorRect" parent="." instance=ExtResource("6_2hb4t")]
 use_parent_material = true
