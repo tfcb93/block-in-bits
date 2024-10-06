@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_vo5hr")
-life = 30
+life = 35
 resistence = 70
 color = Color(0.489622, 0.489622, 0.489622, 1)

@@ -71,7 +71,7 @@ func _on_generate_pile() -> void:
 		var block_types:Array = Globals.blocks.keys();
 		# random order
 		for block in range(1, 3):
-			var rnd := randi_range(0, len(block_types));
+			var rnd := randi_range(0, len(block_types) - 1);
 			var new_block_resource:Block = Globals.blocks[block_types[rnd]];
 			blocks.push_back([new_block_resource.life, new_block_resource.resistence, new_block_resource.color]); # Array<[life, resistence, color]>
 	update_block_info();
