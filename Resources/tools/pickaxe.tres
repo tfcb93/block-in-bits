@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_46qu7")
 name = "Pickaxe"
-resistence = 20
+resistance = 20
