@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Block" load_steps=2 format=3 uid="uid://o7w1mt3l8iwl"]
+
+[ext_resource type="Script" path="res://Scripts/block.gd" id="1_vo5hr"]
+
+[resource]
+script = ExtResource("1_vo5hr")
+life = 30
+resistence = 70
+color = Color(0.489622, 0.489622, 0.489622, 1)

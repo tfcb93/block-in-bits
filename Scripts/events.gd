@@ -21,3 +21,10 @@ signal discount_bits(value: int);
 signal bits_discounted;
 
 signal bought_pickaxe(type_id: String);
+
+
+# =====
+
+
+signal generate_pile();
+signal hit_block();

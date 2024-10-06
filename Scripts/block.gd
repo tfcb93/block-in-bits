@@ -1,10 +1,6 @@
-extends Area2D;
+class_name Block;
+extends Resource;
 
-var block_type: String = "earth";
-var life := 100;
-
-@onready var block_sprite := $Sprite2D;
-
-func _ready() -> void:
-	block_sprite.texture = CompressedTexture2D.new();
-	block_sprite.texture = load("res://Resources/Images/Blocks/" + block_type + ".png");
+@export_range(0, 100) var life := 10;
+@export_range(1, 100) var resistence := 50;
+@export var color: Color = Color.WHITE;
