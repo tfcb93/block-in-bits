@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://dveothv1myxly"]
+
+[ext_resource type="Script" path="res://Scripts/pause_screen.gd" id="1_60t84"]
+[ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="2_ij2l0"]
+
+[node name="pause screen" type="Node2D"]
+process_mode = 2
+script = ExtResource("1_60t84")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="interface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -68.0
+offset_right = 68.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="interface/Panel"]
+layout_mode = 0
+offset_right = 136.0
+offset_bottom = 136.0
+
+[node name="Title" type="Label" parent="interface/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Paused"
+label_settings = ExtResource("2_ij2l0")
+horizontal_alignment = 1
+
+[node name="btn_back" type="Button" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../btn_exit")
+focus_neighbor_bottom = NodePath("../btn_settings")
+text = "Back"
+
+[node name="btn_settings" type="Button" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../btn_back")
+focus_neighbor_bottom = NodePath("../btn_info")
+text = "Settings"
+
+[node name="btn_info" type="Button" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../btn_settings")
+focus_neighbor_bottom = NodePath("../btn_exit")
+text = "Information"
+
+[node name="btn_exit" type="Button" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../btn_info")
+focus_neighbor_bottom = NodePath("../btn_back")
+text = "Exit Level"
+
+[connection signal="pressed" from="interface/Panel/VBoxContainer/btn_back" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="interface/Panel/VBoxContainer/btn_settings" to="." method="_on_btn_settings_pressed"]
+[connection signal="pressed" from="interface/Panel/VBoxContainer/btn_info" to="." method="_on_btn_info_pressed"]
+[connection signal="pressed" from="interface/Panel/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

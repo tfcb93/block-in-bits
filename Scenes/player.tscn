@@ -9,6 +9,7 @@
 script = ExtResource("1_pl5h6")
 
 [node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="interface"]
 anchors_preset = 1

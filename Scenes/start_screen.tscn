@@ -1,37 +1,41 @@
-[gd_scene load_steps=3 format=3 uid="uid://bvdotdi1t80tg"]
+[gd_scene load_steps=4 format=3 uid="uid://ofnaphcqerff"]
 
-[ext_resource type="LabelSettings" uid="uid://dn7yxqd7r7c4l" path="res://Resources/Settings/start_label_settings.tres" id="1_3y1no"]
+[ext_resource type="Script" path="res://Scripts/start_screen.gd" id="1_l6jgp"]
+[ext_resource type="LabelSettings" uid="uid://beq4d7iguabky" path="res://Resources/title_label.tres" id="2_6o5yt"]
+[ext_resource type="LabelSettings" uid="uid://cnpd02d1dmt6i" path="res://Resources/normal_text_label.tres" id="3_he0mn"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_oodrd"]
-font_size = 64
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
+[node name="start screen" type="Node2D"]
+script = ExtResource("1_l6jgp")
 
-[node name="Start Screen" type="CanvasLayer"]
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
-[node name="Title" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -240.5
-offset_top = 222.0
-offset_right = 240.5
-offset_bottom = 313.0
-grow_horizontal = 2
-text = "BLOCKS IN BITS"
-label_settings = SubResource("LabelSettings_oodrd")
-
-[node name="touch to start" type="Label" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="background" type="ColorRect" parent="interface"]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -54.5
-offset_top = -355.0
-offset_right = 54.5
-offset_bottom = -329.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="interface"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 25.0
+offset_bottom = 48.0
+grow_horizontal = 2
+text = "Blocks in Bits"
+label_settings = ExtResource("2_6o5yt")
+horizontal_alignment = 1
+
+[node name="text" type="Label" parent="interface"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Touch to start"
-label_settings = ExtResource("1_3y1no")
+text = "press start"
+label_settings = ExtResource("3_he0mn")
+horizontal_alignment = 1

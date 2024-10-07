@@ -8,6 +8,9 @@ func _ready() -> void:
 	
 	Events.connect("earn_points", _on_earn_points);
 
+	Events.connect("pause_game", _on_pause_game);
+	Events.connect("unpause_game", _on_unpause_game);
+
 	update_interface_values();
 	update_interface_player_points();
 
@@ -23,3 +26,9 @@ func update_interface_player_points():
 func _on_earn_points(earned_points: int) -> void:
 	points += earned_points * player_tool.point_multiplyer;
 	update_interface_player_points();
+
+func _on_pause_game() -> void:
+	%interface.visible = false;
+
+func _on_unpause_game() -> void:
+	%interface.visible = true;

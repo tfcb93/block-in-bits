@@ -5,7 +5,7 @@ extends Node2D;
 @onready var block_sounds := $"Block Sounds";
 @onready var destroy_block_sound := $"Destroy Block Sound";
 
-@onready var life_value := $CanvasLayer/interface/life_value;
+@onready var life_value := $interface/life_value;
 
 var pile_types: Array[String] = [];
 var taps_since_new_block := 0;
@@ -26,6 +26,9 @@ func _ready() -> void:
 
 	Events.connect("generate_pile", _on_generate_pile);
 	Events.connect("hit_block", _on_hit_block);
+
+	Events.connect("pause_game", _on_pause_game);
+	Events.connect("unpause_game", _on_unpause_game);
 	# Events.connect("tap",_on_screen_tap);
 	# life_value.text = str(blocks[0].life);
 
@@ -125,3 +128,9 @@ func calculate_player_points() -> void:
 
 # func set_actual_block(type: String) -> void:
 # 	Globals.actual_block_type = type;
+
+func _on_pause_game() -> void:
+	%interface.visible = false;
+
+func _on_unpause_game() -> void:
+	%interface.visible = true;

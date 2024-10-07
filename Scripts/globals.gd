@@ -20,7 +20,7 @@ var next_checkpoint_points: int = 1000;
 
 # game states
 enum GAME_STATES {START_SCREEN, SETTINGS, IN_GAME, PAUSED, EXIT};
-var game_state := GAME_STATES.IN_GAME;
+var game_state := GAME_STATES.START_SCREEN;
 
 
 # blocks

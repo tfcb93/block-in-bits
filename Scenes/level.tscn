@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="5_tawtn"]
 
 [node name="Level" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_vegkm")
 
 [node name="Player" parent="." instance=ExtResource("2_jowxf")]
