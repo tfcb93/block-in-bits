@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=2 format=3 uid="uid://fg6sqeydbjdl"]
+
+[ext_resource type="Script" path="res://Scripts/tool.gd" id="1_tolj3"]
+
+[resource]
+script = ExtResource("1_tolj3")
+name = "Hammer"
+resistance = 10
+point_multiplyer = 2
