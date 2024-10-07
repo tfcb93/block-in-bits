@@ -26,8 +26,13 @@ signal bought_pickaxe(type_id: String);
 # =====
 
 signal close_start_screen();
+signal open_select_mode();
+signal close_select_mode();
 signal pause_game();
 signal unpause_game();
+
+signal start_game();
+signal stop_game();
 
 signal generate_pile();
 signal hit_block(tool_resistance: int);

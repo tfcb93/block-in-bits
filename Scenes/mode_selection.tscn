@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://gttnpa80nl25"]
+
+[ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="1_yiwk8"]
+[ext_resource type="Script" path="res://Scripts/mode_selection.gd" id="1_yr5b7"]
+
+[node name="Mode Selection" type="Node2D"]
+script = ExtResource("1_yr5b7")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -21.0
+offset_right = 70.5
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="interface/VBoxContainer"]
+layout_mode = 2
+text = "Select Mode"
+label_settings = ExtResource("1_yiwk8")
+horizontal_alignment = 1
+
+[node name="modes" type="HBoxContainer" parent="interface/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_endless" type="Button" parent="interface/VBoxContainer/modes"]
+layout_mode = 2
+text = "Endless"
+
+[node name="options" type="HBoxContainer" parent="interface/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_settings" type="Button" parent="interface/VBoxContainer/options"]
+layout_mode = 2
+text = "Settings"
+
+[connection signal="pressed" from="interface/VBoxContainer/modes/btn_endless" to="." method="_on_btn_endless_pressed"]
+[connection signal="pressed" from="interface/VBoxContainer/options/btn_settings" to="." method="_on_btn_settings_pressed"]

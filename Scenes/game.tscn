@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://drarqqw6keabg"]
+[gd_scene load_steps=5 format=3 uid="uid://drarqqw6keabg"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_25r8w"]
 [ext_resource type="PackedScene" uid="uid://ofnaphcqerff" path="res://Scenes/start_screen.tscn" id="2_3tcmf"]
 [ext_resource type="PackedScene" uid="uid://dveothv1myxly" path="res://Scenes/pause_screen.tscn" id="3_0fafb"]
+[ext_resource type="PackedScene" uid="uid://gttnpa80nl25" path="res://Scenes/mode_selection.tscn" id="3_crkq4"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_25r8w")
 
 [node name="start screen" parent="." instance=ExtResource("2_3tcmf")]
 process_mode = 3
+
+[node name="Mode Selection" parent="." instance=ExtResource("3_crkq4")]
 
 [node name="pause screen" parent="." instance=ExtResource("3_0fafb")]
