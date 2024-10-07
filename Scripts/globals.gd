@@ -19,7 +19,7 @@ var actual_block_points: int = 0;
 var next_checkpoint_points: int = 1000;
 
 # game states
-enum GAME_STATES {START_SCREEN, SETTINGS, IN_GAME, PAUSED, EXIT};
+enum GAME_STATES {START_SCREEN, SELECTION, IN_GAME, PAUSED, EXIT};
 var game_state := GAME_STATES.START_SCREEN;
 
 

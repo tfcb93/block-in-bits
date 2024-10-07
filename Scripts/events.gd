@@ -31,6 +31,11 @@ signal close_select_mode();
 signal pause_game();
 signal unpause_game();
 
+signal open_settings_from_selection();
+signal close_settings_to_selection();
+signal open_settings_from_pause();
+signal close_settings_to_pause();
+
 signal start_game();
 signal stop_game();
 

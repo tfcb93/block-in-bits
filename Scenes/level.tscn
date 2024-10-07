@@ -10,13 +10,13 @@
 process_mode = 1
 script = ExtResource("1_vegkm")
 
-[node name="Player" parent="." instance=ExtResource("2_jowxf")]
-player_tool = ExtResource("3_7xwgd")
-
 [node name="ColorRect" parent="." instance=ExtResource("4_p2ewe")]
 use_parent_material = true
 offset_right = 240.0
 offset_bottom = 160.0
 scale = Vector2(1, 1.00868)
+
+[node name="Player" parent="." instance=ExtResource("2_jowxf")]
+player_tool = ExtResource("3_7xwgd")
 
 [node name="Block Pile" parent="." instance=ExtResource("5_tawtn")]

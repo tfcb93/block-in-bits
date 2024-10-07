@@ -30,6 +30,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func select_game_mode() -> void:
 	Events.emit_signal("close_start_screen");
 	Events.emit_signal("open_select_mode");
+	Globals.game_state = Globals.GAME_STATES.SELECTION;
 
 func pause_game() -> void:
 	get_tree().paused = true;
