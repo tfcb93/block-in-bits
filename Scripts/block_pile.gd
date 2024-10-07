@@ -18,6 +18,7 @@ var total_blocks_generated := 0;
 @export var sequence: BlockSequence = null;
 
 var blocks = [];
+var actual_block_hits := 0;
 
 func _ready() -> void:
 	var screen_size = get_viewport_rect().size;
@@ -92,8 +93,12 @@ func update_block_info() -> void:
 
 func _on_hit_block(tool_resistance: int) -> void:
 	blocks[0][0] -= ceili(tool_resistance / float(blocks[0][1])); # I need to convert the divisor, otherwise or I change every block resistance to be float or I lost the float part and the ceil will lose it's value here
+	actual_block_hits += 1;
 	if (blocks[0][0] <= 0):
 		blocks.pop_front();
+		print(actual_block_hits);
+		calculate_player_points();
+		actual_block_hits = 0;
 	if (not sequence):
 		_on_insert_element_on_pile();
 	elif(sequence and len(blocks) == 1):
@@ -102,6 +107,10 @@ func _on_hit_block(tool_resistance: int) -> void:
 		# next level
 		pass;
 	update_block_info();
+
+func calculate_player_points() -> void:
+	var total_points_earned = 1;
+	Events.emit_signal("earn_points", total_points_earned);
 
 #func load_block_sounds() -> void:
 	#for block_type in Globals.block_types:
