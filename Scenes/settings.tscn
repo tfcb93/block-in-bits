@@ -44,6 +44,7 @@ layout_mode = 2
 text = "Fullscreen"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="interface/VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="interface/VBoxContainer/HBoxContainer"]
@@ -54,10 +55,13 @@ label_settings = ExtResource("3_68evt")
 [node name="btn_resolution" type="OptionButton" parent="interface/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-item_count = 2
-popup/item_0/text = "290 x 160"
-popup/item_1/text = "1920 x 1080"
+selected = 0
+item_count = 3
+popup/item_0/text = "Normal"
+popup/item_1/text = "2x"
 popup/item_1/id = 1
+popup/item_2/text = "4x"
+popup/item_2/id = 2
 
 [node name="btn_exit" type="Button" parent="interface/VBoxContainer"]
 unique_name_in_owner = true
