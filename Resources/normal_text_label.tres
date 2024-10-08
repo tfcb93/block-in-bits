@@ -1,5 +1,8 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://cnpd02d1dmt6i"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cnpd02d1dmt6i"]
+
+[ext_resource type="FontFile" uid="uid://dvmlfm0teegbr" path="res://Resources/Fonts/Tiny5-Regular.ttf" id="1_bo50o"]
 
 [resource]
+font = ExtResource("1_bo50o")
 font_size = 12
 font_color = Color(0, 0, 0, 1)
