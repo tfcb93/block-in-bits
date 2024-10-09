@@ -10,6 +10,7 @@ extends Node2D;
 var blocks = [];
 var block_groups = [0];
 var actual_block_hits := 0;
+var actual_depth := 0;
 
 func _ready() -> void:
 	var screen_size = get_viewport_rect().size;
@@ -52,6 +53,8 @@ func generate_new_block() -> void:
 func update_block_groups() -> void:
 	pass
 
+func update_block_life_text() -> void:
+	life_value.text = str(blocks[0][0]);
 
 func update_block_info() -> void:
 	life_value.text = str(blocks[0][0]);
@@ -66,14 +69,17 @@ func _on_hit_block(tool_resistance: int) -> void:
 		blocks.pop_front();
 		calculate_player_points();
 		actual_block_hits = 0;
-	if (not sequence):
-		_on_insert_element_on_pile();
-	elif(sequence and len(blocks) == 1):
-		under_block.queue_free();
-	elif(sequence and len(blocks) == 0):
-		# next level
-		pass;
-	update_block_info();
+		actual_depth += 1;
+		update_block_info();
+		Events.emit_signal("depth_change", actual_depth);
+		if (not sequence):
+			_on_insert_element_on_pile();
+		elif(sequence and len(blocks) == 1):
+			under_block.queue_free();
+		elif(sequence and len(blocks) == 0):
+			# next level
+			pass;
+	update_block_life_text();
 
 func calculate_player_points() -> void:
 	var total_points_earned = 1;
