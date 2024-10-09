@@ -10,13 +10,15 @@ func _ready() -> void:
 	Events.connect("close_select_mode", _on_close_select_mode);
 	Events.connect("start_game", _on_start_game);
 
+	load_blocks_into_memory();
+
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("action")):
 		match Globals.game_state:
 			Globals.GAME_STATES.START_SCREEN:
 				select_game_mode();
 			Globals.GAME_STATES.IN_GAME:
-				print("ignore value here");
+				pass;
 	elif (event.is_action_pressed("start")):
 		match Globals.game_state:
 			Globals.GAME_STATES.START_SCREEN:
@@ -25,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			Globals.GAME_STATES.IN_GAME:
 				pause_game();
 			Globals.GAME_STATES.PAUSED:
-				print("ignore this paused value");
+				pass;
 
 func select_game_mode() -> void:
 	Events.emit_signal("close_start_screen");
@@ -48,3 +50,9 @@ func _on_close_select_mode() -> void:
 func _on_unpause_game() -> void:
 	get_tree().paused = false;
 	Globals.game_state = Globals.GAME_STATES.IN_GAME;
+
+func load_blocks_into_memory() -> void:
+	var block_files := DirAccess.open("res://Resources/blocks").get_files();
+	for file in block_files:
+		var new_block := load("res://Resources/blocks/" + file);
+		Globals.blocks[file.replace("_block.tres", "")] = new_block;

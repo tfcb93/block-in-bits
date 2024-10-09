@@ -49,7 +49,6 @@ func _on_hit_block(tool_resistance: int) -> void:
 	actual_block_hits += 1;
 	if (blocks[0][0] <= 0):
 		blocks.pop_front();
-		print(actual_block_hits);
 		calculate_player_points();
 		actual_block_hits = 0;
 	if (not sequence):

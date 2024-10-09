@@ -1,13 +1,12 @@
 extends Node2D;
 
-
 func _ready() -> void:
+	Events.connect("open_settings_from_selection", _on_open_settings);
+	Events.connect("open_settings_from_pause", _on_open_settings);
+
 	%interface.visible = false;
 	%btn_fullscreen.button_pressed = Globals.is_game_fullscreen;
 	%btn_resolution.selected = Globals.game_resolution_index;
-
-	Events.connect("open_settings_from_selection", _on_open_settings);
-	Events.connect("open_settings_from_pause", _on_open_settings);
 
 func _on_open_settings() -> void:
 	%interface.visible = true;
@@ -21,10 +20,8 @@ func _on_btn_fullscreen_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED);
 		%btn_resolution.disabled = false;
 
-
 func _on_btn_resolution_item_selected(index: int) -> void:
 	print(index);
-
 
 func _on_btn_exit_pressed() -> void:
 	%interface.visible = false;

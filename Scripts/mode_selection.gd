@@ -1,6 +1,5 @@
 extends Node2D;
 
-
 func _ready() -> void:
 	Events.connect("open_select_mode", _on_open_select_mode);
 	Events.connect("close_settings_to_selection", _on_close_settings);
@@ -20,7 +19,6 @@ func _on_close_settings() -> void:
 func _on_btn_endless_pressed() -> void:
 	_on_close_select_mode();
 	Events.emit_signal("start_game");
-
 
 func _on_btn_settings_pressed() -> void:
 	%interface.visible = false;
