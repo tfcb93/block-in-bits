@@ -25,7 +25,7 @@ func update_interface_player_points():
 	%intf_player_points.text = str(points);
 
 func _on_earn_points(earned_points: int) -> void:
-	points += earned_points * player_tool.point_multiplyer;
+	points += earned_points * player_tool.point_multiplier;
 	update_interface_player_points();
 
 func _on_depth_change(new_depth: int) -> void:
