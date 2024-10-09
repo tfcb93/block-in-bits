@@ -1,6 +1,9 @@
 class_name Block;
 extends Resource;
 
-@export_range(0, 100) var life := 10;
-@export_range(1, 100) var resistance := 50;
+const life = 100;
+
+@export var toughness := 50;
+@export var min_depth_appearance := 0;
+@export var toughness_increase_factor := 1.1;
 @export var color: Color = Color.WHITE;

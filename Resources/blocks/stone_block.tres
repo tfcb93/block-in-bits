@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Block" load_steps=2 format=3 uid="uid://cit5o5q8ctrvt"]
-
-[ext_resource type="Script" path="res://Scripts/block.gd" id="1_p76sm"]
-
-[resource]
-script = ExtResource("1_p76sm")
-life = 30
-resistence = 50
-color = Color(0.212305, 0.212305, 0.212305, 1)

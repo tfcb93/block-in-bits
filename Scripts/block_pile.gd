@@ -8,6 +8,7 @@ extends Node2D;
 @export var sequence: BlockSequence = null;
 
 var blocks = [];
+var block_groups = [0];
 var actual_block_hits := 0;
 
 func _ready() -> void:
@@ -22,20 +23,34 @@ func _ready() -> void:
 
 func _on_generate_pile() -> void:
 	if (not sequence):
-		var block_types:Array = Globals.blocks.keys();
+		# var block_types:Array = Globals.blocks.keys();
 		# random order
-		for block in range(1, 3):
-			var rnd := randi_range(0, len(block_types) - 1);
-			var new_block_resource:Block = Globals.blocks[block_types[rnd]];
-			blocks.push_back([new_block_resource.life, new_block_resource.resistance, new_block_resource.color]); # Array<[life, resistance, color]>
+		for block in range(1, 50):
+			generate_new_block();
+			# var rnd := randi_range(0, len(block_types) - 1);
+			# var new_block_resource:Block = Globals.blocks[block_types[rnd]];
+			# blocks.push_back([new_block_resource.life, new_block_resource.toughness, new_block_resource.color]); # Array<[life, resistance, color]>
 	update_block_info();
 
 func _on_insert_element_on_pile() -> void:
-	var block_types:Array = Globals.blocks.keys();
-	var rnd := randi_range(0, len(block_types) - 1);
-	var new_block_resource:Block = Globals.blocks[block_types[rnd]];
-	blocks.push_back([new_block_resource.life, new_block_resource.resistance, new_block_resource.color]); # Array<[life, resistance, color]>
+	# var block_types:Array = Globals.blocks.keys();
+	# var rnd := randi_range(0, len(block_types) - 1);
+	# var new_block_resource:Block = Globals.blocks[block_types[rnd]];
+	# blocks.push_back([new_block_resource.life, new_block_resource.toughness, new_block_resource.color]); # Array<[life, resistance, color]>
+	generate_new_block();
 	update_block_info();
+
+func generate_new_block() -> void:
+	# first, grab a random block group that is valid
+	# access the group
+	# pick up a random block from that group if value is bigger than 1
+	var rnd_group := randi_range(0, len(block_groups) - 1) if len(block_groups) > 1 else 0;
+	var rnd_block_index := randi_range(0, len(Globals.blocks[rnd_group]) - 1) if len(Globals.blocks[rnd_group]) else 0;
+	var block_from_resource:Block = Globals.blocks[rnd_group][rnd_block_index];
+	blocks.push_back([block_from_resource.life, block_from_resource.toughness, block_from_resource.color]);
+
+func update_block_groups() -> void:
+	pass
 
 
 func update_block_info() -> void:
@@ -45,7 +60,7 @@ func update_block_info() -> void:
 
 
 func _on_hit_block(tool_resistance: int) -> void:
-	blocks[0][0] -= ceili(tool_resistance / float(blocks[0][1])); # I need to convert the divisor, otherwise or I change every block resistance to be float or I lost the float part and the ceil will lose it's value here
+	blocks[0][0] -= roundi((tool_resistance / float(blocks[0][1])) * 100);
 	actual_block_hits += 1;
 	if (blocks[0][0] <= 0):
 		blocks.pop_front();

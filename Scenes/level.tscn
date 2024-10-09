@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_vegkm"]
 [ext_resource type="PackedScene" uid="uid://e5naf2jx66xg" path="res://Scenes/player.tscn" id="2_jowxf"]
-[ext_resource type="Resource" uid="uid://fg6sqeydbjdl" path="res://Resources/tools/hammer.tres" id="3_7xwgd"]
+[ext_resource type="Resource" uid="uid://dgrexfc2jkcf0" path="res://Resources/tools/pickaxe.tres" id="3_1edgm"]
 [ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="5_tawtn"]
 
 [node name="Level" type="Node2D"]
@@ -20,6 +20,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Player" parent="." instance=ExtResource("2_jowxf")]
-player_tool = ExtResource("3_7xwgd")
+player_tool = ExtResource("3_1edgm")
 
 [node name="Block Pile" parent="." instance=ExtResource("5_tawtn")]

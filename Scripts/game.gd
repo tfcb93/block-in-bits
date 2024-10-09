@@ -55,4 +55,6 @@ func load_blocks_into_memory() -> void:
 	var block_files := DirAccess.open("res://Resources/blocks").get_files();
 	for file in block_files:
 		var new_block := load("res://Resources/blocks/" + file);
-		Globals.blocks[file.replace("_block.tres", "")] = new_block;
+		if (not Globals.blocks.get(new_block.min_depth_appearance)):
+			Globals.blocks[new_block.min_depth_appearance] = [];
+		Globals.blocks[new_block.min_depth_appearance].push_back(new_block);

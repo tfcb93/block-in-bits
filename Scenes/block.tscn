@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7pinsaqsjx6m"]
 
 [ext_resource type="Script" path="res://Scripts/block.gd" id="1_va8nd"]
-[ext_resource type="Texture2D" uid="uid://d0qvcc1rw1t6x" path="res://Resources/Images/base_block.png" id="2_flvk6"]
+[ext_resource type="Texture2D" uid="uid://d0qvcc1rw1t6x" path="res://Resources/Images/base_block_old.png" id="2_flvk6"]
 
 [node name="Block" type="Sprite2D"]
 texture_filter = 1

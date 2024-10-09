@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/block_pile.gd" id="1_1n87m"]
 [ext_resource type="LabelSettings" uid="uid://chxtdu6sd2oes" path="res://Resources/big_number_label_settings.tres" id="5_6vmvp"]
-[ext_resource type="Texture2D" uid="uid://d0qvcc1rw1t6x" path="res://Resources/Images/base_block.png" id="5_lpaxg"]
+[ext_resource type="Texture2D" uid="uid://cthoes13prb1e" path="res://Resources/Images/base_block.png" id="5_lpaxg"]
 
 [node name="Block Pile" type="Node2D"]
 script = ExtResource("1_1n87m")
@@ -29,11 +29,11 @@ label_settings = ExtResource("5_6vmvp")
 horizontal_alignment = 1
 
 [node name="under_block" type="Sprite2D" parent="."]
-position = Vector2(160, 170)
-scale = Vector2(0.0625, 0.0625)
+position = Vector2(160, 174)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_lpaxg")
 
 [node name="top_block" type="Sprite2D" parent="."]
-position = Vector2(160, 145)
-scale = Vector2(0.0625, 0.0625)
+position = Vector2(160, 158)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_lpaxg")
