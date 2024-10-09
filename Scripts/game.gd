@@ -9,6 +9,7 @@ func _ready() -> void:
 	Events.connect("unpause_game", _on_unpause_game);
 	Events.connect("close_select_mode", _on_close_select_mode);
 	Events.connect("start_game", _on_start_game);
+	Events.connect("exit_level", _on_exit_level);
 
 	load_blocks_into_memory();
 
@@ -50,6 +51,12 @@ func _on_close_select_mode() -> void:
 func _on_unpause_game() -> void:
 	get_tree().paused = false;
 	Globals.game_state = Globals.GAME_STATES.IN_GAME;
+
+func _on_exit_level() -> void:
+	get_tree().paused = false;
+	Globals.game_state = Globals.GAME_STATES.SELECTION;
+	generated_level.queue_free();
+	Events.emit_signal("open_select_mode");
 
 func load_blocks_into_memory() -> void:
 	var block_files := DirAccess.open("res://Resources/blocks").get_files();

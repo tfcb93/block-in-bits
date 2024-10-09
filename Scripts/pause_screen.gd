@@ -29,4 +29,5 @@ func _on_btn_info_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_btn_exit_pressed() -> void:
-	pass # Replace with function body.
+	%interface.visible = false;
+	Events.emit_signal("exit_level");

@@ -5,6 +5,7 @@ signal open_select_mode();
 signal close_select_mode();
 signal pause_game();
 signal unpause_game();
+signal exit_level();
 
 signal open_settings_from_selection();
 signal close_settings_to_selection();
