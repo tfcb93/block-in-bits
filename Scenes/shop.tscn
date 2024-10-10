@@ -64,7 +64,7 @@ layout_mode = 2
 text = "100 bits"
 label_settings = ExtResource("4_gla7c")
 
-[node name="intf_upgrade_description2" type="Label" parent="interface/VBoxContainer/selling/upgrades/list"]
+[node name="intf_upgrade_description" type="Label" parent="interface/VBoxContainer/selling/upgrades/list"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "- this

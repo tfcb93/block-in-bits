@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_xm8cm")
 name = "Drill"
-link_name = 1
+link_name = 2
 resistance = 100
 point_multiplier = 0

@@ -17,6 +17,7 @@ func _ready() -> void:
 
 	Events.connect("open_shop", _on_open_shop);
 	Events.connect("discount_points", _on_discount_points);
+	Events.connect("upgrade_tools", _on_upgrade_tools);
 
 	load_player_tools();
 	assert(len(player_tools) > 0, "You need to insert tools for the player!");
@@ -28,6 +29,7 @@ func load_player_tools() -> void:
 	var tools_files := DirAccess.open("res://Resources/tools").get_files();
 	for file in tools_files:
 		player_tools.push_back(load("res://Resources/tools/" + file));
+	player_tools.sort_custom(func(a: Tool, b: Tool): return a.link_name < b.link_name);
 
 func get_actual_player_tool() -> Tool:
 	return player_tools[selected_tool_index];
@@ -75,3 +77,9 @@ func _on_open_shop() -> void:
 func _on_discount_points(discounted_points: int) -> void:
 	points -= discounted_points;
 	Events.emit_signal("inform_shop_player_points", points);
+
+func _on_upgrade_tools(upgrade: Upgrade) -> void:
+	for t in player_tools:
+		t.resistance += upgrade.effects[t.link_name][0];
+		t.point_multiplier += upgrade.effects[t.link_name][1];
+	_on_discount_points(upgrade.price);

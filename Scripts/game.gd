@@ -11,7 +11,7 @@ func _ready() -> void:
 	Events.connect("start_game", _on_start_game);
 	Events.connect("exit_level", _on_exit_level);
 
-	load_blocks_into_memory();
+	load_into_memory();
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("action")):
@@ -71,6 +71,10 @@ func _on_exit_level() -> void:
 	generated_level.queue_free();
 	Events.emit_signal("open_select_mode");
 
+func load_into_memory() -> void:
+	load_blocks_into_memory();
+	load_upgrades_into_memory();
+
 func load_blocks_into_memory() -> void:
 	var block_files := DirAccess.open("res://Resources/blocks").get_files();
 	for file in block_files:
@@ -78,3 +82,11 @@ func load_blocks_into_memory() -> void:
 		if (not Globals.blocks.get(new_block.min_depth_appearance)):
 			Globals.blocks[new_block.min_depth_appearance] = [];
 		Globals.blocks[new_block.min_depth_appearance].push_back(new_block);
+
+func load_upgrades_into_memory() -> void:
+	var upgrade_files := DirAccess.open("res://Resources/upgrades").get_files();
+	for file in upgrade_files:
+		var upgrade := load("res://Resources/upgrades/" + file);
+		Globals.upgrades.push_back(upgrade);
+		#sort by indes
+		Globals.upgrades.sort_custom(func(a: Upgrade, b: Upgrade): return a.id < b.id);
