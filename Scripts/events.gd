@@ -20,3 +20,8 @@ signal hit_block(tool_resistance: int);
 signal earn_points(earned_points: int);
 signal depth_change(new_depth: int);
 signal change_tool(index_direction: int);
+
+signal open_shop();
+signal close_shop();
+signal inform_shop_player_points(player_points: int);
+signal discount_points(discounted_points: int);

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://xvjacwyfgsyp"]
+[gd_scene load_steps=5 format=3 uid="uid://xvjacwyfgsyp"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_vegkm"]
 [ext_resource type="PackedScene" uid="uid://e5naf2jx66xg" path="res://Scenes/player.tscn" id="2_jowxf"]
+[ext_resource type="PackedScene" uid="uid://bn2ew8s72tfs0" path="res://Scenes/shop.tscn" id="4_kfj0a"]
 [ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="5_tawtn"]
 
 [node name="Level" type="Node2D"]
@@ -21,3 +22,5 @@ grow_vertical = 2
 [node name="Player" parent="." instance=ExtResource("2_jowxf")]
 
 [node name="Block Pile" parent="." instance=ExtResource("5_tawtn")]
+
+[node name="Shop" parent="." instance=ExtResource("4_kfj0a")]

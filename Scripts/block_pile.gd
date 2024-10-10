@@ -20,9 +20,6 @@ func _ready() -> void:
 	Events.connect("generate_pile", _on_generate_pile);
 	Events.connect("hit_block", _on_hit_block);
 
-	Events.connect("pause_game", _on_pause_game);
-	Events.connect("unpause_game", _on_unpause_game);
-
 func _on_generate_pile() -> void:
 	if (not sequence):
 		# random order
@@ -87,8 +84,8 @@ func calculate_player_points() -> void:
 	var total_points_earned = 1;
 	Events.emit_signal("earn_points", total_points_earned);
 
-func _on_pause_game() -> void:
+func hide_interface() -> void:
 	%interface.visible = false;
 
-func _on_unpause_game() -> void:
+func show_interface() -> void:
 	%interface.visible = true;

@@ -18,8 +18,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		match Globals.game_state:
 			Globals.GAME_STATES.START_SCREEN:
 				select_game_mode();
+	elif (event.is_action_pressed("secondary")):
+		match Globals.game_state:
 			Globals.GAME_STATES.IN_GAME:
-				pass;
+				Events.emit_signal("open_shop");
+			Globals.GAME_STATES.IN_SHOP:
+				Events.emit_signal("close_shop");
 	elif (event.is_action_pressed("start")):
 		match Globals.game_state:
 			Globals.GAME_STATES.START_SCREEN:
