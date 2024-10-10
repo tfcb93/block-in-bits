@@ -29,6 +29,15 @@ func _unhandled_input(event: InputEvent) -> void:
 				pause_game();
 			Globals.GAME_STATES.PAUSED:
 				pass;
+	elif (event.is_action_pressed("left")):
+		match Globals.game_state:
+			Globals.GAME_STATES.IN_GAME:
+				Events.emit_signal("change_tool", 1);
+	elif (event.is_action_pressed("right")):
+		match Globals.game_state:
+			Globals.GAME_STATES.IN_GAME:
+				Events.emit_signal("change_tool", -1);
+
 
 func select_game_mode() -> void:
 	Events.emit_signal("close_start_screen");

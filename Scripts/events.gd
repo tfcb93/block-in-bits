@@ -19,3 +19,4 @@ signal generate_pile();
 signal hit_block(tool_resistance: int);
 signal earn_points(earned_points: int);
 signal depth_change(new_depth: int);
+signal change_tool(index_direction: int);

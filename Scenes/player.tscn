@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://e5naf2jx66xg"]
+[gd_scene load_steps=7 format=3 uid="uid://e5naf2jx66xg"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_pl5h6"]
 [ext_resource type="LabelSettings" uid="uid://d1w54wy8w8lj3" path="res://Resources/player_info_label.tres" id="2_gwkn7"]
+[ext_resource type="LabelSettings" uid="uid://cjjnsblduleoc" path="res://Resources/small_label_text.tres" id="2_oxxax"]
 [ext_resource type="Texture2D" uid="uid://dn4inyxto5cb1" path="res://Resources/Images/resistance.png" id="2_svvc8"]
 [ext_resource type="Texture2D" uid="uid://tawcavopjwj0" path="res://Resources/Images/points.png" id="4_uwk3q"]
 [ext_resource type="Texture2D" uid="uid://cp15xdm78bp1p" path="res://Resources/Images/down.png" id="4_wxapv"]
@@ -24,6 +25,13 @@ grow_horizontal = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="interface/HBoxContainer"]
 layout_mode = 2
+
+[node name="intf_tool_name" type="Label" parent="interface/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tool name"
+label_settings = ExtResource("2_oxxax")
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="interface/HBoxContainer/VBoxContainer"]
 layout_mode = 2
