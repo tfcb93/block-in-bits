@@ -54,12 +54,12 @@ func _on_btn_upgrade_pressed() -> void:
 
 
 func _on_btn_time_10_pressed() -> void:
-	print("Add 10 seconds to the player!");
+	Events.emit_signal("add_time", 10);
 	Events.emit_signal("discount_points", prices["time_10"]);
 
 
 func _on_btn_time_20_pressed() -> void:
-	print("Add 20 seconds to the player!");
+	Events.emit_signal("add_time", 20);
 	Events.emit_signal("discount_points", prices["time_20"]);
 
 

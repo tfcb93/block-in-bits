@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://xvjacwyfgsyp"]
+[gd_scene load_steps=6 format=3 uid="uid://xvjacwyfgsyp"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_vegkm"]
 [ext_resource type="PackedScene" uid="uid://e5naf2jx66xg" path="res://Scenes/player.tscn" id="2_jowxf"]
+[ext_resource type="LabelSettings" uid="uid://bok32iv7qpijf" path="res://Resources/timer_number_label_settings.tres" id="2_k4bnx"]
 [ext_resource type="PackedScene" uid="uid://bn2ew8s72tfs0" path="res://Scenes/shop.tscn" id="4_kfj0a"]
 [ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="5_tawtn"]
 
@@ -19,8 +20,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="timer" type="Label" parent="interface"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 35.0
+grow_horizontal = 2
+text = "00"
+label_settings = ExtResource("2_k4bnx")
+horizontal_alignment = 1
+
 [node name="Player" parent="." instance=ExtResource("2_jowxf")]
 
 [node name="Block Pile" parent="." instance=ExtResource("5_tawtn")]
 
 [node name="Shop" parent="." instance=ExtResource("4_kfj0a")]
+
+[node name="countdown" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="timeout" from="countdown" to="." method="_on_countdown_timeout"]

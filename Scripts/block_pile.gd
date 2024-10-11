@@ -71,6 +71,7 @@ func _on_hit_block(tool_resistance: int) -> void:
 		update_blocks();
 		update_block_info();
 		Events.emit_signal("depth_change", actual_depth);
+		Events.emit_signal("add_time", 1);
 		if (not sequence):
 			_on_insert_element_on_pile();
 		elif(sequence and len(blocks) == 1):
