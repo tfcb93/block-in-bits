@@ -7,4 +7,5 @@ script = ExtResource("1_io7r1")
 toughness = 10
 min_depth_appearance = 0
 toughness_increase_factor = 1.5
+points = 1
 color = Color(1.65088e-05, 0.887662, 2.31028e-06, 1)

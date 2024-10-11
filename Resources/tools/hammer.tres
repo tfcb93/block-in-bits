@@ -6,5 +6,5 @@
 script = ExtResource("1_tolj3")
 name = "Hammer"
 link_name = 1
-resistance = 20
+resistance = 10
 point_multiplier = 2

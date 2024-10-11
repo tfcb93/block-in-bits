@@ -7,4 +7,5 @@ script = ExtResource("1_ld7lu")
 toughness = 30
 min_depth_appearance = 0
 toughness_increase_factor = 1.3
+points = 3
 color = Color(0.937419, 0.461545, 3.85046e-07, 1)

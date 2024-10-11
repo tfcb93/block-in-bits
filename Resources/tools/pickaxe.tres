@@ -6,5 +6,5 @@
 script = ExtResource("1_46qu7")
 name = "Pickaxe"
 link_name = 0
-resistance = 10
-point_multiplier = 0
+resistance = 2
+point_multiplier = 4

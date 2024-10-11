@@ -7,4 +7,5 @@ script = ExtResource("1_mysxc")
 toughness = 60
 min_depth_appearance = 300
 toughness_increase_factor = 1.2
+points = 6
 color = Color(0, 0, 1, 1)

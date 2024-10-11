@@ -40,7 +40,7 @@ func generate_new_block() -> void:
 	var rnd_block_index := randi_range(0, len(Globals.blocks[rnd_group_key]) - 1) if len(Globals.blocks[rnd_group_key]) else 0;
 	var block_from_resource:Block = Globals.blocks[rnd_group_key][rnd_block_index];
 	var toughness_multiplier:float = block_from_resource.toughness_increase_factor * block_groups[rnd_group_key] if (block_groups[rnd_group_key] > 0) else 1;
-	blocks.push_back([block_from_resource.life, block_from_resource.toughness * toughness_multiplier, block_from_resource.color]);
+	blocks.push_back([block_from_resource.life, block_from_resource.toughness * toughness_multiplier, block_from_resource.color, block_from_resource.points]);
 
 func update_blocks() -> void:
 	if(Globals.blocks.get(actual_depth)):
@@ -64,8 +64,8 @@ func _on_hit_block(tool_resistance: int) -> void:
 	blocks[0][0] -= roundi((tool_resistance / float(blocks[0][1])) * 100);
 	actual_block_hits += 1;	
 	if (blocks[0][0] <= 0):
-		blocks.pop_front();
 		calculate_player_points();
+		blocks.pop_front();
 		actual_block_hits = 0;
 		actual_depth += 1;
 		update_blocks();
@@ -81,8 +81,7 @@ func _on_hit_block(tool_resistance: int) -> void:
 	update_block_life_text();
 
 func calculate_player_points() -> void:
-	var total_points_earned = 1;
-	Events.emit_signal("earn_points", total_points_earned);
+	Events.emit_signal("earn_points", blocks[0][3]);
 
 func hide_interface() -> void:
 	%interface.visible = false;
