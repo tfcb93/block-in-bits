@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://bipua3rm4xmv2"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bipua3rm4xmv2"]
 
 [ext_resource type="Texture2D" uid="uid://drkcuyxtv03gn" path="res://Resources/Images/GUI/btn_disabled.png" id="1_6jhyv"]
 [ext_resource type="FontFile" uid="uid://cpm8u0x57hw7j" path="res://Resources/Fonts/Jersey_10/Jersey10-Regular.ttf" id="1_d7s8n"]
@@ -42,6 +42,9 @@ texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 7.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n4tmv"]
+bg_color = Color(0.756863, 0.756863, 0.756863, 0.34902)
+
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_disabled_color = Color(0.396889, 0.396889, 0.396889, 1)
@@ -57,3 +60,4 @@ Button/styles/focus = SubResource("StyleBoxTexture_vtioh")
 Button/styles/hover = SubResource("StyleBoxTexture_6vg1h")
 Button/styles/normal = SubResource("StyleBoxTexture_ks05w")
 Button/styles/pressed = SubResource("StyleBoxTexture_iwrgo")
+Panel/styles/panel = SubResource("StyleBoxFlat_n4tmv")

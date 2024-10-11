@@ -62,6 +62,6 @@ func _on_countdown_timeout() -> void:
 	if (level_countdown <= 0):
 		%countdown.stop();
 		is_game_finished = true;
-		print(level_playtime);
-		Events.emit_signal("game_over");
+		block_pile.hide_interface();
+		Events.emit_signal("game_over", player.points, block_pile.actual_depth, level_playtime);
 	update_timer();

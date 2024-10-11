@@ -1,6 +1,6 @@
 extends Node2D;
 
-var prices := {"time_10": 1, "time_20": 2000};
+var prices := {"time_10": 1000, "time_20": 2000};
 var actual_upgrade_index = 1;
 var actual_upgrade_price = 0;
 

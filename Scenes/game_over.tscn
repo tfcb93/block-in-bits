@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvkb15du2ebem"]
+
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_cwqne"]
+[ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="1_xe3c3"]
+[ext_resource type="LabelSettings" uid="uid://cnpd02d1dmt6i" path="res://Resources/normal_text_label.tres" id="2_gleil"]
+
+[node name="Game Over" type="Node2D"]
+script = ExtResource("1_cwqne")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="Panel" type="Panel" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -64.0
+offset_right = 120.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="interface/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -43.0
+offset_right = 45.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="intf_title" type="Label" parent="interface/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = ExtResource("1_xe3c3")
+horizontal_alignment = 1
+
+[node name="intf_points" type="Label" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00 points"
+label_settings = ExtResource("2_gleil")
+horizontal_alignment = 1
+
+[node name="intf_depth" type="Label" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00 depth"
+label_settings = ExtResource("2_gleil")
+horizontal_alignment = 1
+
+[node name="intf_total_time" type="Label" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00 seconds"
+label_settings = ExtResource("2_gleil")
+horizontal_alignment = 1
+
+[node name="btn_exit" type="Button" parent="interface/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Exit
+"
+
+[connection signal="pressed" from="interface/Panel/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

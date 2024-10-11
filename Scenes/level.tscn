@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://xvjacwyfgsyp"]
+[gd_scene load_steps=7 format=3 uid="uid://xvjacwyfgsyp"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_vegkm"]
 [ext_resource type="PackedScene" uid="uid://e5naf2jx66xg" path="res://Scenes/player.tscn" id="2_jowxf"]
 [ext_resource type="LabelSettings" uid="uid://bok32iv7qpijf" path="res://Resources/timer_number_label_settings.tres" id="2_k4bnx"]
 [ext_resource type="PackedScene" uid="uid://bn2ew8s72tfs0" path="res://Scenes/shop.tscn" id="4_kfj0a"]
 [ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="5_tawtn"]
+[ext_resource type="PackedScene" uid="uid://dvkb15du2ebem" path="res://Scenes/game_over.tscn" id="6_0ftpm"]
 
 [node name="Level" type="Node2D"]
 process_mode = 1
@@ -38,6 +39,8 @@ horizontal_alignment = 1
 [node name="Block Pile" parent="." instance=ExtResource("5_tawtn")]
 
 [node name="Shop" parent="." instance=ExtResource("4_kfj0a")]
+
+[node name="Game Over" parent="." instance=ExtResource("6_0ftpm")]
 
 [node name="countdown" type="Timer" parent="."]
 unique_name_in_owner = true
