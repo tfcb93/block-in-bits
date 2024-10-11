@@ -22,7 +22,7 @@ func _ready() -> void:
 	load_player_tools();
 	assert(len(player_tools) > 0, "You need to insert tools for the player!");
 
-	update_interface_values();
+	update_interface_player_points();
 	update_interface_tool_name();
 
 func load_player_tools() -> void:
@@ -34,15 +34,19 @@ func load_player_tools() -> void:
 func get_actual_player_tool() -> Tool:
 	return player_tools[selected_tool_index];
 
-func update_interface_values():
+func update_interface_tool_values() -> void:
+	update_interface_tool_name();
 	update_interface_tool_resistence();
-	update_interface_player_points();
+	update_interdace_tool_multiplier();
 
 func update_interface_tool_resistence() -> void:
 	%intf_tool_resistance.text = str(player_tools[selected_tool_index].resistance);
 
 func update_interface_tool_name() -> void:
 	%intf_tool_name.text = player_tools[selected_tool_index].name;
+
+func update_interdace_tool_multiplier() -> void:
+	%intf_tool_multiplier.text = str(player_tools[selected_tool_index].point_multiplier)
 
 func update_interface_player_points() -> void:
 	%intf_player_points.text = str(points);
@@ -68,8 +72,7 @@ func _on_change_tool(index_direction: int) -> void:
 		selected_tool_index = len(player_tools) - 1;
 	else:
 		selected_tool_index += index_direction;
-	update_interface_tool_name();
-	update_interface_tool_resistence();
+	update_interface_tool_values();
 
 func _on_open_shop() -> void:
 	Events.emit_signal("inform_shop_player_points", points);
