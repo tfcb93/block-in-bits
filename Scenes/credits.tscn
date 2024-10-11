@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://crwj5y6c6j8pk"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_mty1u"]
+[ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="2_mig1i"]
+[ext_resource type="LabelSettings" uid="uid://cjjnsblduleoc" path="res://Resources/small_label_text.tres" id="3_skskh"]
+[ext_resource type="LabelSettings" uid="uid://bsm7x5clu6urn" path="res://Resources/very_small_label_text.tres" id="4_74ap6"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_mty1u")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="background" type="ColorRect" parent="interface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="interface/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+label_settings = ExtResource("2_mig1i")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="interface/VBoxContainer"]
+layout_mode = 2
+text = "Game by: tbcb93
+Fonts: Jersey10 (game) and Lilita One (design)
+Images by: tfcb93"
+label_settings = ExtResource("3_skskh")
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="interface/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="interface/VBoxContainer"]
+layout_mode = 2
+text = "All fonts used are under the Open Font License (OFL)
+Original images are licensed under CC BY 4.0
+This game is under the MIT License
+Check project license for more information"
+label_settings = ExtResource("4_74ap6")
+horizontal_alignment = 1
+
+[node name="btn_exit" type="Button" parent="interface/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="interface/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

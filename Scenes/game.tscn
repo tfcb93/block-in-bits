@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://drarqqw6keabg"]
+[gd_scene load_steps=8 format=3 uid="uid://drarqqw6keabg"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_25r8w"]
 [ext_resource type="PackedScene" uid="uid://ofnaphcqerff" path="res://Scenes/start_screen.tscn" id="2_3tcmf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://gttnpa80nl25" path="res://Scenes/mode_selection.tscn" id="3_crkq4"]
 [ext_resource type="PackedScene" uid="uid://dcu3ynjpt6gem" path="res://Scenes/settings.tscn" id="5_bw20d"]
 [ext_resource type="PackedScene" uid="uid://dsxhqpayo8uwk" path="res://Scenes/instructions.tscn" id="6_ecaik"]
+[ext_resource type="PackedScene" uid="uid://crwj5y6c6j8pk" path="res://Scenes/credits.tscn" id="7_pukup"]
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_25r8w")
@@ -20,3 +21,5 @@ process_mode = 3
 [node name="Settings" parent="." instance=ExtResource("5_bw20d")]
 
 [node name="Instructions" parent="." instance=ExtResource("6_ecaik")]
+
+[node name="Credits" parent="." instance=ExtResource("7_pukup")]
