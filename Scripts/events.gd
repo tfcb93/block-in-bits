@@ -6,6 +6,13 @@ signal close_select_mode();
 signal pause_game();
 signal unpause_game();
 signal exit_level();
+signal open_credits();
+signal close_credits();
+
+signal open_instructions_from_selection();
+signal close_instructions_to_selection();
+signal open_instructions_from_pause();
+signal close_instructions_to_pause();
 
 signal open_settings_from_selection();
 signal close_settings_to_selection();
