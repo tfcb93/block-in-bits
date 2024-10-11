@@ -7,6 +7,7 @@ script = ExtResource("1_hceff")
 id = 0
 name = "TEST 1"
 price = 10
+depth = 2
 effects = {
 0: [10, 10],
 1: [100, 100],

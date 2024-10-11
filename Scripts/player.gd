@@ -15,10 +15,6 @@ func _ready() -> void:
 	Events.connect("pause_game", _on_pause_game);
 	Events.connect("unpause_game", _on_unpause_game);
 
-	Events.connect("open_shop", _on_open_shop);
-	Events.connect("discount_points", _on_discount_points);
-	Events.connect("upgrade_tools", _on_upgrade_tools);
-
 	load_player_tools();
 	assert(len(player_tools) > 0, "You need to insert tools for the player!");
 
@@ -73,16 +69,3 @@ func _on_change_tool(index_direction: int) -> void:
 	else:
 		selected_tool_index += index_direction;
 	update_interface_tool_values();
-
-func _on_open_shop() -> void:
-	Events.emit_signal("inform_shop_player_points", points);
-
-func _on_discount_points(discounted_points: int) -> void:
-	points -= discounted_points;
-	Events.emit_signal("inform_shop_player_points", points);
-
-func _on_upgrade_tools(upgrade: Upgrade) -> void:
-	for t in player_tools:
-		t.resistance += upgrade.effects[t.link_name][0];
-		t.point_multiplier += upgrade.effects[t.link_name][1];
-	_on_discount_points(upgrade.price);

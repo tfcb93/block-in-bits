@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://ho3jni50mbik"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_yffrb"]
+
+[resource]
+script = ExtResource("1_yffrb")
+id = 7
+name = "Ultimate!"
+price = 1000000
+depth = 1000000
+effects = {
+0: [10000, 2],
+1: [5000, 4],
+2: [100000, 0]
+}
