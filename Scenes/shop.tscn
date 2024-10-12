@@ -56,6 +56,8 @@ layout_mode = 2
 [node name="btn_upgrade" type="Button" parent="interface/VBoxContainer/selling/upgrades/list"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_right = NodePath("../../../time/list/btn_time_10")
+focus_neighbor_bottom = NodePath("../../../../btn_exit")
 text = "Upgrade mark I"
 
 [node name="price_upgrade" type="Label" parent="interface/VBoxContainer/selling/upgrades/list"]
@@ -85,6 +87,8 @@ layout_mode = 2
 [node name="btn_time_10" type="Button" parent="interface/VBoxContainer/selling/time/list"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../upgrades/list/btn_upgrade")
+focus_neighbor_bottom = NodePath("../../list2/btn_time_20")
 text = "10 seconds"
 
 [node name="price_10" type="Label" parent="interface/VBoxContainer/selling/time/list"]
@@ -99,6 +103,9 @@ layout_mode = 2
 [node name="btn_time_20" type="Button" parent="interface/VBoxContainer/selling/time/list2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../../list/btn_time_10")
+focus_neighbor_right = NodePath("../../../upgrades/list/btn_upgrade")
+focus_neighbor_bottom = NodePath("../../../../btn_exit")
 text = "20 seconds"
 
 [node name="price_20" type="Label" parent="interface/VBoxContainer/selling/time/list2"]
@@ -110,6 +117,8 @@ label_settings = ExtResource("4_gla7c")
 [node name="btn_exit" type="Button" parent="interface/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../selling/upgrades/list/btn_upgrade")
+focus_neighbor_right = NodePath("../selling/time/list2/price_20")
 text = "return"
 
 [node name="player_info" type="VBoxContainer" parent="interface"]

@@ -6,6 +6,7 @@ func _ready() -> void:
 
 func _on_open_credits() -> void:
 	%interface.visible = true;
+	%btn_exit.grab_focus();
 
 func _on_btn_exit_pressed() -> void:
 	%interface.visible = false;

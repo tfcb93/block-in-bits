@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://crwj5y6c6j8pk" path="res://Scenes/credits.tscn" id="7_pukup"]
 
 [node name="game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_25r8w")
 
 [node name="start screen" parent="." instance=ExtResource("2_3tcmf")]

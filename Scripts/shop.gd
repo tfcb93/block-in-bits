@@ -29,6 +29,7 @@ func update_upgrade_button() -> void:
 func _on_open_shop() -> void:
 	%interface.visible = true;
 	Globals.game_state = Globals.GAME_STATES.IN_SHOP;
+	%btn_exit.grab_focus();
 
 
 func _on_close_shop() -> void:

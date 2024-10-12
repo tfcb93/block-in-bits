@@ -18,9 +18,11 @@ func _on_unpause_game() -> void:
 
 func _on_close_settings() -> void:
 	%interface.visible = true;
+	%btn_settings.grab_focus();
 
 func _on_close_instructions() -> void:
 	%interface.visible = true;
+	%btn_info.grab_focus();
 
 func _on_btn_back_pressed() -> void:
 	Events.emit_signal("unpause_game");

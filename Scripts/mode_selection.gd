@@ -4,11 +4,13 @@ func _ready() -> void:
 	Events.connect("open_select_mode", _on_open_select_mode);
 	Events.connect("close_settings_to_selection", _on_close_settings);
 	Events.connect("close_instructions_to_selection", _on_close_instructions);
+	Events.connect("close_credits", _on_close_credits);
 	
 	%interface.visible = false;
 
 func _on_open_select_mode() -> void:
 	%interface.visible = true;
+	%btn_endless.grab_focus();
 
 func _on_close_select_mode() -> void:
 	%interface.visible = false;
@@ -16,9 +18,15 @@ func _on_close_select_mode() -> void:
 
 func _on_close_settings() -> void:
 	%interface.visible = true;
+	%btn_settings.grab_focus();
 
 func _on_close_instructions() -> void:
 	%interface.visible = true;
+	%btn_instructions.grab_focus();
+
+func _on_close_credits() -> void:
+	%interface.visible = true;
+	%btn_credits.grab_focus();
 
 func _on_btn_endless_pressed() -> void:
 	_on_close_select_mode();
@@ -35,4 +43,9 @@ func _on_btn_instructions_pressed() -> void:
 
 
 func _on_btn_credits_pressed() -> void:
-	pass # Replace with function body.
+	%interface.visible = false;
+	Events.emit_signal("open_credits");
+
+
+func _on_btn_quit_pressed() -> void:
+	get_tree().quit();

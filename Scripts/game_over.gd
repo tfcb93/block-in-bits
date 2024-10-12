@@ -11,6 +11,7 @@ func _on_game_over(points: int, depth: int, playtime: float) -> void:
 	%intf_points.text = str(points) + " points";
 	%intf_depth.text = str(depth) + " meters";
 	%intf_total_time.text = str(roundi(playtime)) + " seconds";
+	%btn_exit.grab_focus();
 
 func _on_btn_exit_pressed() -> void:
 	%interface.visible = false;

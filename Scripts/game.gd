@@ -27,12 +27,25 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif (event.is_action_pressed("start")):
 		match Globals.game_state:
 			Globals.GAME_STATES.START_SCREEN:
-				# start_game();
+				select_game_mode();
+			Globals.GAME_STATES.PAUSED:
+				pass;
+	elif (event.is_action_pressed("controller_start")):
+		match Globals.game_state:
+			Globals.GAME_STATES.START_SCREEN:
 				select_game_mode();
 			Globals.GAME_STATES.IN_GAME:
 				pause_game();
 			Globals.GAME_STATES.PAUSED:
-				pass;
+				Events.emit_signal("unpause_game");	
+	elif (event.is_action_pressed("return")):
+		match Globals.game_state:
+			Globals.GAME_STATES.START_SCREEN:
+				get_tree().quit();
+			Globals.GAME_STATES.IN_GAME:
+				pause_game();
+			Globals.GAME_STATES.PAUSED:
+				Events.emit_signal("unpause_game");
 	elif (event.is_action_pressed("left")):
 		match Globals.game_state:
 			Globals.GAME_STATES.IN_GAME:

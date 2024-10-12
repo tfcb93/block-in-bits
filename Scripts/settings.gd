@@ -3,6 +3,7 @@ extends Node2D;
 func _ready() -> void:
 	Events.connect("open_settings_from_selection", _on_open_settings);
 	Events.connect("open_settings_from_pause", _on_open_settings);
+	Events.connect("unpause_game", _on_unpause_game);
 
 	%interface.visible = false;
 	%btn_fullscreen.button_pressed = Globals.is_game_fullscreen;
@@ -10,6 +11,11 @@ func _ready() -> void:
 
 func _on_open_settings() -> void:
 	%interface.visible = true;
+	%btn_fullscreen.grab_focus();
+
+# necessary due to controller commands
+func _on_unpause_game() -> void:
+	%interface.visible = false;
 
 func _on_btn_fullscreen_toggled(toggled_on: bool) -> void:
 	Globals.is_game_fullscreen = toggled_on;
