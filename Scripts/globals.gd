@@ -18,3 +18,8 @@ var blocks := {};
 # settings
 var is_game_fullscreen := false;
 var game_resolution_index := 0;
+
+
+# misc.
+var is_mobile := false;
+var is_web := false;

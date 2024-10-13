@@ -23,7 +23,11 @@ func _ready() -> void:
 
 func load_player_tools() -> void:
 	var tools_files := DirAccess.open("res://Resources/tools").get_files();
+	# again, this is stupid
+	# why they create an extension that the executables are not allowed to find in release? why Godot?
 	for file in tools_files:
+		if(file.ends_with(".remap")):
+			file = file.trim_suffix(".remap");
 		player_tools.push_back(load("res://Resources/tools/" + file));
 	player_tools.sort_custom(func(a: Tool, b: Tool): return a.link_name < b.link_name);
 

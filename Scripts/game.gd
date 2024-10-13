@@ -12,6 +12,7 @@ func _ready() -> void:
 	Events.connect("exit_level", _on_exit_level);
 
 	load_into_memory();
+	check_enviroment();
 
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("action")):
@@ -91,6 +92,9 @@ func load_into_memory() -> void:
 func load_blocks_into_memory() -> void:
 	var block_files := DirAccess.open("res://Resources/blocks").get_files();
 	for file in block_files:
+		# this is stupid
+		if (file.ends_with(".remap")):
+			file = file.trim_suffix(".remap");
 		var new_block := load("res://Resources/blocks/" + file);
 		if (not Globals.blocks.get(new_block.min_depth_appearance)):
 			Globals.blocks[new_block.min_depth_appearance] = [];
@@ -99,7 +103,19 @@ func load_blocks_into_memory() -> void:
 func load_upgrades_into_memory() -> void:
 	var upgrade_files := DirAccess.open("res://Resources/upgrades").get_files();
 	for file in upgrade_files:
+		# this is really stupid (the fact that I need to remove something created by Godot since it can't find it's own files)
+		# have to use this https://github.com/godotengine/godot/issues/66014
+		# godot should address this properly. This is not good and very error prone
+		# or at least make it clear on how to use .remap files properly - tutorials, documentation, whatever
+		if (file.ends_with(".remap")):
+			file = file.trim_suffix(".remap");
 		var upgrade := load("res://Resources/upgrades/" + file);
 		Globals.upgrades.push_back(upgrade);
 		#sort by indes
 		Globals.upgrades.sort_custom(func(a: Upgrade, b: Upgrade): return a.id < b.id);
+
+func check_enviroment() -> void:
+	if (OS.has_feature("web") or OS.has_feature("web_android") or OS.has_feature("web_ios")):
+		Globals.is_web = true;
+	if(OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("android") or OS.has_feature("ios")):
+		Globals.is_mobile = true;
