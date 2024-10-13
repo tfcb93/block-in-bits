@@ -8,12 +8,19 @@ func _ready() -> void:
 	
 	%interface.visible = false;
 
+	# while I don't have other settings besides fullscree
+	if (Globals.is_mobile):
+		%btn_settings.visible = false;
+		# in case someone is using a controller on the phone or tablet
+		%btn_instructions.focus_neighbor_left = null;
+
 func _on_open_select_mode() -> void:
 	%interface.visible = true;
 	%btn_endless.grab_focus();
 
 	if (Globals.is_mobile or Globals.is_web):
 		%btn_quit.visible = false;
+		%btn_credits.focus_neighbor_right = null;
 
 func _on_close_select_mode() -> void:
 	%interface.visible = false;

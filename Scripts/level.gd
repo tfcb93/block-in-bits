@@ -26,6 +26,7 @@ func _ready() -> void:
 
 	if (Globals.is_mobile):
 		%mobile_buttons.visible = true;
+		%btn_pause.visible = true;
 		%shop_indicator.visible = false;
 
 func _process(delta: float) -> void:
@@ -91,10 +92,13 @@ func _on_btn_shop_pressed() -> void:
 func _on_btn_touch_shop_pressed() -> void:
 	Events.emit_signal("open_shop");
 
-
 func _on_btn_touch_hit_block_pressed() -> void:
 	match Globals.game_state:
 			Globals.GAME_STATES.IN_GAME:
 				Events.emit_signal("hit_block", player.get_actual_player_tool().resistance);
 
-
+func _on_btn_pause_pressed() -> void:
+	# I think I'm repeating myself here
+	get_tree().paused = true;
+	Globals.game_state = Globals.GAME_STATES.PAUSED;
+	Events.emit_signal("pause_game");

@@ -123,7 +123,7 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="interface/VBoxContainer/VBoxContainer3"]
 layout_mode = 2
-text = "Arrows: Navigation. Left/Right: Change tool. Z: Break blocks. X: Open shop. Enter: Pause."
+text = "[Arrows]: Navigation. [Left]/[Right]: Change tool. [Space]: Break blocks. [Shift]: Open shop. [Esc]: Pause."
 label_settings = ExtResource("3_eq7su")
 horizontal_alignment = 1
 

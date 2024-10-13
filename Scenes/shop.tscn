@@ -11,6 +11,7 @@ script = ExtResource("1_uktmr")
 
 [node name="interface" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="interface"]
 anchors_preset = 15

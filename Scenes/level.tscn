@@ -57,7 +57,7 @@ stretch_mode = 3
 
 [node name="Label" type="Label" parent="interface/shop_indicator"]
 layout_mode = 2
-text = "press X for shop"
+text = "[Shift]: shop"
 label_settings = ExtResource("4_xby0c")
 horizontal_alignment = 1
 
@@ -83,9 +83,17 @@ layout_mode = 2
 text = "Shop"
 
 [node name="btn_touch_hit_block" type="Button" parent="interface/mobile_buttons"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Hit"
+
+[node name="btn_pause" type="Button" parent="interface"]
+unique_name_in_owner = true
+visible = false
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 33.0
+text = "Pause"
 
 [node name="Player" parent="." instance=ExtResource("2_jowxf")]
 
@@ -101,4 +109,5 @@ unique_name_in_owner = true
 [connection signal="pressed" from="interface/shop_indicator/btn_shop" to="." method="_on_btn_shop_pressed"]
 [connection signal="pressed" from="interface/mobile_buttons/btn_touch_shop" to="." method="_on_btn_touch_shop_pressed"]
 [connection signal="pressed" from="interface/mobile_buttons/btn_touch_hit_block" to="." method="_on_btn_touch_hit_block_pressed"]
+[connection signal="pressed" from="interface/btn_pause" to="." method="_on_btn_pause_pressed"]
 [connection signal="timeout" from="countdown" to="." method="_on_countdown_timeout"]
