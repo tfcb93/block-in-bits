@@ -24,6 +24,10 @@ func _ready() -> void:
 	start_level_timers();
 	update_timer();
 
+	if (Globals.is_mobile):
+		%mobile_buttons.visible = true;
+		%shop_indicator.visible = false;
+
 func _process(delta: float) -> void:
 	if (not is_game_finished):
 		level_playtime += delta;
@@ -77,5 +81,20 @@ func _on_countdown_timeout() -> void:
 		%countdown.stop();
 		is_game_finished = true;
 		block_pile.hide_interface();
+		Globals.game_state = Globals.GAME_STATES.GAME_OVER;
 		Events.emit_signal("game_over", player.points, block_pile.actual_depth, level_playtime);
 	update_timer();
+
+func _on_btn_shop_pressed() -> void:
+	Events.emit_signal("open_shop");
+
+func _on_btn_touch_shop_pressed() -> void:
+	Events.emit_signal("open_shop");
+
+
+func _on_btn_touch_hit_block_pressed() -> void:
+	match Globals.game_state:
+			Globals.GAME_STATES.IN_GAME:
+				Events.emit_signal("hit_block", player.get_actual_player_tool().resistance);
+
+

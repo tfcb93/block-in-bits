@@ -6,7 +6,7 @@ const endelss_milestone_multiply_factor := 2;
 const available_tools_names := {AVAILABLE_TOOLS.PICKAXE: "Pickaxe", AVAILABLE_TOOLS.HAMMER: "Hammer", AVAILABLE_TOOLS.DRILL: "Drill"};
 
 # game states
-enum GAME_STATES {START_SCREEN, SELECTION, IN_GAME, IN_SHOP, PAUSED, EXIT};
+enum GAME_STATES {START_SCREEN, SELECTION, IN_GAME, IN_SHOP, PAUSED, GAME_OVER};
 var game_state := GAME_STATES.START_SCREEN;
 
 # tools

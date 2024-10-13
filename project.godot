@@ -13,7 +13,8 @@ config_version=5
 config/name="Block in Bits"
 run/main_scene="res://Scenes/game.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Resources/Images/icon.png"
+config/windows_native_icon="res://Resources/Images/icon.ico"
 
 [autoload]
 
@@ -31,7 +32,6 @@ window/size/viewport_height=180
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/handheld/orientation=1
 
 [gui]
 

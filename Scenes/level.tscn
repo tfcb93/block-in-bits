@@ -36,7 +36,8 @@ text = "00"
 label_settings = ExtResource("2_k4bnx")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="VBoxContainer" parent="interface"]
+[node name="shop_indicator" type="VBoxContainer" parent="interface"]
+unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -49,16 +50,42 @@ offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="interface/HBoxContainer"]
+[node name="btn_shop" type="TextureButton" parent="interface/shop_indicator"]
 layout_mode = 2
-texture = ExtResource("3_6d5i2")
+texture_normal = ExtResource("3_6d5i2")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="interface/HBoxContainer"]
+[node name="Label" type="Label" parent="interface/shop_indicator"]
 layout_mode = 2
 text = "press X for shop"
 label_settings = ExtResource("4_xby0c")
 horizontal_alignment = 1
+
+[node name="mobile_buttons" type="VBoxContainer" parent="interface"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -65.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="btn_touch_shop" type="Button" parent="interface/mobile_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shop"
+
+[node name="btn_touch_hit_block" type="Button" parent="interface/mobile_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hit"
 
 [node name="Player" parent="." instance=ExtResource("2_jowxf")]
 
@@ -71,4 +98,7 @@ horizontal_alignment = 1
 [node name="countdown" type="Timer" parent="."]
 unique_name_in_owner = true
 
+[connection signal="pressed" from="interface/shop_indicator/btn_shop" to="." method="_on_btn_shop_pressed"]
+[connection signal="pressed" from="interface/mobile_buttons/btn_touch_shop" to="." method="_on_btn_touch_shop_pressed"]
+[connection signal="pressed" from="interface/mobile_buttons/btn_touch_hit_block" to="." method="_on_btn_touch_hit_block_pressed"]
 [connection signal="timeout" from="countdown" to="." method="_on_countdown_timeout"]

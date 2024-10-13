@@ -1,5 +1,6 @@
 extends Node;
 
+signal enter_game();
 signal close_start_screen();
 signal open_select_mode();
 signal close_select_mode();

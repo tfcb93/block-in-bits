@@ -4,16 +4,18 @@ extends Node2D;
 
 var generated_level: Node;
 
-# Called when the node enters the scene tree for the first time.
+func _init() -> void:
+	check_enviroment();
+
 func _ready() -> void:
+	Events.connect("enter_game", _on_enter_game);
 	Events.connect("unpause_game", _on_unpause_game);
 	Events.connect("close_select_mode", _on_close_select_mode);
 	Events.connect("start_game", _on_start_game);
 	Events.connect("exit_level", _on_exit_level);
 
 	load_into_memory();
-	check_enviroment();
-
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if (event.is_action_pressed("action")):
 		match Globals.game_state:
@@ -56,6 +58,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			Globals.GAME_STATES.IN_GAME:
 				Events.emit_signal("change_tool", -1);
 
+func _on_enter_game() -> void:
+	select_game_mode();
 
 func select_game_mode() -> void:
 	Events.emit_signal("close_start_screen");
@@ -103,7 +107,7 @@ func load_blocks_into_memory() -> void:
 func load_upgrades_into_memory() -> void:
 	var upgrade_files := DirAccess.open("res://Resources/upgrades").get_files();
 	for file in upgrade_files:
-		# this is really stupid (the fact that I need to remove something created by Godot since it can't find it's own files)
+		# this (the fact that I need to remove something created by Godot since it can't find its own files) is really stupid
 		# have to use this https://github.com/godotengine/godot/issues/66014
 		# godot should address this properly. This is not good and very error prone
 		# or at least make it clear on how to use .remap files properly - tutorials, documentation, whatever

@@ -73,3 +73,11 @@ func _on_change_tool(index_direction: int) -> void:
 	else:
 		selected_tool_index += index_direction;
 	update_interface_tool_values();
+
+
+func _on_btn_tool_left_pressed() -> void:
+	Events.emit_signal("change_tool", 1);
+
+
+func _on_btn_tool_right_pressed() -> void:
+	Events.emit_signal("change_tool", -1);

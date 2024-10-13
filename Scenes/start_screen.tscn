@@ -27,7 +27,8 @@ text = "Blocks in Bits"
 label_settings = ExtResource("2_6o5yt")
 horizontal_alignment = 1
 
-[node name="text" type="Label" parent="interface"]
+[node name="start_text" type="Label" parent="interface"]
+unique_name_in_owner = true
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -36,6 +37,24 @@ offset_top = -50.0
 offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "press start"
+text = "press [space] to start"
 label_settings = ExtResource("3_he0mn")
 horizontal_alignment = 1
+
+[node name="start_button" type="Button" parent="interface"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.5
+offset_top = -55.0
+offset_right = 30.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "start game"
+
+[connection signal="pressed" from="interface/start_button" to="." method="_on_start_button_pressed"]
