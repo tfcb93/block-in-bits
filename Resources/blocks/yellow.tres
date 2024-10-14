@@ -6,6 +6,6 @@
 script = ExtResource("1_hlyqn")
 toughness = 20
 min_depth_appearance = 0
-toughness_increase_factor = 1.4
+toughness_increase_factor = 1.5
 points = 2
 color = Color(1, 1, 0, 1)

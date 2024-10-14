@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_r4co3")
-toughness = 80
-min_depth_appearance = 500
-toughness_increase_factor = 1.1
+toughness = 180
+min_depth_appearance = 1600
+toughness_increase_factor = 1.65
 points = 8
 color = Color(1, 0, 0, 1)

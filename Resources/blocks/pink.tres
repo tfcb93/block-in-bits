@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_ttlh6")
-toughness = 70
-min_depth_appearance = 400
-toughness_increase_factor = 1.2
+toughness = 130
+min_depth_appearance = 800
+toughness_increase_factor = 1.6
 points = 7
 color = Color(1, 0.494118, 1, 1)

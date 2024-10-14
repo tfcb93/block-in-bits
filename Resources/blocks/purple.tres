@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_apt6u")
-toughness = 50
+toughness = 60
 min_depth_appearance = 100
-toughness_increase_factor = 1.3
+toughness_increase_factor = 1.5
 points = 5
 color = Color(0.443137, 0, 1, 1)
