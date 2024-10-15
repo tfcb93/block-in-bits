@@ -7,6 +7,9 @@ var generated_level: Node;
 func _init() -> void:
 	check_enviroment();
 
+	if (len(Input.get_connected_joypads()) > 0):
+		Globals.controller_type = Input.get_joy_name(0);
+
 func _ready() -> void:
 	Events.connect("enter_game", _on_enter_game);
 	Events.connect("unpause_game", _on_unpause_game);

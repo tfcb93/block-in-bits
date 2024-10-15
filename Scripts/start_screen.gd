@@ -5,7 +5,11 @@ func _ready() -> void:
 
 	if (Globals.is_mobile):
 		%start_button.visible = true;
-		%start_text.visible = false;
+	elif (not Globals.controller_type.is_empty()):
+		%start_text_controller.visible = true;
+	else:
+		%start_text.visible = true;
+
 
 func _on_close_start_screen() -> void:
 	%interface.visible = false;

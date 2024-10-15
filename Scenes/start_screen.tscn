@@ -29,6 +29,7 @@ horizontal_alignment = 1
 
 [node name="start_text" type="Label" parent="interface"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
@@ -38,6 +39,21 @@ offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "press [space] to start"
+label_settings = ExtResource("3_he0mn")
+horizontal_alignment = 1
+
+[node name="start_text_controller" type="Label" parent="interface"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "press [start button] to start"
 label_settings = ExtResource("3_he0mn")
 horizontal_alignment = 1
 

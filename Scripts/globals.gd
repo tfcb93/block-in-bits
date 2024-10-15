@@ -23,3 +23,4 @@ var game_resolution_index := 0;
 # misc.
 var is_mobile := false;
 var is_web := false;
+var controller_type := "";
