@@ -12,8 +12,14 @@ They are still not 100% balanced and might reach impossible levels, especially a
 
 The code organization lacks a few parts, like reading controls spread over a few files instead of unified, events organization and usage, and better integration between desktop, web, and mobile versions, making it more uniform (still unclear how to do so).
 The engine presented me with two problems, one of which should be resolved by the engine. The first one is the focus on disabled buttons. They decided to [include by design](https://github.com/godotengine/godot-proposals/issues/7320#issuecomment-1640997716) that buttons must have focus even if they are disabled. This problem could be changed via code, but implementing it on each button that needs to be disabled becomes hard to maintain.
-Another problem was the change of extensions, which Godot applies to custom resources, calling it .import.remap. The different builds can't recognize it, so they are not loading it and breaking the game. [The only solution found was to detect the suffix and remove it](https://github.com/godotengine/godot/issues/66014#issuecomment-1832988310), as said in this [Godot issue](https://github.com/godotengine/godot/issues/66014). This problem should be more properly addressed, or at least make it easy to find a solution. In other ways, it's stupid.
+Another problem was the change of extensions, which Godot applies to custom resources, calling it `.import.remap`. The different builds can't recognize it, so they are not loading it and breaking the game. [The only solution found was to detect the suffix and remove it](https://github.com/godotengine/godot/issues/66014#issuecomment-1832988310), as said in this [Godot issue](https://github.com/godotengine/godot/issues/66014). This problem should be more properly addressed, or at least make it easy to find a solution. In other ways, it's stupid.
 
 ## Conclusion
 
 The development of this project was good to learn more about Godot, and opening its source may help other developers as a reference or inspiration for new ideas. For any problem, question, or contribution regarding it just open an issue.
+
+
+## Misc.
+
+You might be able to get the first version rolling back few pushes into main, before the `redesign`. Here few images of it:  
+![First version title screen](./doc/images/Version%201.png)
