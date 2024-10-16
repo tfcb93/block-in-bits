@@ -24,3 +24,4 @@ var game_resolution_index := 0;
 var is_mobile := false;
 var is_web := false;
 var controller_type := "";
+var is_vibration_active := true;

@@ -50,6 +50,8 @@ func update_blocks() -> void:
 		actual_milestone *= Globals.endelss_milestone_multiply_factor;
 		for k in block_groups.keys():
 			block_groups[k] += 1;
+		if (not Globals.controller_type.is_empty() and Globals.is_vibration_active):
+			Input.start_joy_vibration(0, 1, 0.5, 0.5);
 		
 
 func update_block_life_text() -> void:

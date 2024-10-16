@@ -7,6 +7,7 @@ func _ready() -> void:
 
 	%interface.visible = false;
 	%btn_fullscreen.button_pressed = Globals.is_game_fullscreen;
+	%btn_vibration.button_pressed = Globals.is_vibration_active;
 	%btn_resolution.selected = Globals.game_resolution_index;
 
 func _on_open_settings() -> void:
@@ -36,3 +37,6 @@ func _on_btn_exit_pressed() -> void:
 			Events.emit_signal("close_settings_to_pause");
 		Globals.GAME_STATES.SELECTION:
 			Events.emit_signal("close_settings_to_selection");
+
+func _on_btn_vibration_toggled(toggled_on: bool) -> void:
+	Globals.is_vibration_active = toggled_on;
