@@ -21,6 +21,8 @@ func _ready() -> void:
 
 	Events.connect("add_time", _on_add_time);
 
+	%background._play_animation();
+
 	check_controller_instructions();
 
 	start_level_timers();
@@ -66,10 +68,12 @@ func _on_add_time(add_time: int) -> void:
 
 func _on_pause_game() -> void:
 	block_pile.hide_interface();
+	%interface.visible = false;
 	%countdown.paused = true;
 
 func _on_unpause_game() -> void:
 	block_pile.show_interface();
+	%interface.visible = true;
 	%countdown.paused = false;
 
 func _on_open_shop() -> void:

@@ -11,6 +11,7 @@ script = ExtResource("1_60t84")
 unique_name_in_owner = true
 
 [node name="ColorRect" type="ColorRect" parent="interface"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

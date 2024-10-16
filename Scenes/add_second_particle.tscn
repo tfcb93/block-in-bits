@@ -12,6 +12,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
+process_mode = 3
 emitting = false
 amount = 1
 one_shot = true
