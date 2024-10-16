@@ -38,18 +38,38 @@ text = "Settings"
 label_settings = ExtResource("2_s48hx")
 horizontal_alignment = 1
 
-[node name="btn_fullscreen" type="CheckButton" parent="interface/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="interface/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="btn_fullscreen" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../btn_vibration")
 text = "Fullscreen"
 
-[node name="btn_vibration" type="CheckButton" parent="interface/VBoxContainer"]
+[node name="btn_vibration" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_top = NodePath("../btn_fullscreen")
-focus_neighbor_bottom = NodePath("../btn_exit")
+focus_neighbor_bottom = NodePath("../../btn_exit")
 text = "Vibrate"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="interface/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="btn_sound_effects" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SFX"
+
+[node name="btn_music" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Music"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="interface/VBoxContainer"]
 visible = false
@@ -74,10 +94,12 @@ popup/item_2/id = 2
 [node name="btn_exit" type="Button" parent="interface/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../btn_vibration")
+focus_neighbor_top = NodePath("../HBoxContainer2/btn_vibration")
 text = "Exit"
 
-[connection signal="toggled" from="interface/VBoxContainer/btn_fullscreen" to="." method="_on_btn_fullscreen_toggled"]
-[connection signal="toggled" from="interface/VBoxContainer/btn_vibration" to="." method="_on_btn_vibration_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer2/btn_fullscreen" to="." method="_on_btn_fullscreen_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer2/btn_vibration" to="." method="_on_btn_vibration_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_sound_effects" to="." method="_on_btn_sound_effects_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_music" to="." method="_on_btn_music_toggled"]
 [connection signal="item_selected" from="interface/VBoxContainer/HBoxContainer/btn_resolution" to="." method="_on_btn_resolution_item_selected"]
 [connection signal="pressed" from="interface/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

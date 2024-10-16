@@ -89,9 +89,16 @@ func break_block() -> void:
 	var new_seconds_particle := seconds_particle.instantiate();
 	%particles_position.add_child(new_seconds_particle);
 	new_seconds_particle.emitting = true;
+	play_sound_effects();
 
 func calculate_player_points() -> void:
 	Events.emit_signal("earn_points", blocks[0][3]);
+
+func play_sound_effects() -> void:
+	if (Globals.is_sound_effects_on):
+		%sfx_block_break.volume_db = randf_range(0.5, 3);
+		%sfx_block_break.pitch_scale = randf_range(1, 4);
+		%sfx_block_break.play();
 
 func hide_interface() -> void:
 	%interface.visible = false;
