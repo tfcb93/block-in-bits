@@ -60,6 +60,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		match Globals.game_state:
 			Globals.GAME_STATES.IN_GAME:
 				Events.emit_signal("change_tool", -1);
+	elif (event.is_action_pressed("shoulder_left")):
+		match Globals.game_state:
+			Globals.GAME_STATES.IN_GAME:
+				Events.emit_signal("change_tool", 1);
+	elif (event.is_action_pressed("shoulder_right")):
+		match Globals.game_state:
+			Globals.GAME_STATES.IN_GAME:
+				Events.emit_signal("change_tool", -1);
 
 func _on_enter_game() -> void:
 	select_game_mode();
