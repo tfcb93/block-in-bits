@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn2ew8s72tfs0"]
+[gd_scene load_steps=8 format=3 uid="uid://bn2ew8s72tfs0"]
 
 [ext_resource type="Script" path="res://Scripts/shop.gd" id="1_uktmr"]
 [ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="2_u1al3"]
 [ext_resource type="LabelSettings" uid="uid://cjjnsblduleoc" path="res://Resources/small_label_text.tres" id="3_xj5q4"]
 [ext_resource type="LabelSettings" uid="uid://bsm7x5clu6urn" path="res://Resources/very_small_label_text.tres" id="4_gla7c"]
 [ext_resource type="LabelSettings" uid="uid://cnpd02d1dmt6i" path="res://Resources/normal_text_label.tres" id="5_1iwji"]
+[ext_resource type="AudioStream" uid="uid://yfy85nhavbph" path="res://Resources/Sounds/power-up.wav" id="6_h701g"]
+[ext_resource type="AudioStream" uid="uid://dgtag66cvwfxj" path="res://Resources/Sounds/add-time.wav" id="8_8546f"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_uktmr")
@@ -139,6 +141,14 @@ unique_name_in_owner = true
 layout_mode = 2
 label_settings = ExtResource("5_1iwji")
 visible_characters = 16
+
+[node name="sfx_power_up" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_h701g")
+
+[node name="sfx_add_time" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_8546f")
 
 [connection signal="pressed" from="interface/VBoxContainer/selling/upgrades/list/btn_upgrade" to="." method="_on_btn_upgrade_pressed"]
 [connection signal="pressed" from="interface/VBoxContainer/selling/time/list/btn_time_10" to="." method="_on_btn_time_10_pressed"]

@@ -58,16 +58,21 @@ func _on_btn_upgrade_pressed() -> void:
 	actual_upgrade_index += 1;
 	Events.emit_signal("discount_points", clicked_update_price);
 	update_upgrade_button();
+	%sfx_power_up.play();
+	if (not Globals.controller_type.is_empty() and Globals.is_vibration_active):
+			Input.start_joy_vibration(0, 1, 0.5, 0.5);
 
 
 func _on_btn_time_10_pressed() -> void:
 	Events.emit_signal("add_time", 10);
 	Events.emit_signal("discount_points", prices["time_10"]);
+	%sfx_add_time.play();
 
 
 func _on_btn_time_20_pressed() -> void:
 	Events.emit_signal("add_time", 20);
 	Events.emit_signal("discount_points", prices["time_20"]);
+	%sfx_add_time.play();
 
 
 func _on_btn_exit_pressed() -> void:
