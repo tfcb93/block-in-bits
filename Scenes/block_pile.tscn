@@ -37,3 +37,7 @@ texture = ExtResource("5_lpaxg")
 position = Vector2(160, 158)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_lpaxg")
+
+[node name="particles_position" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(160, 150)

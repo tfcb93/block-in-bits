@@ -1,5 +1,6 @@
 extends Node2D;
 
+@onready var seconds_particle := preload("res://Scenes/add_second_particle.tscn");
 @onready var start_pos := $"Start Pile Position";
 @onready var life_value := $interface/life_value;
 @onready var top_block := $top_block;
@@ -64,14 +65,7 @@ func _on_hit_block(tool_resistance: int) -> void:
 	blocks[0][0] -= roundi((tool_resistance / float(blocks[0][1])) * 100);
 	actual_block_hits += 1;	
 	if (blocks[0][0] <= 0):
-		calculate_player_points();
-		blocks.pop_front();
-		actual_block_hits = 0;
-		actual_depth += 1;
-		update_blocks();
-		update_block_info();
-		Events.emit_signal("depth_change", actual_depth);
-		Events.emit_signal("add_time", 1);
+		break_block();
 		if (not sequence):
 			_on_insert_element_on_pile();
 		elif(sequence and len(blocks) == 1):
@@ -80,6 +74,19 @@ func _on_hit_block(tool_resistance: int) -> void:
 			# next level
 			pass;
 	update_block_life_text();
+
+func break_block() -> void:
+	calculate_player_points();
+	blocks.pop_front();
+	actual_block_hits = 0;
+	actual_depth += 1;
+	update_blocks();
+	update_block_info();
+	Events.emit_signal("depth_change", actual_depth);
+	Events.emit_signal("add_time", 1);
+	var new_seconds_particle := seconds_particle.instantiate();
+	%particles_position.add_child(new_seconds_particle);
+	new_seconds_particle.emitting = true;
 
 func calculate_player_points() -> void:
 	Events.emit_signal("earn_points", blocks[0][3]);

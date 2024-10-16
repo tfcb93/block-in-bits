@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnja04ygn6xm"]
+
+[ext_resource type="Texture2D" uid="uid://d2nb2ahfy4ggb" path="res://Resources/Images/1sec_texture.png" id="1_s76wo"]
+[ext_resource type="Script" path="res://Scripts/add_second_particle.gd" id="2_gkwm1"]
+
+[sub_resource type="Gradient" id="Gradient_mki8o"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_gskqy"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+emitting = false
+amount = 1
+one_shot = true
+texture = ExtResource("1_s76wo")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 90.0
+initial_velocity_max = 120.0
+angular_velocity_min = -30.0
+angular_velocity_max = 30.0
+linear_accel_min = -100.0
+linear_accel_max = 100.0
+color = Color(0, 0.752649, 0.753001, 1)
+color_ramp = SubResource("Gradient_mki8o")
+hue_variation_min = -0.73
+hue_variation_max = 0.4
+hue_variation_curve = SubResource("Curve_gskqy")
+script = ExtResource("2_gkwm1")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
