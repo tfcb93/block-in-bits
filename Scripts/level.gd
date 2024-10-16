@@ -21,6 +21,8 @@ func _ready() -> void:
 
 	Events.connect("add_time", _on_add_time);
 
+	check_controller_instructions();
+
 	start_level_timers();
 	update_timer();
 
@@ -28,6 +30,20 @@ func _ready() -> void:
 		%mobile_buttons.visible = true;
 		%btn_pause.visible = true;
 		%shop_indicator.visible = false;
+
+func check_controller_instructions() -> void:
+	%shop_label.visible = false;
+	%shop_label_ps.visible = false;
+	%shop_label_xbox.visible = false;
+	%shop_label_nintendo.visible = false;
+	if(Globals.controller_type.contains("Nintendo")):
+		%shop_label_nintendo.visible = true;
+	elif(Globals.controller_type.contains("PS")):
+		%shop_label_ps.visible = true;
+	elif(Globals.controller_type.contains("Xbox")):
+		%shop_label_xbox.visible = true;
+	else:
+		%shop_label.visible = true;
 
 func _process(delta: float) -> void:
 	if (not is_game_finished):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ofnaphcqerff"]
+[gd_scene load_steps=5 format=3 uid="uid://ofnaphcqerff"]
 
 [ext_resource type="Script" path="res://Scripts/start_screen.gd" id="1_l6jgp"]
 [ext_resource type="LabelSettings" uid="uid://beq4d7iguabky" path="res://Resources/title_label.tres" id="2_6o5yt"]
 [ext_resource type="LabelSettings" uid="uid://cnpd02d1dmt6i" path="res://Resources/normal_text_label.tres" id="3_he0mn"]
+[ext_resource type="LabelSettings" uid="uid://bsm7x5clu6urn" path="res://Resources/very_small_label_text.tres" id="4_mirwu"]
 
 [node name="start screen" type="Node2D"]
 script = ExtResource("1_l6jgp")
@@ -72,5 +73,19 @@ offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "start game"
+
+[node name="Label" type="Label" parent="interface"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -10.0
+offset_right = 107.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Disclaimer: we are not responsible for damages to controllers and screens. Enjoy."
+label_settings = ExtResource("4_mirwu")
 
 [connection signal="pressed" from="interface/start_button" to="." method="_on_start_button_pressed"]

@@ -55,9 +55,35 @@ layout_mode = 2
 texture_normal = ExtResource("3_6d5i2")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="interface/shop_indicator"]
+[node name="shop_label" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "[Shift]: shop"
+label_settings = ExtResource("4_xby0c")
+horizontal_alignment = 1
+
+[node name="shop_label_nintendo" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "[A]: shop"
+label_settings = ExtResource("4_xby0c")
+horizontal_alignment = 1
+
+[node name="shop_label_ps" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "[○]: shop"
+label_settings = ExtResource("4_xby0c")
+horizontal_alignment = 1
+
+[node name="shop_label_xbox" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "[B]: shop"
 label_settings = ExtResource("4_xby0c")
 horizontal_alignment = 1
 
