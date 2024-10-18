@@ -9,13 +9,6 @@ func _ready() -> void:
 	if (not get_tree().paused):
 		%interface.visible = false;
 
-	# while I don't have other settings besides fullscree
-	if (Globals.is_mobile):
-		%btn_settings.visible = false;
-		# in case someone is using a controller on the phone or tablet
-		%btn_back.focus_neighbor_bottom = %btn_info;
-		%btn_back.focus_neighbor_top = %btn_back;
-
 func _on_pause_game() -> void:
 	%interface.visible = true;
 	%btn_back.grab_focus();

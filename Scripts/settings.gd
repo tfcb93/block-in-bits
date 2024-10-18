@@ -11,9 +11,15 @@ func _ready() -> void:
 	%btn_sound_effects.button_pressed = Globals.is_sound_effects_on;
 	%btn_background.button_pressed = Globals.is_background_on;
 
+	if(Globals.is_mobile):
+		%top_settings.visible = false;
+	elif(Globals.is_web):
+		%btn_fullscreen.visible = false;
+
 func _on_open_settings() -> void:
 	%interface.visible = true;
 	%btn_fullscreen.grab_focus();
+
 
 # necessary due to controller commands
 func _on_unpause_game() -> void:

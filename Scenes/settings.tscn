@@ -38,19 +38,20 @@ text = "Settings"
 label_settings = ExtResource("2_s48hx")
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="interface/VBoxContainer"]
+[node name="top_settings" type="HBoxContainer" parent="interface/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 alignment = 1
 
-[node name="btn_fullscreen" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
+[node name="btn_fullscreen" type="CheckButton" parent="interface/VBoxContainer/top_settings"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_right = NodePath("../btn_vibration")
 focus_neighbor_bottom = NodePath("../../HBoxContainer3/btn_sound_effects")
 text = "Fullscreen"
 
-[node name="btn_vibration" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
+[node name="btn_vibration" type="CheckButton" parent="interface/VBoxContainer/top_settings"]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../btn_fullscreen")
@@ -66,8 +67,8 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../../HBoxContainer4/btn_background")
-focus_neighbor_top = NodePath("../../HBoxContainer2/btn_fullscreen")
-focus_neighbor_right = NodePath("../../HBoxContainer2/btn_vibration")
+focus_neighbor_top = NodePath("../../top_settings/btn_fullscreen")
+focus_neighbor_right = NodePath("../../top_settings/btn_vibration")
 focus_neighbor_bottom = NodePath("../../HBoxContainer4/btn_background")
 text = "SFX"
 
@@ -116,8 +117,8 @@ size_flags_horizontal = 4
 text = "The \"Clear Data\" button resets the high score."
 label_settings = ExtResource("3_ltac0")
 
-[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer2/btn_fullscreen" to="." method="_on_btn_fullscreen_toggled"]
-[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer2/btn_vibration" to="." method="_on_btn_vibration_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/top_settings/btn_fullscreen" to="." method="_on_btn_fullscreen_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/top_settings/btn_vibration" to="." method="_on_btn_vibration_toggled"]
 [connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_sound_effects" to="." method="_on_btn_sound_effects_toggled"]
 [connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_music" to="." method="_on_btn_music_toggled"]
 [connection signal="toggled" from="interface/VBoxContainer/HBoxContainer4/btn_background" to="." method="_on_btn_background_toggled"]
