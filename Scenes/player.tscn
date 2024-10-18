@@ -1,0 +1,113 @@
+[gd_scene load_steps=9 format=3 uid="uid://e5naf2jx66xg"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_pl5h6"]
+[ext_resource type="LabelSettings" uid="uid://d1w54wy8w8lj3" path="res://Resources/player_info_label.tres" id="2_gwkn7"]
+[ext_resource type="Texture2D" uid="uid://cqlw6ackqqhpu" path="res://Resources/Images/arrow.png" id="2_m0a82"]
+[ext_resource type="LabelSettings" uid="uid://cjjnsblduleoc" path="res://Resources/small_label_text.tres" id="2_oxxax"]
+[ext_resource type="Texture2D" uid="uid://dn4inyxto5cb1" path="res://Resources/Images/resistance.png" id="2_svvc8"]
+[ext_resource type="Texture2D" uid="uid://tawcavopjwj0" path="res://Resources/Images/points.png" id="4_uwk3q"]
+[ext_resource type="Texture2D" uid="uid://cp15xdm78bp1p" path="res://Resources/Images/down.png" id="4_wxapv"]
+[ext_resource type="Texture2D" uid="uid://dg4n8j8jjqkml" path="res://Resources/Images/multi.png" id="5_h1xnh"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_pl5h6")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="interface"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -52.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = 37.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="interface/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="interface/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="btn_tool_left" type="TextureButton" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_m0a82")
+
+[node name="intf_tool_name" type="Label" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Tool name"
+label_settings = ExtResource("2_oxxax")
+horizontal_alignment = 1
+
+[node name="btn_tool_right" type="TextureButton" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_m0a82")
+flip_h = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="interface/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="intf_tool_img" type="TextureRect" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("2_svvc8")
+expand_mode = 2
+
+[node name="intf_tool_resistance" type="Label" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+label_settings = ExtResource("2_gwkn7")
+
+[node name="intf_multiplier_img" type="TextureRect" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_h1xnh")
+expand_mode = 2
+
+[node name="intf_tool_multiplier" type="Label" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+label_settings = ExtResource("2_gwkn7")
+horizontal_alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="interface/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("4_uwk3q")
+expand_mode = 2
+
+[node name="intf_player_points" type="Label" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100"
+label_settings = ExtResource("2_gwkn7")
+vertical_alignment = 3
+
+[node name="TextureRect3" type="TextureRect" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("4_wxapv")
+expand_mode = 2
+
+[node name="intf_depth" type="Label" parent="interface/HBoxContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0m"
+label_settings = ExtResource("2_gwkn7")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="interface/HBoxContainer/VBoxContainer/HBoxContainer2/btn_tool_left" to="." method="_on_btn_tool_left_pressed"]
+[connection signal="pressed" from="interface/HBoxContainer/VBoxContainer/HBoxContainer2/btn_tool_right" to="." method="_on_btn_tool_right_pressed"]

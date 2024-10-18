@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://doxuejssivyjl"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_hceff"]
+
+[resource]
+script = ExtResource("1_hceff")
+id = 0
+name = "TEST 1"
+price = 10
+depth = 2
+effects = {
+0: [10, 10],
+1: [100, 100],
+2: [100, 10]
+}

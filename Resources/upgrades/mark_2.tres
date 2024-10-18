@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://cq0n2l5rxsuq0"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_cwnov"]
+
+[resource]
+script = ExtResource("1_cwnov")
+id = 2
+name = "Mark II"
+price = 500
+depth = 500
+effects = {
+0: [10, 20],
+1: [15, 5],
+2: [50, 3]
+}

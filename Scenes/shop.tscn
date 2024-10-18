@@ -1,0 +1,156 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn2ew8s72tfs0"]
+
+[ext_resource type="Script" path="res://Scripts/shop.gd" id="1_uktmr"]
+[ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="2_u1al3"]
+[ext_resource type="LabelSettings" uid="uid://cjjnsblduleoc" path="res://Resources/small_label_text.tres" id="3_xj5q4"]
+[ext_resource type="LabelSettings" uid="uid://bsm7x5clu6urn" path="res://Resources/very_small_label_text.tres" id="4_gla7c"]
+[ext_resource type="LabelSettings" uid="uid://cnpd02d1dmt6i" path="res://Resources/normal_text_label.tres" id="5_1iwji"]
+[ext_resource type="AudioStream" uid="uid://yfy85nhavbph" path="res://Resources/Sounds/power-up.wav" id="6_h701g"]
+[ext_resource type="AudioStream" uid="uid://dgtag66cvwfxj" path="res://Resources/Sounds/add-time.wav" id="8_8546f"]
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_uktmr")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="interface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -20.0
+offset_right = 20.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="intf_title" type="Label" parent="interface/VBoxContainer"]
+layout_mode = 2
+text = "SHOP"
+label_settings = ExtResource("2_u1al3")
+horizontal_alignment = 1
+
+[node name="selling" type="HBoxContainer" parent="interface/VBoxContainer"]
+layout_mode = 2
+
+[node name="upgrades" type="VBoxContainer" parent="interface/VBoxContainer/selling"]
+layout_mode = 2
+
+[node name="section_title_upgrade" type="Label" parent="interface/VBoxContainer/selling/upgrades"]
+layout_mode = 2
+text = "Upgrade
+"
+label_settings = ExtResource("3_xj5q4")
+
+[node name="list" type="VBoxContainer" parent="interface/VBoxContainer/selling/upgrades"]
+layout_mode = 2
+
+[node name="btn_upgrade" type="Button" parent="interface/VBoxContainer/selling/upgrades/list"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_right = NodePath("../../../time/list/btn_time_10")
+focus_neighbor_bottom = NodePath("../../../../btn_exit")
+text = "Upgrade mark I"
+
+[node name="price_upgrade" type="Label" parent="interface/VBoxContainer/selling/upgrades/list"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100 bits"
+label_settings = ExtResource("4_gla7c")
+
+[node name="intf_upgrade_description" type="Label" parent="interface/VBoxContainer/selling/upgrades/list"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "- this
+- that"
+label_settings = ExtResource("4_gla7c")
+
+[node name="time" type="VBoxContainer" parent="interface/VBoxContainer/selling"]
+layout_mode = 2
+
+[node name="section_title_time" type="Label" parent="interface/VBoxContainer/selling/time"]
+layout_mode = 2
+text = "Time"
+label_settings = ExtResource("3_xj5q4")
+
+[node name="list" type="VBoxContainer" parent="interface/VBoxContainer/selling/time"]
+layout_mode = 2
+
+[node name="btn_time_10" type="Button" parent="interface/VBoxContainer/selling/time/list"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../upgrades/list/btn_upgrade")
+focus_neighbor_bottom = NodePath("../../list2/btn_time_20")
+text = "10 seconds"
+
+[node name="price_10" type="Label" parent="interface/VBoxContainer/selling/time/list"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10 bits"
+label_settings = ExtResource("4_gla7c")
+
+[node name="list2" type="VBoxContainer" parent="interface/VBoxContainer/selling/time"]
+layout_mode = 2
+
+[node name="btn_time_20" type="Button" parent="interface/VBoxContainer/selling/time/list2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../../list/btn_time_10")
+focus_neighbor_right = NodePath("../../../upgrades/list/btn_upgrade")
+focus_neighbor_bottom = NodePath("../../../../btn_exit")
+text = "20 seconds"
+
+[node name="price_20" type="Label" parent="interface/VBoxContainer/selling/time/list2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20 bits"
+label_settings = ExtResource("4_gla7c")
+
+[node name="btn_exit" type="Button" parent="interface/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../selling/upgrades/list/btn_upgrade")
+focus_neighbor_right = NodePath("../selling/time/list2/price_20")
+text = "return"
+
+[node name="player_info" type="VBoxContainer" parent="interface"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 77.0
+offset_bottom = 50.0
+theme_override_constants/separation = -2
+
+[node name="player_points_title" type="Label" parent="interface/player_info"]
+layout_mode = 2
+text = "Points"
+label_settings = ExtResource("3_xj5q4")
+
+[node name="intf_player_points" type="Label" parent="interface/player_info"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("5_1iwji")
+visible_characters = 16
+
+[node name="sfx_power_up" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_h701g")
+
+[node name="sfx_add_time" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_8546f")
+
+[connection signal="pressed" from="interface/VBoxContainer/selling/upgrades/list/btn_upgrade" to="." method="_on_btn_upgrade_pressed"]
+[connection signal="pressed" from="interface/VBoxContainer/selling/time/list/btn_time_10" to="." method="_on_btn_time_10_pressed"]
+[connection signal="pressed" from="interface/VBoxContainer/selling/time/list2/btn_time_20" to="." method="_on_btn_time_20_pressed"]
+[connection signal="pressed" from="interface/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

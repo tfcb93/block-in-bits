@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Block" load_steps=2 format=3 uid="uid://j0wgmeqcvr5h"]
+
+[ext_resource type="Script" path="res://Scripts/block.gd" id="1_00gv3"]
+
+[resource]
+script = ExtResource("1_00gv3")
+toughness = 250
+min_depth_appearance = 6400
+toughness_increase_factor = 1.8
+points = 9
+color = Color(0, 0, 0, 1)

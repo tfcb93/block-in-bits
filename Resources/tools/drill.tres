@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Tool" load_steps=2 format=3 uid="uid://buugoe6atd2d3"]
+
+[ext_resource type="Script" path="res://Scripts/tool.gd" id="1_xm8cm"]
+
+[resource]
+script = ExtResource("1_xm8cm")
+name = "Drill"
+link_name = 2
+resistance = 20
+point_multiplier = 1

@@ -1,185 +1,107 @@
 extends Node2D;
 
-@onready var block_scene := preload("res://Scenes/block.tscn");
+@onready var seconds_particle := preload("res://Scenes/add_second_particle.tscn");
 @onready var start_pos := $"Start Pile Position";
-@onready var pile := $Pile;
-@onready var tap_sound := $"Tap Sound";
-@onready var block_sounds := $"Block Sounds";
-@onready var destroy_block_sound := $"Destroy Block Sound";
+@onready var life_value := $interface/life_value;
+@onready var top_block := $top_block;
+@onready var under_block := $under_block;
 
-var pile_types: Array[String] = [];
-var block_gap := 54.0;
-var taps_since_new_block := 0;
-var total_blocks_generated := 0;
+@export var sequence: BlockSequence = null;
+
+var blocks = [];
+var block_groups = {0: 0};
+var actual_block_hits := 0;
+var actual_depth := 0;
+var actual_milestone := Globals.endless_initial_milestone;
 
 func _ready() -> void:
 	var screen_size = get_viewport_rect().size;
 	start_pos.position = Vector2(screen_size.x/2, screen_size.y / 2);
-	
-	Events.connect("tap",_on_screen_tap);
-	generate_block_pile();
-	
-	for i in range(len(pile_types)):
-		var newBlock = block_scene.instantiate();
-		newBlock.position = start_pos.position + Vector2(0.0, block_gap * i);
-		newBlock.block_type = pile_types[i];
-		pile.add_child(newBlock);
-		pile.move_child(newBlock, 0);
+
+	Events.connect("generate_pile", _on_generate_pile);
+	Events.connect("hit_block", _on_hit_block);
+
+func _on_generate_pile() -> void:
+	if (not sequence):
+		# random order
+		for block in range(1, 10):
+			generate_new_block();
+	update_block_info();
+
+func _on_insert_element_on_pile() -> void:
+	generate_new_block();
+	update_block_info();
+
+func generate_new_block() -> void:
+	# first, grab a random block group that is valid
+	var rnd_group := randi_range(0, len(block_groups) - 1) if len(block_groups) > 1 else 0;
+	# access the group
+	var rnd_group_key:int = block_groups.keys()[rnd_group];
+	# pick up a random block from that group if value is bigger than 1
+	var rnd_block_index := randi_range(0, len(Globals.blocks[rnd_group_key]) - 1) if len(Globals.blocks[rnd_group_key]) else 0;
+	var block_from_resource:Block = Globals.blocks[rnd_group_key][rnd_block_index];
+	var toughness_multiplier:float = block_from_resource.toughness_increase_factor * block_groups[rnd_group_key] if (block_groups[rnd_group_key] > 0) else 1;
+	blocks.push_back([block_from_resource.life, block_from_resource.toughness * toughness_multiplier, block_from_resource.color, block_from_resource.points]);
+
+func update_blocks() -> void:
+	if(Globals.blocks.get(actual_depth)):
+		block_groups[actual_depth] = 0;
+	if(actual_depth == actual_milestone):
+		actual_milestone *= Globals.endelss_milestone_multiply_factor;
+		for k in block_groups.keys():
+			block_groups[k] += 1;
+		if (not Globals.controller_type.is_empty() and Globals.is_vibration_active):
+			Input.start_joy_vibration(0, 0.2, 1, 0.2);
 		
-	#load_block_sounds();
-	set_actual_block(pile.get_child(-1).block_type);
 
-func _on_screen_tap() -> void:
-	if not Globals.game_stop:
-		#taps_since_new_block += 1;
-		#if taps_since_new_block >= pile.get_child(-1).life:
-		if pile.get_child(-1).life <= 0:
-			#play_block_sound(pile.get_child(-1).block_type);
-			destroy_block_sound.pitch_scale = randf_range(1.0, 0.7);
-			destroy_block_sound.play();
-			pile.get_child(-1).queue_free();
-			taps_since_new_block = 0;
-			Globals.total_blocks_destroyed += 1;
-			pile_types.pop_front();
-			set_actual_block(pile_types[0]);
-			
-			Events.emit_signal("add_bits");
-			Globals.actual_block_points = 0;
-			
-			if pile.get_child_count() - 1 == 0:
-				Globals.game_stop = true;
-			
-			generate_block_pile();
-			insert_new_block();
-			
-			lift_pile_up();
-		else:
-			tap_sound.pitch_scale = randf_range(3.0, 1.0);
-			tap_sound.play();
+func update_block_life_text() -> void:
+	life_value.text = str(blocks[0][0]);
 
-func lift_pile_up() -> void:
-	for block in pile.get_children():
-		block.position -= Vector2(0.0, block_gap);
+func update_block_info() -> void:
+	life_value.text = str(blocks[0][0]);
+	top_block.modulate = blocks[0][2]; # block color
+	under_block.modulate = blocks[1][2];
 
-func insert_new_block() -> void:
-	var newBlock = block_scene.instantiate();
-	newBlock.position = start_pos.position + Vector2(0.0, block_gap * (len(pile.get_children()) - 1));
-	newBlock.block_type = pile_types[len(pile.get_children()) - 1];
-	pile.add_child(newBlock);
-	pile.move_child(newBlock, 0);
 
-func generate_block_pile() -> void:
-	if total_blocks_generated == 0:
-		generate_starter_blocks();
-	elif total_blocks_generated >= 20 or total_blocks_generated < 500:
-		generate_new_block_level_1();
-	elif total_blocks_generated >= 500 or total_blocks_generated < 1000:
-		generate_new_block_level_2();
-	elif total_blocks_generated >= 1000 or total_blocks_generated < 10000:
-		generate_new_block_level_3();
-	elif total_blocks_generated >= 100000:
-		generate_new_block_level_4();
-	#elif total_blocks_generated >= 10000 or total_blocks_generated < 100000:
-		#generate_new_block_random_1();
-	#elif total_blocks_generated >= 100000:
-		#generate_new_block_random_2();
-	else:
-		generate_random_block();
+func _on_hit_block(tool_resistance: int) -> void:
+	blocks[0][0] -= roundi((tool_resistance / float(blocks[0][1])) * 100);
+	actual_block_hits += 1;	
+	if (blocks[0][0] <= 0):
+		break_block();
+		if (not sequence):
+			_on_insert_element_on_pile();
+		elif(sequence and len(blocks) == 1):
+			under_block.queue_free();
+		elif(sequence and len(blocks) == 0):
+			# next level
+			pass;
+	update_block_life_text();
 
-func generate_starter_blocks() -> void:
-	pile_types = ["earth", "earth", "earth", "earth", "earth", "stone", "stone", "stone", "sand", "sand", "stone", "stone", "stone", "coal", "stone", "coal", "stone", "stone", "stone", "metal"];
-	total_blocks_generated = len(pile_types);
+func break_block() -> void:
+	calculate_player_points();
+	blocks.pop_front();
+	actual_block_hits = 0;
+	actual_depth += 1;
+	update_blocks();
+	update_block_info();
+	Events.emit_signal("depth_change", actual_depth);
+	Events.emit_signal("add_time", 1);
+	var new_seconds_particle := seconds_particle.instantiate();
+	%particles_position.add_child(new_seconds_particle);
+	new_seconds_particle.emitting = true;
+	play_sound_effects();
 
-func generate_new_block_level_1() -> void:
-	var last_pile_block = pile_types[len(pile.get_children()) - 2];
-	
-	match last_pile_block:
-		"metal":
-			insert_new_block_in_pile_types(["stone", "metal"]);
-		"stone":
-			insert_new_block_in_pile_types(["stone", "metal", "coal"]);
-		"coal":
-			insert_new_block_in_pile_types(["stone", "coal"]);
-		_:
-			generate_random_block();
+func calculate_player_points() -> void:
+	Events.emit_signal("earn_points", blocks[0][3]);
 
-func generate_new_block_level_2() -> void:
-	var last_pile_block = pile_types[len(pile.get_children()) - 2];
-	
-	match last_pile_block:
-		"metal":
-			insert_new_block_in_pile_types(["stone", "metal", "silver", "gold", "copper"]);
-		"silver":
-			insert_new_block_in_pile_types(["metal", "silver", "gold", "copper"]);
-		"gold":
-			insert_new_block_in_pile_types(["silver", "gold", "quartz"]);
-		"copper":
-			insert_new_block_in_pile_types(["metal", "silver", "copper"]);
-		"quartz":
-			insert_new_block_in_pile_types(["quartz", "silver", "gold"]);
-		_:
-			generate_new_block_level_1();
-	
-func generate_new_block_level_3() -> void:
-	var last_pile_block = pile_types[len(pile.get_children()) - 2];
-	match last_pile_block:
-		"quartz":
-			insert_new_block_in_pile_types(["quartz", "emerald", "ruby", "sapphire", "diamond"]);
-		"diamond":
-			insert_new_block_in_pile_types(["lava", "stone", "coal"]);
-		"emerald":
-			insert_new_block_in_pile_types(["stone", "coal", "emerald", "quartz"]);
-		"ruby":
-			insert_new_block_in_pile_types(["stone", "coal", "ruby", "quartz"]);
-		"sapphire":
-			insert_new_block_in_pile_types(["stone", "coal", "sapphire", "quartz"]);
-		"lava":
-			insert_new_block_in_pile_types(["stone"]);
-		_:
-			generate_new_block_level_2();
-func generate_new_block_level_4() -> void:
-	var last_pile_block = pile_types[len(pile.get_children()) - 2];
-	match last_pile_block:
-		"metal":
-			insert_new_block_in_pile_types(["stone", "metal", "silver", "gold", "copper", "plastic", "concrete", "electrical", "mechanical"]);
-		"plastic":
-			insert_new_block_in_pile_types(["coal, metal, electrical, concrete, mechanical"]);
-		"concrete":
-			insert_new_block_in_pile_types(["stone, coal, electrical, concrete, mechanical, dust"]);
-		"electrical":
-			insert_new_block_in_pile_types(["electrical, mechanical, concrete"]);
-		"mechanical":
-			insert_new_block_in_pile_types(["concrete, electrical, mechanical, dust, stone, metal"]);
-		"dust":
-			insert_new_block_in_pile_types(["stone, concrete, coal"]);
-		_:
-			generate_new_block_level_3();
+func play_sound_effects() -> void:
+	if (Globals.is_sound_effects_on):
+		%sfx_block_break.volume_db = randf_range(0.5, 3);
+		%sfx_block_break.pitch_scale = randf_range(1, 4);
+		%sfx_block_break.play();
 
-func generate_new_block_random_2() -> void:
-	pass
+func hide_interface() -> void:
+	%interface.visible = false;
 
-func generate_random_block() -> void:
-	var all_blocks := BAP.blocks_info.keys();
-	insert_new_block_in_pile_types(all_blocks);
-	
-func insert_new_block_in_pile_types(types:Array) -> void:
-	var new_type = randi() % len(types) - 1;
-	pile_types.push_back(types[new_type]);
-	++total_blocks_generated;
-
-#func load_block_sounds() -> void:
-	#for block_type in Globals.block_types:
-		#var newSound = AudioStreamPlayer.new();
-		#newSound.stream  = load("res://Resources/Sounds/" + block_type + ".wav");
-		#newSound.name = block_type;
-		#block_sounds.add_child(newSound);
-		#
-#
-#func play_block_sound(type: String) -> void:
-	#get_node("Block Sounds/" + type).play();
-
-func set_actual_block(type: String) -> void:
-	Globals.actual_block_type = type;
-
-func set_actual_block_damage(value: int) -> void:
-	pile.get_child(-1).life -= value;
+func show_interface() -> void:
+	%interface.visible = true;

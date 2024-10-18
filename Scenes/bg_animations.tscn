@@ -1,0 +1,153 @@
+[gd_scene load_steps=12 format=3 uid="uid://dliq8fekps07w"]
+
+[ext_resource type="Script" path="res://Scripts/bg_animations.gd" id="1_jw4gv"]
+[ext_resource type="Texture2D" uid="uid://bklsyjdi0rhyk" path="res://Resources/Images/patterns/pattern-1.png" id="1_ycycf"]
+[ext_resource type="Texture2D" uid="uid://dlbg3kr8s7lss" path="res://Resources/Images/patterns/pattern-2.png" id="3_nq2vh"]
+[ext_resource type="Texture2D" uid="uid://ddpyn17sd4aao" path="res://Resources/Images/patterns/patterns-3.png" id="4_y51k1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_oidow"]
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_pn2o7"]
+
+[sub_resource type="Animation" id="Animation_kmu4n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patterns/pattern_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, -90)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("patterns/pattern_2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, -90)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("patterns/pattern_3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, -90)]
+}
+
+[sub_resource type="Animation" id="Animation_61rm2"]
+resource_name = "pattern_1_anim"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patterns/pattern_1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, -90), Vector2(160, 270)]
+}
+
+[sub_resource type="Animation" id="Animation_jdycq"]
+resource_name = "pattern_2_anim"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patterns/pattern_2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, -90), Vector2(160, 246)]
+}
+
+[sub_resource type="Animation" id="Animation_ariuj"]
+resource_name = "pattern_3_anim"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("patterns/pattern_3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, -78), Vector2(160, 258)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82qyr"]
+_data = {
+"RESET": SubResource("Animation_kmu4n"),
+"pattern_1_anim": SubResource("Animation_61rm2"),
+"pattern_2_anim": SubResource("Animation_jdycq"),
+"pattern_3_anim": SubResource("Animation_ariuj")
+}
+
+[node name="bg_animations" type="Node2D"]
+script = ExtResource("1_jw4gv")
+
+[node name="patterns" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="pattern_0" type="Sprite2D" parent="patterns"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(160, 90)
+scale = Vector2(320, 180)
+texture = SubResource("CanvasTexture_oidow")
+
+[node name="pattern_1" type="Sprite2D" parent="patterns"]
+unique_name_in_owner = true
+position = Vector2(160, -90)
+texture = ExtResource("1_ycycf")
+metadata/_edit_lock_ = true
+
+[node name="pattern_2" type="Sprite2D" parent="patterns"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(160, -90)
+texture = ExtResource("3_nq2vh")
+metadata/_edit_lock_ = true
+
+[node name="pattern_3" type="Sprite2D" parent="patterns"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(160, -90)
+texture = ExtResource("4_y51k1")
+metadata/_edit_lock_ = true
+
+[node name="animations" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%animations/..")
+tree_root = SubResource("AnimationRootNode_pn2o7")
+anim_player = NodePath("../player")
+
+[node name="player" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_82qyr")
+}

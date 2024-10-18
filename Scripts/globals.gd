@@ -1,19 +1,31 @@
-extends Node
+extends Node;
 
-var total_blocks_destroyed := 0;
-var total_taps := 0;
+const endless_initial_milestone := 100;
+const endelss_milestone_multiply_factor := 2;
+# Looks like I can't index the enum to stings
+const available_tools_names := {AVAILABLE_TOOLS.PICKAXE: "Pickaxe", AVAILABLE_TOOLS.HAMMER: "Hammer", AVAILABLE_TOOLS.DRILL: "Drill"};
 
+# game states
+enum GAME_STATES {START_SCREEN, SELECTION, IN_GAME, IN_SHOP, PAUSED, GAME_OVER};
+var game_state := GAME_STATES.START_SCREEN;
 
-var game_stop := false;
+# tools
+enum AVAILABLE_TOOLS {PICKAXE = 0, HAMMER, DRILL};
+var upgrades = [];
+# blocks
+var blocks := {};
 
-var game_start := false;
+# settings
+var is_game_fullscreen := false;
+var is_vibration_active := true;
+var is_sound_effects_on := true;
+var is_background_on := true;
 
-const block_types := ["earth", "sand", "stone", "coal", "metal"];
-const block_life := {"earth" = 3, "stone" = 10, "coal" = 20, "metal" = 50};
+# game data
+var config_data: ConfigFile;
+var high_depth_score := 0;
 
-var actual_picaxe_type: String;
-var actual_block_type: String;
-
-var total_player_points:int = 0;
-var actual_block_points: int = 0;
-var next_checkpoint_points: int = 1000;
+# misc.
+var is_mobile := false;
+var is_web := false;
+var controller_type := "";

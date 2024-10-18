@@ -1,23 +1,42 @@
 extends Node;
 
-signal tap;
+signal enter_game();
+signal close_start_screen();
+signal open_select_mode();
+signal close_select_mode();
+signal pause_game();
+signal unpause_game();
+signal exit_level();
+signal open_credits();
+signal close_credits();
 
-signal finish;
+signal open_instructions_from_selection();
+signal close_instructions_to_selection();
+signal open_instructions_from_pause();
+signal close_instructions_to_pause();
 
-signal next_level(value: int);
+signal open_settings_from_selection();
+signal close_settings_to_selection();
+signal open_settings_from_pause();
+signal close_settings_to_pause();
+signal toggle_background(is_on: bool);
 
-signal change_pickaxe_type(dir: String);
+signal start_game();
+signal stop_game();
 
-signal pickaxe_type_changed(type: String);
+signal generate_pile();
+signal hit_block(tool_resistance: int);
+signal earn_points(earned_points: int);
+signal depth_change(new_depth: int);
+signal change_tool(index_direction: int);
+signal add_time(time: int);
 
-signal open_shopping;
+signal open_shop();
+signal close_shop();
+signal inform_shop_data(player_points: int, depth: int);
+signal discount_points(discounted_points: int);
+signal upgrade_tools(upgrde: Upgrade);
 
-signal close_shopping;
+signal game_over();
 
-signal add_bits;
-
-signal discount_bits(value: int);
-
-signal bits_discounted;
-
-signal bought_pickaxe(type_id: String);
+signal config_change(config_name: String, config_value: Variant);

@@ -1,48 +1,26 @@
-[gd_scene load_steps=12 format=3 uid="uid://xvjacwyfgsyp"]
+[gd_scene load_steps=8 format=3 uid="uid://drarqqw6keabg"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_25r8w"]
-[ext_resource type="PackedScene" uid="uid://cjlt1jaav3kox" path="res://Scenes/test_corners.tscn" id="2_ohe75"]
-[ext_resource type="PackedScene" uid="uid://c1msyiewppjed" path="res://Scenes/counters.tscn" id="2_pugvt"]
-[ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="3_hjkes"]
-[ext_resource type="PackedScene" uid="uid://dx68lqtpduw7b" path="res://Scenes/picaxe_selector.tscn" id="4_k0xen"]
-[ext_resource type="PackedScene" uid="uid://csppqky04k64o" path="res://Scenes/central_screen_text.tscn" id="5_tfyk2"]
-[ext_resource type="PackedScene" uid="uid://b3gvjwdsaaa65" path="res://Scenes/background.tscn" id="6_2hb4t"]
-[ext_resource type="PackedScene" uid="uid://bvdotdi1t80tg" path="res://Scenes/start_screen.tscn" id="7_lre40"]
-[ext_resource type="PackedScene" uid="uid://3ri8srhpwkac" path="res://Scenes/pickaxe_bag.tscn" id="8_upw6x"]
-[ext_resource type="PackedScene" uid="uid://csttkv7omrvrp" path="res://Scenes/game_over.tscn" id="10_2jao5"]
-[ext_resource type="PackedScene" uid="uid://y1vbj40iecwn" path="res://Scenes/shopping.tscn" id="11_io7s5"]
+[ext_resource type="PackedScene" uid="uid://ofnaphcqerff" path="res://Scenes/start_screen.tscn" id="2_3tcmf"]
+[ext_resource type="PackedScene" uid="uid://dveothv1myxly" path="res://Scenes/pause_screen.tscn" id="3_0fafb"]
+[ext_resource type="PackedScene" uid="uid://gttnpa80nl25" path="res://Scenes/mode_selection.tscn" id="3_crkq4"]
+[ext_resource type="PackedScene" uid="uid://dcu3ynjpt6gem" path="res://Scenes/settings.tscn" id="5_bw20d"]
+[ext_resource type="PackedScene" uid="uid://dsxhqpayo8uwk" path="res://Scenes/instructions.tscn" id="6_ecaik"]
+[ext_resource type="PackedScene" uid="uid://crwj5y6c6j8pk" path="res://Scenes/credits.tscn" id="7_pukup"]
 
-[node name="Game" type="Node2D"]
+[node name="game" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_25r8w")
 
-[node name="ColorRect" parent="." instance=ExtResource("6_2hb4t")]
-scale = Vector2(1, 1.00868)
+[node name="start screen" parent="." instance=ExtResource("2_3tcmf")]
+process_mode = 3
 
-[node name="Test Corners" parent="." instance=ExtResource("2_ohe75")]
-visible = false
+[node name="Mode Selection" parent="." instance=ExtResource("3_crkq4")]
 
-[node name="Selector" parent="." instance=ExtResource("4_k0xen")]
+[node name="pause screen" parent="." instance=ExtResource("3_0fafb")]
 
-[node name="Block Pile" parent="." instance=ExtResource("3_hjkes")]
+[node name="Settings" parent="." instance=ExtResource("5_bw20d")]
 
-[node name="Counters" parent="." instance=ExtResource("2_pugvt")]
+[node name="Instructions" parent="." instance=ExtResource("6_ecaik")]
 
-[node name="Central Screen Text" parent="." instance=ExtResource("5_tfyk2")]
-
-[node name="Start Screen" parent="." instance=ExtResource("7_lre40")]
-
-[node name="Pickaxe Bag" parent="." instance=ExtResource("8_upw6x")]
-
-[node name="Game Over" parent="." instance=ExtResource("10_2jao5")]
-
-[node name="Button" type="Button" parent="."]
-offset_left = 15.0
-offset_top = 738.0
-offset_right = 111.0
-offset_bottom = 795.0
-text = "SHOP"
-
-[node name="Shopping" parent="." instance=ExtResource("11_io7s5")]
-visible = false
-
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[node name="Credits" parent="." instance=ExtResource("7_pukup")]

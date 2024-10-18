@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://chxtdu6sd2oes"]
+
+[ext_resource type="FontFile" uid="uid://cpm8u0x57hw7j" path="res://Resources/Fonts/Jersey_10/Jersey10-Regular.ttf" id="1_dpiym"]
+
+[resource]
+font = ExtResource("1_dpiym")
+font_size = 64
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)

@@ -1,0 +1,143 @@
+[gd_scene load_steps=10 format=3 uid="uid://xvjacwyfgsyp"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_vegkm"]
+[ext_resource type="PackedScene" uid="uid://dliq8fekps07w" path="res://Scenes/bg_animations.tscn" id="2_g738n"]
+[ext_resource type="PackedScene" uid="uid://e5naf2jx66xg" path="res://Scenes/player.tscn" id="2_jowxf"]
+[ext_resource type="LabelSettings" uid="uid://bok32iv7qpijf" path="res://Resources/timer_number_label_settings.tres" id="2_k4bnx"]
+[ext_resource type="Texture2D" uid="uid://c3nodk1r6tvva" path="res://Resources/Images/bag.png" id="3_6d5i2"]
+[ext_resource type="PackedScene" uid="uid://bn2ew8s72tfs0" path="res://Scenes/shop.tscn" id="4_kfj0a"]
+[ext_resource type="LabelSettings" uid="uid://dlaxk8f0ibgie" path="res://Resources/very_small_label_with_outline_text.tres" id="4_yfkqq"]
+[ext_resource type="PackedScene" uid="uid://cuexpb3pghlwj" path="res://Scenes/block_pile.tscn" id="5_tawtn"]
+[ext_resource type="PackedScene" uid="uid://dvkb15du2ebem" path="res://Scenes/game_over.tscn" id="6_0ftpm"]
+
+[node name="Level" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_vegkm")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="background" type="ColorRect" parent="interface"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="timer" type="Label" parent="interface"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 35.0
+grow_horizontal = 2
+text = "00"
+label_settings = ExtResource("2_k4bnx")
+horizontal_alignment = 1
+
+[node name="shop_indicator" type="VBoxContainer" parent="interface"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -35.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="btn_shop" type="TextureButton" parent="interface/shop_indicator"]
+layout_mode = 2
+texture_normal = ExtResource("3_6d5i2")
+stretch_mode = 3
+
+[node name="shop_label" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "[Shift]: shop"
+label_settings = ExtResource("4_yfkqq")
+horizontal_alignment = 1
+
+[node name="shop_label_nintendo" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "[A]: shop"
+label_settings = ExtResource("4_yfkqq")
+horizontal_alignment = 1
+
+[node name="shop_label_ps" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "[○]: shop"
+label_settings = ExtResource("4_yfkqq")
+horizontal_alignment = 1
+
+[node name="shop_label_xbox" type="Label" parent="interface/shop_indicator"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "[B]: shop"
+label_settings = ExtResource("4_yfkqq")
+horizontal_alignment = 1
+
+[node name="mobile_buttons" type="VBoxContainer" parent="interface"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -65.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="btn_touch_shop" type="Button" parent="interface/mobile_buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Shop"
+
+[node name="btn_touch_hit_block" type="Button" parent="interface/mobile_buttons"]
+layout_mode = 2
+text = "Hit"
+
+[node name="btn_pause" type="Button" parent="interface"]
+unique_name_in_owner = true
+visible = false
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 33.0
+text = "Pause"
+
+[node name="background" parent="." instance=ExtResource("2_g738n")]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("2_jowxf")]
+
+[node name="Block Pile" parent="." instance=ExtResource("5_tawtn")]
+
+[node name="Shop" parent="." instance=ExtResource("4_kfj0a")]
+
+[node name="Game Over" parent="." instance=ExtResource("6_0ftpm")]
+
+[node name="countdown" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="interface/shop_indicator/btn_shop" to="." method="_on_btn_shop_pressed"]
+[connection signal="pressed" from="interface/mobile_buttons/btn_touch_shop" to="." method="_on_btn_touch_shop_pressed"]
+[connection signal="pressed" from="interface/mobile_buttons/btn_touch_hit_block" to="." method="_on_btn_touch_hit_block_pressed"]
+[connection signal="pressed" from="interface/btn_pause" to="." method="_on_btn_pause_pressed"]
+[connection signal="timeout" from="countdown" to="." method="_on_countdown_timeout"]

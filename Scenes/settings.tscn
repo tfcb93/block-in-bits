@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcu3ynjpt6gem"]
+
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_xuo5i"]
+[ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="2_s48hx"]
+[ext_resource type="LabelSettings" uid="uid://dlaxk8f0ibgie" path="res://Resources/very_small_label_with_outline_text.tres" id="3_ltac0"]
+
+[node name="Settings" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_xuo5i")
+
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="interface"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -34.5
+offset_right = 46.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="interface/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+label_settings = ExtResource("2_s48hx")
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="interface/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="btn_fullscreen" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_right = NodePath("../btn_vibration")
+focus_neighbor_bottom = NodePath("../../HBoxContainer3/btn_sound_effects")
+text = "Fullscreen"
+
+[node name="btn_vibration" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../btn_fullscreen")
+focus_neighbor_bottom = NodePath("../../HBoxContainer3/btn_sound_effects")
+text = "Vibrate"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="interface/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="btn_sound_effects" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_left = NodePath("../../HBoxContainer4/btn_background")
+focus_neighbor_top = NodePath("../../HBoxContainer2/btn_fullscreen")
+focus_neighbor_right = NodePath("../../HBoxContainer2/btn_vibration")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/btn_background")
+text = "SFX"
+
+[node name="btn_music" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Music"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="interface/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_background" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer3/btn_sound_effects")
+focus_neighbor_right = NodePath("../btn_clear_data")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/btn_exit")
+text = "Background"
+
+[node name="btn_clear_data" type="Button" parent="interface/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../btn_background")
+focus_neighbor_top = NodePath("../../HBoxContainer3/btn_sound_effects")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/btn_exit")
+text = "Clear Data"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="interface/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_exit" type="Button" parent="interface/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../HBoxContainer4/btn_background")
+focus_neighbor_top = NodePath("../../HBoxContainer4/btn_background")
+focus_neighbor_right = NodePath("../../HBoxContainer4/btn_clear_data")
+text = "Exit"
+
+[node name="clear_data_warning" type="Label" parent="interface/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "The \"Clear Data\" button resets the high score."
+label_settings = ExtResource("3_ltac0")
+
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer2/btn_fullscreen" to="." method="_on_btn_fullscreen_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer2/btn_vibration" to="." method="_on_btn_vibration_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_sound_effects" to="." method="_on_btn_sound_effects_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_music" to="." method="_on_btn_music_toggled"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer4/btn_background" to="." method="_on_btn_background_toggled"]
+[connection signal="pressed" from="interface/VBoxContainer/HBoxContainer4/btn_clear_data" to="." method="_on_btn_clear_data_pressed"]
+[connection signal="pressed" from="interface/VBoxContainer/HBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

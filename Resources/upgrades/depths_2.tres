@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=2 format=3 uid="uid://drrnvmrlf0fab"]
+
+[ext_resource type="Script" path="res://Scripts/upgrade.gd" id="1_nollm"]
+
+[resource]
+script = ExtResource("1_nollm")
+id = 5
+name = "Depths II"
+price = 10000
+depth = 20000
+effects = {
+0: [150, 500],
+1: [400, 250],
+2: [500, 50]
+}

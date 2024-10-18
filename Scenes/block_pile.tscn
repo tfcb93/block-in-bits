@@ -1,22 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuexpb3pghlwj"]
+[gd_scene load_steps=5 format=3 uid="uid://cuexpb3pghlwj"]
 
 [ext_resource type="Script" path="res://Scripts/block_pile.gd" id="1_1n87m"]
-[ext_resource type="AudioStream" uid="uid://l3hcfomxa3fh" path="res://Resources/Sounds/hit1.wav" id="2_2xg3g"]
-[ext_resource type="AudioStream" uid="uid://bk18xdf1qtxy" path="res://Resources/Sounds/destroy.wav" id="3_ee1jf"]
+[ext_resource type="AudioStream" uid="uid://c3l743ihiimak" path="res://Resources/Sounds/destroy.wav" id="2_hecqv"]
+[ext_resource type="LabelSettings" uid="uid://chxtdu6sd2oes" path="res://Resources/big_number_label_settings.tres" id="5_6vmvp"]
+[ext_resource type="Texture2D" uid="uid://cthoes13prb1e" path="res://Resources/Images/base_block.png" id="5_lpaxg"]
 
 [node name="Block Pile" type="Node2D"]
 script = ExtResource("1_1n87m")
 
+[node name="sfx_block_break" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_hecqv")
+
 [node name="Start Pile Position" type="Marker2D" parent="."]
 
-[node name="Pile" type="Node2D" parent="."]
+[node name="interface" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
 
-[node name="Tap Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_2xg3g")
-volume_db = -5.0
-bus = &"Tap Sound"
+[node name="life_value" type="Label" parent="interface"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -21.0
+offset_right = 67.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "00"
+label_settings = ExtResource("5_6vmvp")
+horizontal_alignment = 1
 
-[node name="Block Sounds" type="Node2D" parent="."]
+[node name="under_block" type="Sprite2D" parent="."]
+position = Vector2(160, 174)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_lpaxg")
 
-[node name="Destroy Block Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ee1jf")
+[node name="top_block" type="Sprite2D" parent="."]
+position = Vector2(160, 158)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_lpaxg")
+
+[node name="particles_position" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(160, 150)
