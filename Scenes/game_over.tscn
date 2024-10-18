@@ -64,9 +64,8 @@ horizontal_alignment = 1
 
 [node name="intf_record_label" type="Label" parent="interface/Panel/VBoxContainer/depth_container"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-text = "New Record!"
+text = "High Score: 000000000m"
 label_settings = ExtResource("4_66q84")
 horizontal_alignment = 1
 

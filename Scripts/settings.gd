@@ -53,3 +53,7 @@ func _on_btn_background_toggled(toggled_on: bool) -> void:
 	Globals.is_background_on = toggled_on;
 	Events.emit_signal("toggle_background", toggled_on);
 	Events.emit_signal("config_change", "background_on", toggled_on);
+
+func _on_btn_clear_data_pressed() -> void:
+	Globals.high_depth_score = 0;
+	Events.emit_signal("config_change", "high_score", 0);

@@ -8,10 +8,12 @@ func _ready() -> void:
 
 func _on_game_over(points: int, depth: int, playtime: float) -> void:
 
+	%intf_record_label.text = "High Score: " + str(Globals.high_depth_score) + "m";
+
 	if (depth > Globals.high_depth_score):
 		Globals.high_depth_score = depth;
 		Events.emit_signal("config_change", "high_score", depth);
-		%intf_record_label.visible = true;
+		%intf_record_label.text = "New Record!";
 
 	%interface.visible = true;
 	%intf_points.text = str(points) + " points";
