@@ -6,12 +6,13 @@ var generated_level: Node;
 
 func _init() -> void:
 	check_enviroment();
-
 	check_config_file();
-	# if (not Globals.is_web):
 
 	if (len(Input.get_connected_joypads()) > 0):
 		Globals.controller_type = Input.get_joy_name(0);
+
+	# loading particle instance into memory
+	Globals.seconds_particle = load("res://Scenes/add_second_particle.tscn");
 
 func _ready() -> void:
 	Events.connect("enter_game", _on_enter_game);

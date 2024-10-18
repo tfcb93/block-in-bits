@@ -7,7 +7,6 @@ extends Node2D;
 
 @export var sequence: BlockSequence = null;
 
-var seconds_particle:PackedScene = load("res://Scenes/add_second_particle.tscn");
 var blocks = [];
 var block_groups = {0: 0};
 var actual_block_hits := 0;
@@ -86,7 +85,7 @@ func break_block() -> void:
 	update_block_info();
 	Events.emit_signal("depth_change", actual_depth);
 	Events.emit_signal("add_time", 1);
-	var new_seconds_particle: Node = seconds_particle.instantiate();
+	var new_seconds_particle: Node = Globals.seconds_particle.instantiate();
 	%particles_position.add_child(new_seconds_particle);
 	new_seconds_particle.emitting = true;
 	play_sound_effects();

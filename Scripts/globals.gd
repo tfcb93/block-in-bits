@@ -29,3 +29,6 @@ var high_depth_score := 0;
 var is_mobile := false;
 var is_web := false;
 var controller_type := "";
+
+# load
+var seconds_particle:PackedScene;
