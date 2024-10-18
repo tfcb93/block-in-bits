@@ -112,23 +112,24 @@ layout_mode = 2
 text = "Multiplier"
 label_settings = ExtResource("3_eq7su")
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="interface/VBoxContainer"]
+[node name="controls" type="VBoxContainer" parent="interface/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="interface/VBoxContainer/VBoxContainer3"]
+[node name="Label" type="Label" parent="interface/VBoxContainer/controls"]
 layout_mode = 2
 text = "Controls"
 label_settings = ExtResource("2_v151f")
 horizontal_alignment = 1
 
-[node name="info_keyboard" type="Label" parent="interface/VBoxContainer/VBoxContainer3"]
+[node name="info_keyboard" type="Label" parent="interface/VBoxContainer/controls"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "[Arrows]: Navigation. [Left]/[Right]: Change tool. [Space]: Break blocks. [Shift]: Open shop. [Esc]: Pause."
 label_settings = ExtResource("3_eq7su")
 horizontal_alignment = 1
 
-[node name="info_ps" type="Label" parent="interface/VBoxContainer/VBoxContainer3"]
+[node name="info_ps" type="Label" parent="interface/VBoxContainer/controls"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -136,7 +137,7 @@ text = "[Directional]: Navigation. [Left]/[Right]: Change tool. [X]: Break block
 label_settings = ExtResource("3_eq7su")
 horizontal_alignment = 1
 
-[node name="info_xbox" type="Label" parent="interface/VBoxContainer/VBoxContainer3"]
+[node name="info_xbox" type="Label" parent="interface/VBoxContainer/controls"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -145,7 +146,7 @@ text = "[Directional]: Navigation. [Left]/[Right]: Change tool. [A]: Break block
 label_settings = ExtResource("3_eq7su")
 horizontal_alignment = 1
 
-[node name="info_nintendo" type="Label" parent="interface/VBoxContainer/VBoxContainer3"]
+[node name="info_nintendo" type="Label" parent="interface/VBoxContainer/controls"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

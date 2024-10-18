@@ -14,6 +14,7 @@ func _on_open_instructions() -> void:
 	check_controller_instructions();
 
 func check_controller_instructions() -> void:
+	%controls.visible = true;
 	%info_keyboard.visible = false;
 	%info_ps.visible = false;
 	%info_xbox.visible = false;
@@ -24,6 +25,8 @@ func check_controller_instructions() -> void:
 		%info_ps.visible = true;
 	elif(Globals.controller_type.contains("Xbox")):
 		%info_xbox.visible = true;
+	elif(Globals.is_mobile):
+		%controls.visible = false;
 	else:
 		%info_keyboard.visible = true;
 
