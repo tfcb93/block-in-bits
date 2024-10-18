@@ -38,3 +38,5 @@ signal discount_points(discounted_points: int);
 signal upgrade_tools(upgrde: Upgrade);
 
 signal game_over();
+
+signal config_change(config_name: String, config_value: Variant);

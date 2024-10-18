@@ -8,7 +8,6 @@ func _ready() -> void:
 	%interface.visible = false;
 	%btn_fullscreen.button_pressed = Globals.is_game_fullscreen;
 	%btn_vibration.button_pressed = Globals.is_vibration_active;
-	%btn_resolution.selected = Globals.game_resolution_index;
 	%btn_sound_effects.button_pressed = Globals.is_sound_effects_on;
 	%btn_background.button_pressed = Globals.is_background_on;
 
@@ -22,15 +21,11 @@ func _on_unpause_game() -> void:
 
 func _on_btn_fullscreen_toggled(toggled_on: bool) -> void:
 	Globals.is_game_fullscreen = toggled_on;
+	Events.emit_signal("config_change","fullscreen", toggled_on);
 	if (toggled_on):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN);
-		%btn_resolution.disabled = true;
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED);
-		%btn_resolution.disabled = false;
-
-func _on_btn_resolution_item_selected(index: int) -> void:
-	print(index);
 
 func _on_btn_exit_pressed() -> void:
 	%interface.visible = false;
@@ -42,10 +37,12 @@ func _on_btn_exit_pressed() -> void:
 
 func _on_btn_vibration_toggled(toggled_on: bool) -> void:
 	Globals.is_vibration_active = toggled_on;
+	Events.emit_signal("config_change", "vibration_active", toggled_on);
 
 
 func _on_btn_sound_effects_toggled(toggled_on: bool) -> void:
 	Globals.is_sound_effects_on = toggled_on;
+	Events.emit_signal("config_change", "sound_effects", toggled_on);
 
 
 func _on_btn_music_toggled(toggled_on: bool) -> void:
@@ -55,3 +52,4 @@ func _on_btn_music_toggled(toggled_on: bool) -> void:
 func _on_btn_background_toggled(toggled_on: bool) -> void:
 	Globals.is_background_on = toggled_on;
 	Events.emit_signal("toggle_background", toggled_on);
+	Events.emit_signal("config_change", "background_on", toggled_on);

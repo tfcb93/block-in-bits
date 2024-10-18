@@ -3,7 +3,7 @@ extends Node2D;
 var actualPatern: Sprite2D;
 
 func create_animation_background() -> void:
-	var pattern_index := randi_range(1, len(%patterns.get_children())); 
+	var pattern_index := randi_range(1, len(%patterns.get_children()) - 1); 
 	for pattern in %patterns.get_children():
 		if (not pattern.name.contains(str(pattern_index))):
 			pattern.visible = false;

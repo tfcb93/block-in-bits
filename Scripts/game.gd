@@ -7,6 +7,9 @@ var generated_level: Node;
 func _init() -> void:
 	check_enviroment();
 
+	if (not Globals.is_web):
+		check_config_file();
+
 	if (len(Input.get_connected_joypads()) > 0):
 		Globals.controller_type = Input.get_joy_name(0);
 
@@ -16,6 +19,7 @@ func _ready() -> void:
 	Events.connect("close_select_mode", _on_close_select_mode);
 	Events.connect("start_game", _on_start_game);
 	Events.connect("exit_level", _on_exit_level);
+	Events.connect("config_change", _on_config_change);
 
 	load_into_memory();
 	
@@ -134,3 +138,34 @@ func check_enviroment() -> void:
 		Globals.is_web = true;
 	if(OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("android") or OS.has_feature("ios")):
 		Globals.is_mobile = true;
+
+# From https://docs.godotengine.org/en/stable/classes/class_configfile.html#class-configfile
+func check_config_file() ->void:
+	Globals.config_data = ConfigFile.new();
+
+	var error := Globals.config_data.load("user://config.cfg");
+
+	if error != OK:
+		Globals.config_data.set_value("Player", "fullscreen", Globals.is_game_fullscreen);
+		Globals.config_data.set_value("Player", "vibration_active", Globals.is_vibration_active);
+		Globals.config_data.set_value("Player", "sound_effects", Globals.is_sound_effects_on);
+		Globals.config_data.set_value("Player", "background_on", Globals.is_background_on);
+		Globals.config_data.set_value("Player", "high_score", Globals.high_depth_score);
+
+		Globals.config_data.save("user://config.cfg");
+		return;
+	
+	for section in Globals.config_data.get_sections():
+		Globals.is_game_fullscreen = Globals.config_data.get_value("Player", "fullscreen");
+		Globals.is_vibration_active = Globals.config_data.get_value("Player", "vibration_active");
+		Globals.is_sound_effects_on = Globals.config_data.get_value("Player", "sound_effects");
+		Globals.is_background_on = Globals.config_data.get_value("Player", "background_on");
+		Globals.high_depth_score = Globals.config_data.get_value("Player", "high_score");
+
+	if(Globals.is_game_fullscreen):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN);
+
+
+func _on_config_change(config_name: String, config_value: Variant) -> void:
+	Globals.config_data.set_value("Player", config_name, config_value);
+	Globals.config_data.save("user://config.cfg");

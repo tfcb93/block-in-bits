@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvkb15du2ebem"]
+[gd_scene load_steps=5 format=3 uid="uid://dvkb15du2ebem"]
 
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_cwqne"]
 [ext_resource type="LabelSettings" uid="uid://clji31jb7p4ew" path="res://Resources/big_text_label.tres" id="1_xe3c3"]
 [ext_resource type="LabelSettings" uid="uid://cnpd02d1dmt6i" path="res://Resources/normal_text_label.tres" id="2_gleil"]
+[ext_resource type="LabelSettings" uid="uid://bsm7x5clu6urn" path="res://Resources/very_small_label_text.tres" id="4_66q84"]
 
 [node name="Game Over" type="Node2D"]
 script = ExtResource("1_cwqne")
@@ -50,11 +51,23 @@ text = "00 points"
 label_settings = ExtResource("2_gleil")
 horizontal_alignment = 1
 
-[node name="intf_depth" type="Label" parent="interface/Panel/VBoxContainer"]
+[node name="depth_container" type="VBoxContainer" parent="interface/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="intf_depth" type="Label" parent="interface/Panel/VBoxContainer/depth_container"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00 depth"
 label_settings = ExtResource("2_gleil")
+horizontal_alignment = 1
+
+[node name="intf_record_label" type="Label" parent="interface/Panel/VBoxContainer/depth_container"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "New Record!"
+label_settings = ExtResource("4_66q84")
 horizontal_alignment = 1
 
 [node name="intf_total_time" type="Label" parent="interface/Panel/VBoxContainer"]

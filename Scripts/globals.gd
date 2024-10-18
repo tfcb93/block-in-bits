@@ -17,13 +17,15 @@ var blocks := {};
 
 # settings
 var is_game_fullscreen := false;
-var game_resolution_index := 0;
+var is_vibration_active := true;
+var is_sound_effects_on := true;
+var is_background_on := true;
 
+# game data
+var config_data: ConfigFile;
+var high_depth_score := 0;
 
 # misc.
 var is_mobile := false;
 var is_web := false;
 var controller_type := "";
-var is_vibration_active := true;
-var is_sound_effects_on := true;
-var is_background_on := true;
