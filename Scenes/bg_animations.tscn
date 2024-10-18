@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dliq8fekps07w"]
+[gd_scene load_steps=12 format=3 uid="uid://dliq8fekps07w"]
 
 [ext_resource type="Script" path="res://Scripts/bg_animations.gd" id="1_jw4gv"]
 [ext_resource type="Texture2D" uid="uid://bklsyjdi0rhyk" path="res://Resources/Images/patterns/pattern-1.png" id="1_ycycf"]
 [ext_resource type="Texture2D" uid="uid://dlbg3kr8s7lss" path="res://Resources/Images/patterns/pattern-2.png" id="3_nq2vh"]
 [ext_resource type="Texture2D" uid="uid://ddpyn17sd4aao" path="res://Resources/Images/patterns/patterns-3.png" id="4_y51k1"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_oidow"]
 
 [sub_resource type="AnimationRootNode" id="AnimationRootNode_pn2o7"]
 
@@ -110,6 +112,13 @@ script = ExtResource("1_jw4gv")
 
 [node name="patterns" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="pattern_0" type="Sprite2D" parent="patterns"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(160, 90)
+scale = Vector2(320, 180)
+texture = SubResource("CanvasTexture_oidow")
 
 [node name="pattern_1" type="Sprite2D" parent="patterns"]
 unique_name_in_owner = true

@@ -91,6 +91,14 @@ popup/item_1/id = 1
 popup/item_2/text = "4x"
 popup/item_2/id = 2
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="interface/VBoxContainer"]
+layout_mode = 2
+
+[node name="btn_background" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Background"
+
 [node name="btn_exit" type="Button" parent="interface/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -102,4 +110,5 @@ text = "Exit"
 [connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_sound_effects" to="." method="_on_btn_sound_effects_toggled"]
 [connection signal="toggled" from="interface/VBoxContainer/HBoxContainer3/btn_music" to="." method="_on_btn_music_toggled"]
 [connection signal="item_selected" from="interface/VBoxContainer/HBoxContainer/btn_resolution" to="." method="_on_btn_resolution_item_selected"]
+[connection signal="toggled" from="interface/VBoxContainer/HBoxContainer4/btn_background" to="." method="_on_btn_background_toggled"]
 [connection signal="pressed" from="interface/VBoxContainer/btn_exit" to="." method="_on_btn_exit_pressed"]

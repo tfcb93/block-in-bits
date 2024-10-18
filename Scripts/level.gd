@@ -13,6 +13,7 @@ func _ready() -> void:
 
 	Events.connect("pause_game", _on_pause_game);
 	Events.connect("unpause_game", _on_unpause_game);
+	Events.connect("toggle_background", _on_toggle_background);
 
 	Events.connect("open_shop", _on_open_shop);
 	Events.connect("close_shop", _on_close_shop);
@@ -21,7 +22,7 @@ func _ready() -> void:
 
 	Events.connect("add_time", _on_add_time);
 
-	%background._play_animation();
+	%background.create_animation_background();
 
 	check_controller_instructions();
 
@@ -122,3 +123,9 @@ func _on_btn_pause_pressed() -> void:
 	get_tree().paused = true;
 	Globals.game_state = Globals.GAME_STATES.PAUSED;
 	Events.emit_signal("pause_game");
+
+func _on_toggle_background(is_on: bool) -> void:
+	if(is_on):
+		%background.play_background();
+	else:
+		%background.stop_background();

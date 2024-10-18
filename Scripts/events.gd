@@ -19,6 +19,7 @@ signal open_settings_from_selection();
 signal close_settings_to_selection();
 signal open_settings_from_pause();
 signal close_settings_to_pause();
+signal toggle_background(is_on: bool);
 
 signal start_game();
 signal stop_game();

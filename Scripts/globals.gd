@@ -26,3 +26,4 @@ var is_web := false;
 var controller_type := "";
 var is_vibration_active := true;
 var is_sound_effects_on := true;
+var is_background_on := true;

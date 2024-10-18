@@ -10,6 +10,7 @@ func _ready() -> void:
 	%btn_vibration.button_pressed = Globals.is_vibration_active;
 	%btn_resolution.selected = Globals.game_resolution_index;
 	%btn_sound_effects.button_pressed = Globals.is_sound_effects_on;
+	%btn_background.button_pressed = Globals.is_background_on;
 
 func _on_open_settings() -> void:
 	%interface.visible = true;
@@ -49,3 +50,8 @@ func _on_btn_sound_effects_toggled(toggled_on: bool) -> void:
 
 func _on_btn_music_toggled(toggled_on: bool) -> void:
 	pass # Replace with function body.
+
+
+func _on_btn_background_toggled(toggled_on: bool) -> void:
+	Globals.is_background_on = toggled_on;
+	Events.emit_signal("toggle_background", toggled_on);
