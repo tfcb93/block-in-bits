@@ -1,5 +1,8 @@
 # Blocks in Bits
 This game was made using Godot version 4.3 (stable) and is available on [itch.io](https://tfcb93.itch.io/blocks-in-bits).
+![Title screen](./doc/images/start_screen.png)
+![In game image 1](./doc/images/game_1.png)
+![In game image 2](./doc/images/game_2.png)
 
 ## About the game
 
