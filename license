@@ -1,8 +1,33 @@
-The code in this project runs under the MIT License.
-Fonts are made by Sarah Cadigan-Fried and Juan Montoreano under the OFL (documents about license are inside its resource folders). Lilita One, by Juan Montoreano was also modified by the program Aseprite, when used.
-During it's development it was also used Tiny5 by Stefan Schmidt and Source Code Pro by Paul D. Hunt, both under the OFL as well.
+The code in this project is under the MIT License. Text below.
+
+---
+
+#### About Fonts
+
+Fonts used are made by **Sarah Cadigan-Fried** (<ins>Jersey10</ins>) and **Juan Montoreano** (<ins>Lilita One</ins>) under the OFL (documents about license are inside its resource folders). <ins>Lilita One</ins>, by **Juan Montoreano** was also modified by the program Aseprite, when used.
+
+During it's development it was also used <ins>Tiny5</ins> by **Stefan Schmidt** and <ins>Source Code Pro</ins> by **Paul D. Hunt**, both under the OFL as well.
+
+---
+
+#### About images
+
 Original images were made by Thiago Felipe Corrêa Borges (tfcb93) and are licensed under CC BY 4.0. https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1
 
+The Godot Logo is under the Creative Commons Attribution 4.0 International and created by Andrea Calabró.
+
+---
+
+
+#### About sounds
+
+A few sound files from the Game Audio GDC can be found throughout the project. Information about their license can be found at https://sonniss.com/gdc-bundle-license.
+
+The rest of the sounds were generated using [jsfxr](https://sfxr.me/) web page.
+
+----
+
+#### Code license
 
 Copyright 2024 THIAGO FELIPE CORRÊA BORGES
 
