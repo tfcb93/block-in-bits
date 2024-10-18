@@ -46,14 +46,15 @@ alignment = 1
 [node name="btn_fullscreen" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../btn_vibration")
+focus_neighbor_right = NodePath("../btn_vibration")
+focus_neighbor_bottom = NodePath("../../HBoxContainer3/btn_sound_effects")
 text = "Fullscreen"
 
 [node name="btn_vibration" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-focus_neighbor_top = NodePath("../btn_fullscreen")
-focus_neighbor_bottom = NodePath("../../HBoxContainer/btn_exit")
+focus_neighbor_left = NodePath("../btn_fullscreen")
+focus_neighbor_bottom = NodePath("../../HBoxContainer3/btn_sound_effects")
 text = "Vibrate"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="interface/VBoxContainer"]
@@ -64,6 +65,10 @@ alignment = 1
 [node name="btn_sound_effects" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_left = NodePath("../../HBoxContainer4/btn_background")
+focus_neighbor_top = NodePath("../../HBoxContainer2/btn_fullscreen")
+focus_neighbor_right = NodePath("../../HBoxContainer2/btn_vibration")
+focus_neighbor_bottom = NodePath("../../HBoxContainer4/btn_background")
 text = "SFX"
 
 [node name="btn_music" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer3"]
@@ -79,11 +84,17 @@ alignment = 1
 [node name="btn_background" type="CheckButton" parent="interface/VBoxContainer/HBoxContainer4"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer3/btn_sound_effects")
+focus_neighbor_right = NodePath("../btn_clear_data")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/btn_exit")
 text = "Background"
 
 [node name="btn_clear_data" type="Button" parent="interface/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../btn_background")
+focus_neighbor_top = NodePath("../../HBoxContainer3/btn_sound_effects")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/btn_exit")
 text = "Clear Data"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="interface/VBoxContainer"]
@@ -94,7 +105,9 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-focus_neighbor_top = NodePath("../../HBoxContainer2/btn_vibration")
+focus_neighbor_left = NodePath("../../HBoxContainer4/btn_background")
+focus_neighbor_top = NodePath("../../HBoxContainer4/btn_background")
+focus_neighbor_right = NodePath("../../HBoxContainer4/btn_clear_data")
 text = "Exit"
 
 [node name="clear_data_warning" type="Label" parent="interface/VBoxContainer"]
