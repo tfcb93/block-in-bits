@@ -14,7 +14,7 @@ func _on_open_select_mode() -> void:
 
 	if (Globals.is_mobile or Globals.is_web):
 		%btn_quit.visible = false;
-		%btn_credits.focus_neighbor_right = null;
+		%btn_credits.focus_neighbor_right = "";
 
 func _on_close_select_mode() -> void:
 	%interface.visible = false;

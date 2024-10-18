@@ -15,10 +15,14 @@ func _ready() -> void:
 		%top_settings.visible = false;
 	elif(Globals.is_web):
 		%btn_fullscreen.visible = false;
+		%btn_sound_effects.focus_neighbor_top = NodePath(%btn_vibration.get_path());
 
 func _on_open_settings() -> void:
 	%interface.visible = true;
-	%btn_fullscreen.grab_focus();
+	if(Globals.is_web):
+		%btn_vibration.grab_focus();
+	else:
+		%btn_fullscreen.grab_focus();
 
 
 # necessary due to controller commands
@@ -51,7 +55,7 @@ func _on_btn_sound_effects_toggled(toggled_on: bool) -> void:
 	Events.emit_signal("config_change", "sound_effects", toggled_on);
 
 
-func _on_btn_music_toggled(toggled_on: bool) -> void:
+func _on_btn_music_toggled(_toggled_on: bool) -> void:
 	pass # Replace with function body.
 
 

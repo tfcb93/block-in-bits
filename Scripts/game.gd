@@ -7,8 +7,8 @@ var generated_level: Node;
 func _init() -> void:
 	check_enviroment();
 
-	if (not Globals.is_web):
-		check_config_file();
+	check_config_file();
+	# if (not Globals.is_web):
 
 	if (len(Input.get_connected_joypads()) > 0):
 		Globals.controller_type = Input.get_joy_name(0);

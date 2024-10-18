@@ -27,4 +27,3 @@ func play_background() -> void:
 	%pattern_0.visible = false;
 	actualPatern.visible = true;
 	%player.play();
-
